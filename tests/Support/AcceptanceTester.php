@@ -181,4 +181,342 @@ class AcceptanceTester extends \Codeception\Actor
     {
         throw new \PHPUnit\Framework\IncompleteTestError("Step `the invoice should be downloaded as a PDF file` is not defined");
     }
+
+    /**
+     * @Given I am logged in as user
+     */
+     public function iAmLoggedInAsUser()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I am logged in as user` is not defined");
+     }
+
+    /**
+     * @When I view the list of invoices
+     */
+     public function iViewTheListOfInvoices()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I view the list of invoices` is not defined");
+     }
+
+    /**
+     * @When there is an invoice on the invoice list view
+     */
+     public function thereIsAnInvoiceOnTheInvoiceListView()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `there is an invoice on the invoice list view` is not defined");
+     }
+
+    /**
+     * @When I click on a specific invoice
+     */
+     public function iClickOnASpecificInvoice()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on a specific invoice` is not defined");
+     }
+
+    /**
+     * @Then I should see the exact invoice I clicked on
+     */
+     public function iShouldSeeTheExactInvoiceIClickedOn()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see the exact invoice I clicked on` is not defined");
+     }
+
+    /**
+     * @When I view the list of invoices
+     */
+     public function iViewTheListOfInvoices()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I view the list of invoices` is not defined");
+     }
+
+    /**
+     * @Then I should see a timestamp next to each invoice, indicating the date and time when the invoice was created
+     */
+     public function iShouldSeeATimestampNextToEachInvoiceIndicatingTheDateAndTimeWhenTheInvoiceWasCreated()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see a timestamp next to each invoice, indicating the date and time when the invoice was created` is not defined");
+     }
+
+    /**
+     * @Then the timestamp should be in a readable format, such as :arg1
+     */
+     public function theTimestampShouldBeInAReadableFormatSuchAs($arg1)
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `the timestamp should be in a readable format, such as :arg1` is not defined");
+     }
+
+    /**
+     * @When there is an invoice on the invoice list view
+     */
+     public function thereIsAnInvoiceOnTheInvoiceListView()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `there is an invoice on the invoice list view` is not defined");
+     }
+
+    /**
+     * @When I click on a specific invoice
+     */
+     public function iClickOnASpecificInvoice()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on a specific invoice` is not defined");
+     }
+
+    /**
+     * @Then I should see the exact invoice I clicked on
+     */
+     public function iShouldSeeTheExactInvoiceIClickedOn()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see the exact invoice I clicked on` is not defined");
+     }
+
+    /**
+     * @Then the invoices should be displayed in a default sorting order
+     */
+     public function theInvoicesShouldBeDisplayedInADefaultSortingOrder()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `the invoices should be displayed in a default sorting order` is not defined");
+     }
+
+    /**
+     * @Then I should see options to sort invoices by different criteria such as date, customer name, or total amount
+     */
+     public function iShouldSeeOptionsToSortInvoicesByDifferentCriteriaSuchAsDateCustomerNameOrTotalAmount()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see options to sort invoices by different criteria such as date, customer name, or total amount` is not defined");
+     }
+
+    /**
+     * @When I select to sort invoices by date
+     */
+     public function iSelectToSortInvoicesByDate()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I select to sort invoices by date` is not defined");
+     }
+
+    /**
+     * @Then the invoices should be rearranged in chronological order based on their creation date
+     */
+     public function theInvoicesShouldBeRearrangedInChronologicalOrderBasedOnTheirCreationDate()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `the invoices should be rearranged in chronological order based on their creation date` is not defined");
+     }
+
+    /**
+     * @When I select to sort invoices by customer name
+     */
+     public function iSelectToSortInvoicesByCustomerName()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I select to sort invoices by customer name` is not defined");
+     }
+
+    /**
+     * @Then the invoices should be rearranged in alphabetical order based on the customer's name
+     */
+     public function theInvoicesShouldBeRearrangedInAlphabeticalOrderBasedOnTheCustomersName()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `the invoices should be rearranged in alphabetical order based on the customer's name` is not defined");
+     }
+
+    /**
+     * @When I select to sort invoices by total amount
+     */
+     public function iSelectToSortInvoicesByTotalAmount()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I select to sort invoices by total amount` is not defined");
+     }
+
+    /**
+     * @Then the invoices should be rearranged in ascending order based on their total amount
+     */
+     public function theInvoicesShouldBeRearrangedInAscendingOrderBasedOnTheirTotalAmount()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `the invoices should be rearranged in ascending order based on their total amount` is not defined");
+     }
+	 
+	  /**
+     * @Given I am logged in as a user
+     */
+     public function iAmLoggedInAsAUser()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I am logged in as a user` is not defined");
+     }
+
+    /**
+     * @When I navigate to the invoice analysis page
+     */
+     public function iNavigateToTheInvoiceAnalysisPage()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I navigate to the invoice analysis page` is not defined");
+     }
+
+    /**
+     * @Then I should see options to export invoice analysis data as PDF
+     */
+     public function iShouldSeeOptionsToExportInvoiceAnalysisDataAsPDF()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see options to export invoice analysis data as PDF` is not defined");
+     }
+
+    /**
+     * @When I click the “Convert to PDF” button
+     */
+     public function iClickTheConvertToPDFButton()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I click the “Convert to PDF” button` is not defined");
+     }
+
+    /**
+     * @Then a dialog should show up, asking me to choose a directory to save to
+     */
+     public function aDialogShouldShowUpAskingMeToChooseADirectoryToSaveTo()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `a dialog should show up, asking me to choose a directory to save to` is not defined");
+     }
+/**
+     * @Given I am logged in as user
+     */
+     public function iAmLoggedInAsUser()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I am logged in as user` is not defined");
+     }
+
+    /**
+     * @When I view the list of invoices
+     */
+     public function iViewTheListOfInvoices()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I view the list of invoices` is not defined");
+     }
+
+    /**
+     * @Then I should see a timestamp next to each invoice, indicating the date and time when the invoice was created
+     */
+     public function iShouldSeeATimestampNextToEachInvoiceIndicatingTheDateAndTimeWhenTheInvoiceWasCreated()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see a timestamp next to each invoice, indicating the date and time when the invoice was created` is not defined");
+     }
+
+/**
+     * @Given I am logged in as user
+     */
+     public function iAmLoggedInAsUser()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I am logged in as user` is not defined");
+     }
+
+    /**
+     * @When I view the list of invoices
+     */
+     public function iViewTheListOfInvoices()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I view the list of invoices` is not defined");
+     }
+
+    /**
+     * @When there is an existing folder
+     */
+     public function thereIsAnExistingFolder()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `there is an existing folder` is not defined");
+     }
+
+    /**
+     * @When there is an existing invoice on the view
+     */
+     public function thereIsAnExistingInvoiceOnTheView()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `there is an existing invoice on the view` is not defined");
+     }
+
+    /**
+     * @When I select a specific invoice to add to a folder using the checkboxes next to the invoices
+     */
+     public function iSelectASpecificInvoiceToAddToAFolderUsingTheCheckboxesNextToTheInvoices()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I select a specific invoice to add to a folder using the checkboxes next to the invoices` is not defined");
+     }
+
+    /**
+     * @When I press the “Add to Folder” button
+     */
+     public function iPressTheAddToFolderButton()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I press the “Add to Folder” button` is not defined");
+     }
+
+    /**
+     * @Then it should prompt me asking which folder to add the invoice to with choices of existing folders, if any
+     */
+     public function itShouldPromptMeAskingWhichFolderToAddTheInvoiceToWithChoicesOfExistingFoldersIfAny()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `it should prompt me asking which folder to add the invoice to with choices of existing folders, if any` is not defined");
+     }
+
+    /**
+     * @Then the selected invoice should move to the selected folder
+     */
+     public function theSelectedInvoiceShouldMoveToTheSelectedFolder()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `the selected invoice should move to the selected folder` is not defined");
+     }
+
+    /**
+     * @Then the selected invoice should no longer appear in the list of invoices
+     */
+     public function theSelectedInvoiceShouldNoLongerAppearInTheListOfInvoices()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `the selected invoice should no longer appear in the list of invoices` is not defined");
+     }
+
+/**
+     * @Given I enter an amount for a product bought on an invoice
+     */
+     public function iEnterAnAmountForAProductBoughtOnAnInvoice()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I enter an amount for a product bought on an invoice` is not defined");
+     }
+
+    /**
+     * @Then I should see a total price with taxes on the invoice, depending on the tax amount defined on the settings page
+     */
+     public function iShouldSeeATotalPriceWithTaxesOnTheInvoiceDependingOnTheTaxAmountDefinedOnTheSettingsPage()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see a total price with taxes on the invoice, depending on the tax amount defined on the settings page` is not defined");
+     }
+
+/**
+     * @When I select invoices with a checkbox
+     */
+     public function iSelectInvoicesWithACheckbox()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I select invoices with a checkbox` is not defined");
+     }
+
+    /**
+     * @When I click on the :arg1 button
+     */
+     public function iClickOnTheButton($arg1)
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on the :arg1 button` is not defined");
+     }
+
+    /**
+     * @When I confirm the deletion
+     */
+     public function iConfirmTheDeletion()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I confirm the deletion` is not defined");
+     }
+
+    /**
+     * @Then I should not see the invoices that I previously selected
+     */
+     public function iShouldNotSeeTheInvoicesThatIPreviouslySelected()
+     {
+         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should not see the invoices that I previously selected` is not defined");
+     }
+
+    /**
+
 }
