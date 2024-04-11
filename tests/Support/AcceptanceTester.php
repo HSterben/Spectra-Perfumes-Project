@@ -627,4 +627,212 @@ class AcceptanceTester extends \Codeception\Actor
    {
       throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see the invoice with the updated quantity` is not defined");
    }
+
+    /**
+     * @Given i am in the settings
+     */
+    public function iAmInTheSettings()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `i am in the settings` is not defined");
+    }
+
+   /**
+    * @When I click on the button change :arg1
+    */
+    public function iClickOnTheButtonChange($arg1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on the button change :arg1` is not defined");
+    }
+
+   /**
+    * @When I input my new email
+    */
+    public function iInputMyNewEmail()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I input my new email` is not defined");
+    }
+
+   /**
+    * @Then upon creation of future invoices a notification will be sent to the user according to their new email
+    */
+    public function uponCreationOfFutureInvoicesANotificationWillBeSentToTheUserAccordingToTheirNewEmail()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `upon creation of future invoices a notification will be sent to the user according to their new email` is not defined");
+    }
+
+   /**
+    * @When I input my new phone number
+    */
+    public function iInputMyNewPhoneNumber()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I input my new phone number` is not defined");
+    }
+
+   /**
+    * @Then upon creation of future invoices a notification will be sent to the user according to their new phone number
+    */
+    public function uponCreationOfFutureInvoicesANotificationWillBeSentToTheUserAccordingToTheirNewPhoneNumber()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `upon creation of future invoices a notification will be sent to the user according to their new phone number` is not defined");
+    }
+
+   /**
+    * @Given I am on the final step of creating an invoice
+    */
+    public function iAmOnTheFinalStepOfCreatingAnInvoice()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on the final step of creating an invoice` is not defined");
+    }
+
+   /**
+    * @Given I click on the :arg1 button
+    */
+    public function iClickOnTheButton($arg1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on the :arg1 button` is not defined");
+    }
+
+   /**
+    * @Then an email will be sent to your email:num1
+    */
+    public function anEmailWillBeSentToYourEmail($num1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `an email will be sent to your email:num1` is not defined");
+    }
+
+   /**
+    * @Given i am in the settings and the font size is too small by default
+    */
+    public function iAmInTheSettingsAndTheFontSizeIsTooSmallByDefault()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `i am in the settings and the font size is too small by default` is not defined");
+    }
+
+   /**
+    * @When I select a different font size
+    */
+    public function iSelectADifferentFontSize()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I select a different font size` is not defined");
+    }
+
+   /**
+    * @Then the fonts throughout the pages/views will change accordingly
+    */
+    public function theFontsThroughoutThePagesviewsWillChangeAccordingly()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `the fonts throughout the pages/views will change accordingly` is not defined");
+    }
+
+   /**
+    * @Given I am on the invoice creation page
+    */
+    public function iAmOnTheInvoiceCreationPage()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on the invoice creation page` is not defined");
+    }
+
+   /**
+    * @When I press the :arg1 button
+    */
+    public function iPressTheButton($arg1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I press the :arg1 button` is not defined");
+    }
+
+   /**
+    * @Then a sms message will be sent to the user
+    */
+    public function aSmsMessageWillBeSentToTheUser()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `a sms message will be sent to the user` is not defined");
+    }
+
+   /**
+    * @Given i am in the settings and the incorrect tax rate is selected by default
+    */
+    public function iAmInTheSettingsAndTheIncorrectTaxRateIsSelectedByDefault()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `i am in the settings and the incorrect tax rate is selected by default` is not defined");
+    }
+
+   /**
+    * @When I select a different tax rate
+    */
+    public function iSelectADifferentTaxRate()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I select a different tax rate` is not defined");
+    }
+
+   /**
+    * @Then the future invoices tax rates will change accordingly
+    */
+    public function theFutureInvoicesTaxRatesWillChangeAccordingly()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `the future invoices tax rates will change accordingly` is not defined");
+    }
+
+   /**
+    * @Given I create a new invoice
+    */
+    public function iCreateANewInvoice()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I create a new invoice` is not defined");
+    }
+
+   /**
+    * @Given I have a notification preference selected
+    */
+    public function iHaveANotificationPreferenceSelected()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I have a notification preference selected` is not defined");
+    }
+
+   /**
+    * @Then a pop up window will ask for the relevant information
+    */
+    public function aPopUpWindowWillAskForTheRelevantInformation()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `a pop up window will ask for the relevant information` is not defined");
+    }
+
+   /**
+    * @Then I input :arg1
+    */
+    public function iInput($arg1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I input :arg1` is not defined");
+    }
+
+   /**
+    * @Then a sms would be sent to :arg1
+    */
+    public function aSmsWouldBeSentTo($arg1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `a sms would be sent to :arg1` is not defined");
+    }
+
+   /**
+    * @Given i am in the settings and the incorrect notification preference is selected by default
+    */
+    public function iAmInTheSettingsAndTheIncorrectNotificationPreferenceIsSelectedByDefault()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `i am in the settings and the incorrect notification preference is selected by default` is not defined");
+    }
+
+   /**
+    * @When I select a notification preference
+    */
+    public function iSelectANotificationPreference()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I select a notification preference` is not defined");
+    }
+
+   /**
+    * @Then upon creation of future invoices a notification will be sent to the user according to their preference
+    */
+    public function uponCreationOfFutureInvoicesANotificationWillBeSentToTheUserAccordingToTheirPreference()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `upon creation of future invoices a notification will be sent to the user according to their preference` is not defined");
+    }
 }
