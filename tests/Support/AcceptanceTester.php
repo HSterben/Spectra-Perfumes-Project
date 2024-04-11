@@ -191,54 +191,6 @@ class AcceptanceTester extends \Codeception\Actor
      }
 
     /**
-     * @When I view the list of invoices
-     */
-     public function iViewTheListOfInvoices()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I view the list of invoices` is not defined");
-     }
-
-    /**
-     * @When there is an invoice on the invoice list view
-     */
-     public function thereIsAnInvoiceOnTheInvoiceListView()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `there is an invoice on the invoice list view` is not defined");
-     }
-
-    /**
-     * @When I click on a specific invoice
-     */
-     public function iClickOnASpecificInvoice()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on a specific invoice` is not defined");
-     }
-
-    /**
-     * @Then I should see the exact invoice I clicked on
-     */
-     public function iShouldSeeTheExactInvoiceIClickedOn()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see the exact invoice I clicked on` is not defined");
-     }
-
-    /**
-     * @When I view the list of invoices
-     */
-     public function iViewTheListOfInvoices()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I view the list of invoices` is not defined");
-     }
-
-    /**
-     * @Then I should see a timestamp next to each invoice, indicating the date and time when the invoice was created
-     */
-     public function iShouldSeeATimestampNextToEachInvoiceIndicatingTheDateAndTimeWhenTheInvoiceWasCreated()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see a timestamp next to each invoice, indicating the date and time when the invoice was created` is not defined");
-     }
-
-    /**
      * @Then the timestamp should be in a readable format, such as :arg1
      */
      public function theTimestampShouldBeInAReadableFormatSuchAs($arg1)
@@ -373,13 +325,6 @@ class AcceptanceTester extends \Codeception\Actor
      {
          throw new \PHPUnit\Framework\IncompleteTestError("Step `a dialog should show up, asking me to choose a directory to save to` is not defined");
      }
-/**
-     * @Given I am logged in as user
-     */
-     public function iAmLoggedInAsUser()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I am logged in as user` is not defined");
-     }
 
     /**
      * @When I view the list of invoices
@@ -395,22 +340,6 @@ class AcceptanceTester extends \Codeception\Actor
      public function iShouldSeeATimestampNextToEachInvoiceIndicatingTheDateAndTimeWhenTheInvoiceWasCreated()
      {
          throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see a timestamp next to each invoice, indicating the date and time when the invoice was created` is not defined");
-     }
-
-/**
-     * @Given I am logged in as user
-     */
-     public function iAmLoggedInAsUser()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I am logged in as user` is not defined");
-     }
-
-    /**
-     * @When I view the list of invoices
-     */
-     public function iViewTheListOfInvoices()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I view the list of invoices` is not defined");
      }
 
     /**
@@ -494,14 +423,6 @@ class AcceptanceTester extends \Codeception\Actor
      }
 
     /**
-     * @When I click on the :arg1 button
-     */
-     public function iClickOnTheButton($arg1)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on the :arg1 button` is not defined");
-     }
-
-    /**
      * @When I confirm the deletion
      */
      public function iConfirmTheDeletion()
@@ -516,7 +437,194 @@ class AcceptanceTester extends \Codeception\Actor
      {
          throw new \PHPUnit\Framework\IncompleteTestError("Step `I should not see the invoices that I previously selected` is not defined");
      }
+     
+     //Sterbonie
+     public function iAmOnTheMainPage()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on the main page` is not defined");
+   }
 
-    /**
+   /**
+    * @When I click on the “Add Comment” for the invoice
+    */
+   public function iClickOnTheAddCommentForTheInvoice()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on the “Add Comment” for the invoice` is not defined");
+   }
 
+   /**
+    * @When I enter :arg1 into the comment form
+    */
+   public function iEnterIntoTheCommentForm($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I enter :arg1 into the comment form` is not defined");
+   }
+
+   /**
+    * @When I click on the :arg1 button
+    */
+   public function iClickOnTheButton($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on the :arg1 button` is not defined");
+   }
+
+   /**
+    * @Then I should see the comment :arg1 saved with the invoice
+    */
+   public function iShouldSeeTheCommentSavedWithTheInvoice($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see the comment :arg1 saved with the invoice` is not defined");
+   }
+
+   /**
+    * @Given I am on the :arg1 page
+    */
+   public function iAmOnThePage($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on the :arg1 page` is not defined");
+   }
+
+   /**
+    * @When I fill in the store and product details
+    */
+   public function iFillInTheStoreAndProductDetails()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I fill in the store and product details` is not defined");
+   }
+
+   /**
+    * @Then I should see a confirmation message
+    */
+   public function iShouldSeeAConfirmationMessage()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see a confirmation message` is not defined");
+   }
+
+   /**
+    * @Then I should be redirected to the view page of that invoice
+    */
+   public function iShouldBeRedirectedToTheViewPageOfThatInvoice()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should be redirected to the view page of that invoice` is not defined");
+   }
+
+   /**
+    * @When I select :arg1 as the date format
+    */
+   public function iSelectAsTheDateFormat($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I select :arg1 as the date format` is not defined");
+   }
+
+   /**
+    * @Then I should see all dates on invoices displayed in :arg1 format
+    */
+   public function iShouldSeeAllDatesOnInvoicesDisplayedInFormat($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see all dates on invoices displayed in :arg1 format` is not defined");
+   }
+
+   /**
+    * @Given I have an invoice
+    */
+   public function iHaveAnInvoice()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I have an invoice` is not defined");
+   }
+
+   /**
+    * @When I click on the :arg1 button for the invoice
+    */
+   public function iClickOnTheButtonForTheInvoice($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on the :arg1 button for the invoice` is not defined");
+   }
+
+   /**
+    * @Then I should be redirected to the main page
+    */
+   public function iShouldBeRedirectedToTheMainPage()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should be redirected to the main page` is not defined");
+   }
+
+   /**
+    * @Then I should not see the invoice in the list
+    */
+   public function iShouldNotSeeTheInvoiceInTheList()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should not see the invoice in the list` is not defined");
+   }
+
+   /**
+     * @When I select :num1 dates
+     */
+    public function iSelectDates($num1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I select :num1 dates` is not defined");
+    }
+
+   /**
+    * @When I click on :arg1
+    */
+    public function iClickOn($arg1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on :arg1` is not defined");
+    }
+
+   /**
+    * @Then I should see information summarizing sales and profits
+    */
+   public function iShouldSeeInformationSummarizingSalesAndProfits()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see information summarizing sales and profits` is not defined");
+   }
+
+   /**
+    * @Given I am on any page within the application
+    */
+   public function iAmOnAnyPageWithinTheApplication()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on any page within the application` is not defined");
+   }
+
+   /**
+    * @When I press the :arg1 keys together
+    */
+   public function iPressTheKeysTogether($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I press the :arg1 keys together` is not defined");
+   }
+
+   /**
+    * @Then I should be taken to the :arg1 page
+    */
+   public function iShouldBeTakenToThePage($arg1)
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should be taken to the :arg1 page` is not defined");
+   }
+
+   /**
+    * @When I click on the “Modify” button for the invoice
+    */
+   public function iClickOnTheModifyButtonForTheInvoice()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I click on the “Modify” button for the invoice` is not defined");
+   }
+
+   /**
+    * @When I change the quantity of the first product
+    */
+   public function iChangeTheQuantityOfTheFirstProduct()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I change the quantity of the first product` is not defined");
+   }
+
+   /**
+    * @Then I should see the invoice with the updated quantity
+    */
+   public function iShouldSeeTheInvoiceWithTheUpdatedQuantity()
+   {
+      throw new \PHPUnit\Framework\IncompleteTestError("Step `I should see the invoice with the updated quantity` is not defined");
+   }
 }
