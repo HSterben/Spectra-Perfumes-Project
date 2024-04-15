@@ -9,4 +9,5 @@ Feature: Bulk Deletion
     When I select the checkbox for "Invoice 1" and "Invoice 2"
     And I click on the "Delete" button
     And I click the "Yes" button on the delete confirmation pop-up
+    Then I should be redirected to the invocies page
     Then I don't see "Invoice 2" and "Invoice 2" on the invoices page
