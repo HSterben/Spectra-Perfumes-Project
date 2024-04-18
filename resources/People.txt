@@ -1,0 +1,3 @@
+{"first_name":"Mr","last_name":"Green","email":"mrgreen@email.com","weekly_flyer":true,"mailing_list":false}
+{"first_name":"Mr","last_name":"Brown","email":"mrbrown@email.com","weekly_flyer":false,"mailing_list":true}
+{"first_name":"Mr","last_name":"Brownish","email":"mrbrown@email.com","weekly_flyer":false,"mailing_list":false}
