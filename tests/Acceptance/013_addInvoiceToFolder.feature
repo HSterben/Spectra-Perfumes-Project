@@ -6,10 +6,11 @@ Feature: Add Invoice to Folder
 Scenario: Add Invoice to Folder
   Given I am logged in as user
   When I view the list of invoices
-  And there is an existing folder
-  And there is an existing invoice on the view
-  And I select a specific invoice to add to a folder using the checkboxes next to the invoices
+  And I see "Folder 1"
+  And I see "Invoice 1"
+  When I select the checkbox for "Invoice 1"
   And I press the “Add to Folder” button
-  Then it should prompt me asking which folder to add the invoice to with choices of existing folders, if any
-  Then the selected invoice should move to the selected folder
-  And the selected invoice should no longer appear in the list of invoices
+  Then I should see "Folder 1"
+  When I press on "Folder 1"
+  Then "Invoice 1" should be added to "Folder 1"
+  And I can't see "Invoice 1" on the invoice page

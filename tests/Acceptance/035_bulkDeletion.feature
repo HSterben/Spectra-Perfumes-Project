@@ -5,7 +5,9 @@ Feature: Bulk Deletion
 
   Scenario: Deleting multiple invoices
     Given I am on the invoices page
-    When I select invoices with a checkbox
+	And I can see the invoice "Invoice 1" and "Invoice 2"
+    When I select the checkbox for "Invoice 1" and "Invoice 2"
     And I click on the "Delete" button
-    And I confirm the deletion
-    Then I should not see the invoices that I previously selected
+    And I click the "Yes" button on the delete confirmation pop-up
+    Then I should be redirected to the invocies page
+    Then I don't see "Invoice 2" and "Invoice 2" on the invoices page
