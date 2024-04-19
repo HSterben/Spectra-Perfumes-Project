@@ -170,13 +170,13 @@ ALTER TABLE `invoice`
 
 
 --
--- Constraints for table `publication`
+-- Constraints for table `folder`
 --
 ALTER TABLE `folder`
   ADD CONSTRAINT `folder_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`);
 
 --
--- Constraints for table `publication_comment`
+-- Constraints for table `address`
 --
 ALTER TABLE `address`
   ADD CONSTRAINT `publication_comment_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`);
