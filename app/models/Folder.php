@@ -3,7 +3,7 @@ namespace app\models;
 
 use PDO;
 
-class Folder {
+class Folder extends \app\core\Model{
     public $folder_id;
     public $invoice_id;
     public $folder_name;

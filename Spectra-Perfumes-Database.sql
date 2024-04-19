@@ -31,7 +31,7 @@ USE `Spectra-Perfumes`;
 DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE `invoice` (
   `invoice_id` int(16) NOT NULL,
-  `folder_id` int(16) NOT NULL,
+  `folder_id` int(16) NULL,
   `address_id` int(16) NOT NULL,
   `bookmark` boolean NOT NULL,
   `invoice_date` timestamp NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `invoice` (
   `perfume_code` int(16) NOT NULL,
   `perfume_price` double NOT NULL,
   `note_text` varchar(256) NULL,
-  `note_date` timestamp NULL,
+  `note_date` timestamp NULL
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

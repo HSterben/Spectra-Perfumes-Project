@@ -1,11 +1,11 @@
 <?php
 namespace app\models;
 
-class Invoice{
+class Invoice extends \app\core\Model{
     public $invoice_id; //PK
 	public $folder_id; //FK
 	public $address_id; //FK
-	public $bookmark;
+	public $bookmark = 0;
 	public $invoice_date;
 	public $invoice_business_name;
 	public $invoice_project_num;
@@ -13,7 +13,7 @@ class Invoice{
 	public $phone_number;
 	public $return_quantity;
 	public $perfume_code;
-	public $perfume_format;
+	//public $perfume_format;
 	public $perfume_price;
 	public $note_text;
 	public $note_date;
@@ -21,9 +21,9 @@ class Invoice{
     //create
 	public function create(){
 		$SQL = 'INSERT INTO invoice(address_id, bookmark, invoice_date, invoice_business_name,
-		invoice_project_num, invoice_title, phone_number, return_quantity, perfume_code, perfume_format, perfume_price, note_text, note_date ) 
-		VALUES (:invoice_id, :address_id, :bookmark, :invoice_date, :invoice_business_name, :invoice_project_num, :invoice_title, :phone_number, 
-		:return_quantity, :perfume_code, :perfume_format, :perfume_price, :note_text, :note_date)';
+		invoice_project_num, invoice_title, phone_number, return_quantity, perfume_code, perfume_price, note_text, note_date ) 
+		VALUES (:address_id, :bookmark, :invoice_date, :invoice_business_name, :invoice_project_num, :invoice_title, :phone_number, 
+		:return_quantity, :perfume_code, :perfume_price, :note_text, :note_date)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['address_id'=>$this->address_id,
@@ -35,7 +35,7 @@ class Invoice{
 			'phone_number'=>$this->phone_number,
 			'return_quantity'=>$this->return_quantity,
 			'perfume_code'=>$this->perfume_code,
-			'perfume_format'=>$this->perfume_format,
+			//'perfume_format'=>$this->perfume_format,
 			'perfume_price'=>$this->perfume_price,
 			'note_text'=>$this->note_text,
 			'note_date'=>$this->note_date]);

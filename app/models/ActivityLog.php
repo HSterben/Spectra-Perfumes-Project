@@ -3,7 +3,7 @@ namespace app\models;
 
 use PDO;
 
-class ActivityLog {
+class ActivityLog extends \app\core\Model{
     public $activity_id;
     public $date;
     public $message;

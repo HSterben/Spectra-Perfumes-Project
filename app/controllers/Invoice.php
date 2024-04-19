@@ -15,7 +15,7 @@ class Invoice extends \app\core\Controller {
 			$invoice->invoice_project_num;
 			$invoice->invoice_title = $_POST['invoice_title'];
 			$invoice->phone_number = $_POST['phone_number'];
-			$invoice->return_quantity = $_POST['return_quanity'];
+			$invoice->return_quantity = $_POST['return_quantity'];
 			$invoice->perfume_code = $_POST['perfume_code'];
 			$invoice->perfume_price = $_POST['perfume_price'];
 			$invoice->note_text;

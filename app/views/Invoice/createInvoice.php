@@ -23,7 +23,7 @@
                         placeholder="Spectra Invoice" /></label>
             </div><br>
             <div class="form-group">
-                <label>Business Name:<input type="text" class="form-control" name="business_name" id="busname"
+                <label>Business Name:<input type="text" class="form-control" name="invoice_business_name" id="busname"
                         placeholder="Spectra" /></label> <!-- id is for the browser and name is for the server -->
             </div><br>
             
@@ -43,7 +43,7 @@
             </div><br>
 
             <div class="form-group">
-                <label>Perfume Price:<input type="number" class="form-control" name="perfume_code" placeholder="12345"
+                <label>Perfume Price:<input type="number" class="form-control" name="perfume_price" placeholder="12345"
                         id="price" /></label>
             </div><br>
 
