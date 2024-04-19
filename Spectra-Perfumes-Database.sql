@@ -42,7 +42,8 @@ CREATE TABLE `invoice` (
   `return_quantity` int(16) NULL,
   `perfume_code` int(16) NOT NULL,
   `perfume_price` double NOT NULL,
-  `note_text` varchar(256) NULL
+  `note_text` varchar(256) NULL,
+  'note_date' timestamp NULL
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
