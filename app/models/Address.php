@@ -11,57 +11,61 @@ class Address extends \app\core\Model{
 	public $street_name;
 	public $postal_code;
 	public $building_number;
-	public $isApartment;
+	public $isApartment = 0;
 	public $apartment_number;
 
 	//CRUD
 
-	//create
-	public function insert(){
-		$SQL = 'INSERT INTO profile(user_id,first_name,last_name) VALUE (:user_id,:first_name,:last_name)';
+	public function create(){
+		if($this->isApartment) {
+			$SQL = 'INSERT INTO address(invoice_id,country,region,city,street_name,postal_code,building_number,isApartment,apartment_number) VALUE (:invoice_id,:country,:region,:city,:street_name,:postal_code,:building_number,:isApartment,:apartment_number)';
+		} else {
+			$SQL = 'INSERT INTO address(invoice_id,country,region,city,street_name,postal_code,building_number,isApartment,apartment_number) VALUE (:user_id,:first_name,:last_name)';
+		}
 		$STMT = self::$_conn->prepare($SQL);
-		$STMT->execute(
-			['user_id'=>$this->user_id,
-			'first_name'=>$this->first_name,
-			'last_name'=>$this->last_name]
-		);
+		if($this->isApartment) {
+			$STMT->execute(
+				['invoice_ide'=>$this->invoice_id,
+				'country'=>$this->country,
+				'region'=>$this->region,
+				'city'=>$this->city,
+				'street_name'=>$this->street_name,
+				'postal_code'=>$this->postal_code,
+				'building_number'=>$this->building_number,
+				'isApartment'=>$this->isApartment,
+				'apartment_number'=>$this->apartment_number]
+			);
+		} else {
+			$STMT->execute(
+				['invoice_ide'=>$this->invoice_id,
+				'country'=>$this->country,
+				'region'=>$this->region,
+				'city'=>$this->city,
+				'street_name'=>$this->street_name,
+				'postal_code'=>$this->postal_code,
+				'building_number'=>$this->building_number,
+				'isApartment'=>$this->isApartment]
+			);
+		}
 	}
 
-	//read
-	public function getForUser($user_id){
-		$SQL = 'SELECT * FROM profile WHERE user_id = :user_id';
+	public function getClientAddress($invoice_id){
+		$SQL = 'SELECT * FROM address WHERE invoice_id = :invoice_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['user_id'=>$user_id]
+			['invoice_id'=>$invoice_id]
 		);
-		//there is a mistake in the next line
-		$STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\profile');//set the type of data returned by fetches
+		$STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\Address');//set the type of data returned by fetches
 		return $STMT->fetch();//return (what should be) the only record
 	}
 
-	public function getAll(){
-		$SQL = 'SELECT * FROM profile';
-		$STMT = self::$_conn->prepare($SQL);
-		$STMT->execute();
-		$STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\Profile');//set the type of data returned by fetches
-		return $STMT->fetchAll();//return all records
-	}
-
-	public function getByName($name){//search
-		$SQL = 'SELECT * FROM profile WHERE CONCAT(first_name,\' \',last_name) = :name';
-		$STMT = self::$_conn->prepare($SQL);
-		$STMT->execute(
-			['name'=>$name]
-		);
-		$STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\Profile');//set the type of data returned by fetches
-		return $STMT->fetchAll();//return all records
-	}
-
-
-	//update
-	//you can't change the user_id that's a business logic choice that gets implemented in the model
 	public function update(){
-		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name WHERE profile_id = :profile_id';
+	//invoice_id,country,region,city,street_name,postal_code,building_number,isApartment,apartment_number
+		if($this->isApartment) {
+			$SQL = 'UPDATE address SET country=:country, region=:region, city=:city, street_name=:street_name, postal_code=:postal_code, building_number=:building_number, isApartment=:isApartment, apartment_number=:apartment_number WHERE address_id = :address_id';
+		} else {
+
+		}
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['profile_id'=>$this->profile_id,
