@@ -20,14 +20,13 @@ class Invoice{
 
     //create
 	public function create(){
-		$SQL = 'INSERT INTO invoice(invoice_id, address_id, bookmark, invoice_date, invoice_business_name,
+		$SQL = 'INSERT INTO invoice(address_id, bookmark, invoice_date, invoice_business_name,
 		invoice_project_num, invoice_title, phone_number, return_quantity, perfume_code, perfume_format, perfume_price, note_text, note_date ) 
 		VALUES (:invoice_id, :address_id, :bookmark, :invoice_date, :invoice_business_name, :invoice_project_num, :invoice_title, :phone_number, 
 		:return_quantity, :perfume_code, :perfume_format, :perfume_price, :note_text, :note_date)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['invoice_id'=>$this->invoice_id,
-			'address_id'=>$this->address_id,
+			['address_id'=>$this->address_id,
 			'bookmark'=> $this->bookmark,
 			'invoice_date'=>$this->invoice_date,
 			'invoice_business_name'=>$this->invoice_business_name,
@@ -39,7 +38,7 @@ class Invoice{
 			'perfume_format'=>$this->perfume_format,
 			'perfume_price'=>$this->perfume_price,
 			'note_text'=>$this->note_text,
-			'note_date'=>$this->note_date,]);
+			'note_date'=>$this->note_date]);
 	}
 
 	//read
