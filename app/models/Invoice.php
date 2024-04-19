@@ -2,27 +2,44 @@
 namespace app\models;
 
 class Invoice{
-    public $invoice_id;
+    public $invoice_id; //PK
+	public $folder_id; //FK
+	public $address_id; //FK
+	public $bookmark;
+	public $invoice_date;
+	public $invoice_business_name;
+	public $invoice_project_num;
 	public $invoice_title;
-	public $project_id;
-	public $business_name;
-	public $address;
 	public $phone_number;
-	public $perfume_price;
 	public $return_quantity;
 	public $perfume_code;
-    public $comment;
-
+	public $perfume_format;
+	public $perfume_price;
+	public $note_text;
+	public $note_date;
 
     //create
-	public function insert(){
-		$SQL = 'INSERT INTO profile(invoice_id,invoice_title,project_id,business_name,address,phone_number,perfume_price,return_quantity) VALUE (:user_id,:first_name,:last_name)';
+	public function create(){
+		$SQL = 'INSERT INTO invoice(invoice_id, address_id, bookmark, invoice_date, invoice_business_name,
+		invoice_project_num, invoice_title, phone_number, return_quantity, perfume_code, perfume_format, perfume_price, note_text, note_date ) 
+		VALUES (:invoice_id, :address_id, :bookmark, :invoice_date, :invoice_business_name, :invoice_project_num, :invoice_title, :phone_number, 
+		:return_quantity, :perfume_code, :perfume_format, :perfume_price, :note_text, :note_date)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['user_id'=>$this->user_id,
-			'first_name'=>$this->first_name,
-			'last_name'=>$this->last_name]
-		);
+			['invoice_id'=>$this->invoice_id,
+			'address_id'=>$this->address_id,
+			'bookmark'=> $this->bookmark,
+			'invoice_date'=>$this->invoice_date,
+			'invoice_business_name'=>$this->invoice_business_name,
+			'invoice_project_num'=>$this->invoice_project_num,
+			'invoice_title'=>$this->invoice_title,
+			'phone_number'=>$this->phone_number,
+			'return_quantity'=>$this->return_quantity,
+			'perfume_code'=>$this->perfume_code,
+			'perfume_format'=>$this->perfume_format,
+			'perfume_price'=>$this->perfume_price,
+			'note_text'=>$this->note_text,
+			'note_date'=>$this->note_date,]);
 	}
 
 	//read

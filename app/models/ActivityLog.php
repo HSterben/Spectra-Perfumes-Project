@@ -4,14 +4,14 @@ namespace app\models;
 use PDO;
 
 class ActivityLog {
-    public activity_id;
-    public date;
-    public message;
+    public $activity_id;
+    public $date;
+    public $message;
 
     //insert
 	public function insert(){
 		//define the SQL query
-		$SQL = 'INSERT INTO ActivityLog (message) VALUES (:message)';
+		$SQL = 'INSERT INTO activity_log (message) VALUES (:message)';
 		//prepare the statement
 		$STMT = self::$_conn->prepare($SQL);
 		//execute
@@ -20,8 +20,8 @@ class ActivityLog {
 		$STMT->execute($data);
 	}
 
-    public function get(){
-		$SQL = 'SELECT * FROM ActivityLog';
+    public function getAll(){
+		$SQL = 'SELECT * FROM activity_log';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute();
 		$STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\ActivityLog');
