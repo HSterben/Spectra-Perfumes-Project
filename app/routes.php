@@ -1,6 +1,7 @@
 <?php
 //defined a few routes "url"=>"controller,method"
-$this->addRoute('Person/register','Person,register');
+$this->addRoute('Invoice/create', 'Invoice,createInvoice');
+
 $this->addRoute('Person/complete_registration','Person,complete_registration');
 $this->addRoute('Person/','Person,list');
 $this->addRoute('Person/delete' , 'Person,delete');

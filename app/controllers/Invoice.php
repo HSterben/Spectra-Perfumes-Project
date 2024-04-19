@@ -11,14 +11,13 @@ class Invoice extends \app\core\Controller {
 			$invoice->address_id;
 			$invoice->bookmark;
 			$invoice->invoice_date;
-			$invoice->invoice_business_name;
+			$invoice->invoice_business_name = $_POST['invoice_business_name'];
 			$invoice->invoice_project_num;
-			$invoice->invoice_title;
-			$invoice->phone_number;
-			$invoice->return_quantity;
-			$invoice->perfume_code;
-			$invoice->perfume_format;
-			$invoice->perfume_price;
+			$invoice->invoice_title = $_POST['invoice_title'];
+			$invoice->phone_number = $_POST['phone_number'];
+			$invoice->return_quantity = $_POST['return_quanity'];
+			$invoice->perfume_code = $_POST['perfume_code'];
+			$invoice->perfume_price = $_POST['perfume_price'];
 			$invoice->note_text;
 			$invoice->note_date;
 
@@ -30,3 +29,5 @@ class Invoice extends \app\core\Controller {
 		}
 	}
 }
+
+    
