@@ -5,7 +5,7 @@ class Invoice extends \app\core\Model{
     public $invoice_id; //PK
 	public $folder_id; //FK
 	public $address_id; //FK
-	public $bookmark = 0;
+	public $bookmark;
 	public $invoice_date;
 	public $invoice_business_name;
 	public $invoice_project_num;
@@ -20,14 +20,14 @@ class Invoice extends \app\core\Model{
 
     //create
 	public function create(){
-		$SQL = 'INSERT INTO invoice(address_id, bookmark, invoice_date, invoice_business_name,
+		$SQL = 'INSERT INTO invoice(address_id, invoice_date, invoice_business_name,
 		invoice_project_num, invoice_title, phone_number, return_quantity, perfume_code, perfume_price, note_text, note_date ) 
-		VALUES (:address_id, :bookmark, :invoice_date, :invoice_business_name, :invoice_project_num, :invoice_title, :phone_number, 
+		VALUES (:address_id, :invoice_date, :invoice_business_name, :invoice_project_num, :invoice_title, :phone_number, 
 		:return_quantity, :perfume_code, :perfume_price, :note_text, :note_date)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['address_id'=>$this->address_id,
-			'bookmark'=> $this->bookmark,
+//			'bookmark'=> $this->bookmark,
 			'invoice_date'=>$this->invoice_date,
 			'invoice_business_name'=>$this->invoice_business_name,
 			'invoice_project_num'=>$this->invoice_project_num,
@@ -78,10 +78,18 @@ class Invoice extends \app\core\Model{
 		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name WHERE profile_id = :profile_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['profile_id'=>$this->profile_id,
-			'first_name'=>$this->first_name,
-			'last_name'=>$this->last_name]
-		);
+			['bookmark'=> $this->bookmark,
+			'invoice_date'=>$this->invoice_date,
+			'invoice_business_name'=>$this->invoice_business_name,
+			'invoice_project_num'=>$this->invoice_project_num,
+			'invoice_title'=>$this->invoice_title,
+			'phone_number'=>$this->phone_number,
+			'return_quantity'=>$this->return_quantity,
+			'perfume_code'=>$this->perfume_code,
+			//'perfume_format'=>$this->perfume_format,
+			'perfume_price'=>$this->perfume_price,
+			'note_text'=>$this->note_text,
+			'note_date'=>$this->note_date]);
 	}
 
 	//delete

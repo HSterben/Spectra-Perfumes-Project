@@ -33,7 +33,7 @@ CREATE TABLE `invoice` (
   `invoice_id` int(16) NOT NULL,
   `folder_id` int(16) NULL,
   `address_id` int(16) NOT NULL,
-  `bookmark` boolean NOT NULL,
+  `bookmark` boolean NOT NULL DEFAULT '0',
   `invoice_date` timestamp NOT NULL,
   `invoice_business_name` text NOT NULL,
   `invoice_project_num` int(16) NOT NULL,
