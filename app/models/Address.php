@@ -3,83 +3,68 @@ namespace app\models;
 
 use PDO;
 
-class Address extends \app\core\Model{
+class Address extends \app\core\Model
+{
+	public $address_id;//PK
 	public $invoice_id;//FK
-	public $country;
-	public $region;
+	public $street;
 	public $city;
-	public $street_name;
 	public $postal_code;
-	public $building_number;
-	public $isApartment = 0;
-	public $apartment_number;
+	public $country;
 
 	//CRUD
 
-	public function create(){
-		if($this->isApartment) {
-			$SQL = 'INSERT INTO address(invoice_id,country,region,city,street_name,postal_code,building_number,isApartment,apartment_number) VALUE (:invoice_id,:country,:region,:city,:street_name,:postal_code,:building_number,:isApartment,:apartment_number)';
-		} else {
-			$SQL = 'INSERT INTO address(invoice_id,country,region,city,street_name,postal_code,building_number,isApartment,apartment_number) VALUE (:user_id,:first_name,:last_name)';
-		}
+	//Create
+	public function create()
+	{
+		$SQL = 'INSERT INTO address(invoice_id,street,city,postal_code,country) VALUE (:invoice_id,:street,city,:postal_code,:country)';
 		$STMT = self::$_conn->prepare($SQL);
-		if($this->isApartment) {
-			$STMT->execute(
-				['invoice_ide'=>$this->invoice_id,
-				'country'=>$this->country,
-				'region'=>$this->region,
-				'city'=>$this->city,
-				'street_name'=>$this->street_name,
-				'postal_code'=>$this->postal_code,
-				'building_number'=>$this->building_number,
-				'isApartment'=>$this->isApartment,
-				'apartment_number'=>$this->apartment_number]
-			);
-		} else {
-			$STMT->execute(
-				['invoice_ide'=>$this->invoice_id,
-				'country'=>$this->country,
-				'region'=>$this->region,
-				'city'=>$this->city,
-				'street_name'=>$this->street_name,
-				'postal_code'=>$this->postal_code,
-				'building_number'=>$this->building_number,
-				'isApartment'=>$this->isApartment]
-			);
-		}
+		$STMT->execute(
+			[
+				'invoice_id' => $this->invoice_id,
+				'street' => $this->street,
+				'city' => $this->city,
+				'postal_code' => $this->postal_code,
+				'country' => $this->country,
+			]
+		);
 	}
 
-	public function getClientAddress($invoice_id){
+	//Read
+
+	public function getInvoiceAddress($invoice_id)
+	{
 		$SQL = 'SELECT * FROM address WHERE invoice_id = :invoice_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['invoice_id'=>$invoice_id]
+			['invoice_id' => $invoice_id]
 		);
-		$STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\Address');//set the type of data returned by fetches
-		return $STMT->fetch();//return (what should be) the only record
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Address');
+		return $STMT->fetch();
 	}
 
-	public function update(){
-	//invoice_id,country,region,city,street_name,postal_code,building_number,isApartment,apartment_number
-		if($this->isApartment) {
-			$SQL = 'UPDATE address SET country=:country, region=:region, city=:city, street_name=:street_name, postal_code=:postal_code, building_number=:building_number, isApartment=:isApartment, apartment_number=:apartment_number WHERE address_id = :address_id';
-		} else {
-
-		}
+	public function update()
+	{
+		$SQL = 'UPDATE address SET invoice_id=:invoice_id, street=:street, city=:city, postal_code=:postal_code, country=:country WHERE address_id = :address_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['profile_id'=>$this->profile_id,
-			'first_name'=>$this->first_name,
-			'last_name'=>$this->last_name]
+			[
+				'invoice_id' => $this->invoice_id,
+				'street' => $this->street,
+				'city' => $this->city,
+				'postal_code' => $this->postal_code,
+				'country' => $this->country,
+			]
 		);
 	}
 
 	//delete
-	public function delete(){
-		$SQL = 'DELETE FROM profile WHERE profile_id = :profile_id';
+	public function delete()
+	{
+		$SQL = 'DELETE FROM address WHERE address_id = :address_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['profile_id'=>$this->profile_id]
+			['address_id' => $this->address_id]
 		);
 	}
 
