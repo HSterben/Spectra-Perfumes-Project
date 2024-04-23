@@ -102,7 +102,7 @@ class Invoice extends \app\core\Model
 	//delete
 	public function delete()
 	{
-		$SQL = 'DELETE FROM profile WHERE invoice_id = :invoice_id';
+		$SQL = 'DELETE FROM invoice WHERE invoice_id = :invoice_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['invoice_id' => $this->invoice_id]
