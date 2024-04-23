@@ -55,7 +55,7 @@ class Sale extends \app\core\Model
 
 	public function update()
 	{
-		$SQL = 'UPDATE address SET invoice_id=:invoice_id, sale_date=:sale_date, return_value=:return_value, purchase_value=:purchase_value, total_value=:total_value WHERE sale_id = :sale_id';
+		$SQL = 'UPDATE sale SET invoice_id=:invoice_id, sale_date=:sale_date, return_value=:return_value, purchase_value=:purchase_value, total_value=:total_value WHERE sale_id = :sale_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
@@ -71,7 +71,7 @@ class Sale extends \app\core\Model
 	//delete
 	public function delete()
 	{
-		$SQL = 'DELETE FROM address WHERE sale_id = :sale_id';
+		$SQL = 'DELETE FROM sale WHERE sale_id = :sale_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['sale_id' => $this->sale_id]
