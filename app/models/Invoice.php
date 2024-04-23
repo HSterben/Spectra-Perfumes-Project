@@ -1,6 +1,8 @@
 <?php
 namespace app\models;
 
+use PDO;
+
 class Invoice extends \app\core\Model
 {
 	public $invoice_id; //PK
@@ -15,14 +17,15 @@ class Invoice extends \app\core\Model
 	public $perfume_price;
 	public $note_text;
 	public $bookmark;
+	public $note_date;
 
 	//create
 	public function create()
 	{
 		$SQL = 'INSERT INTO invoice(folder_id, address_id, invoice_title,
-		invoice_date, invoice_project_num, store_name, phone_number, return_quantity, perfume_price, note_text, bookmark ) 
+		invoice_date, invoice_project_num, store_name, phone_number, return_quantity, perfume_price, note_text) 
 		VALUES (:folder_id, :address_id, :invoice_title,
-		:invoice_date, :invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price, :note_text, :bookmark)';
+		:invoice_date, :invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price, :note_text)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
@@ -36,7 +39,6 @@ class Invoice extends \app\core\Model
 				'return_quantity' => $this->return_quantity,
 				'perfume_price' => $this->perfume_price,
 				'note_text' => $this->note_text,
-				'bookmark' => $this->bookmark
 			]
 		);
 	}

@@ -23,7 +23,7 @@
                         placeholder="Spectra Invoice" /></label>
             </div><br>
             <div class="form-group">
-                <label>Business Name:<input type="text" class="form-control" name="invoice_business_name" id="busname"
+                <label>Business Name:<input type="text" class="form-control" name="store_name" id="busname"
                         placeholder="Spectra" /></label> <!-- id is for the browser and name is for the server -->
             </div><br>
             
