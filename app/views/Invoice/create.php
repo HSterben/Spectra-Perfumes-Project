@@ -1,18 +1,6 @@
-<html>
+<!-- TODO: fix the view call -->
+<?= $this->view('Shared/header'); ?>
 
-<head>
-    <title>
-        <?= $name ?> view
-    </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/app/styles.css">
-</head>
-
-<body>
     <div class='container'>
         <form method='post' action='' onsubmit="return validateForm()"><br>
 
@@ -20,37 +8,37 @@
 
             <div class="form-group">
                 <label>Invoice Title:<input type="text" class="form-control" name="invoice_title" id="title"
-                        placeholder="Spectra Invoice" value='<?= $data->invoice_title ?>'/></label>
+                        placeholder="Spectra Invoice" /></label>
             </div><br>
             <div class="form-group">
-                <label>Business Name:<input type="text" class="form-control" name="business_name" id="busname"
-                        placeholder="Spectra" value='<?= $data->invoice_business_name ?>'/></label> <!-- id is for the browser and name is for the server -->
+                <label>Business Name:<input type="text" class="form-control" name="store_name" id="busname"
+                        placeholder="Spectra" /></label> <!-- id is for the browser and name is for the server -->
             </div><br>
             
             <div class="form-group">
                 <label>Phone Number:<input type="text" class="form-control" name="phone_number" placeholder="5141234567"
-                        id="pnum" value='<?= $data->phone_number ?>'/></label>
+                        id="pnum" /></label>
             </div><br>
 
             <div class="form-group">
                 <label>Return Quantity:<input type="number" class="form-control" name="return_quantity" placeholder="10"
-                        id="return" value='<?= $data->return_quantity ?>'/></label>
+                        id="return" /></label>
             </div><br>
 
             <div class="form-group">
                 <label>Perfume Code:<input type="number" class="form-control" name="perfume_code" placeholder="12345"
-                        id="pcode" value='<?= $data->perfume_code ?>'/></label>
+                        id="pcode" /></label>
             </div><br>
 
             <div class="form-group">
-                <label>Perfume Price:<input type="number" class="form-control" name="perfume_code" placeholder="12345"
-                        id="price" value='<?= $data->perfume_price ?>'/></label>
+                <label>Perfume Price:<input type="number" class="form-control" name="perfume_price" placeholder="12345"
+                        id="price" /></label>
             </div><br>
 
             <div class="form-group">
-                <input type="submit" name="action" class='btn' value="Update Invoice" />
+                <input type="submit" name="action" class='btn' value="Create Invoice" />
             </div> <br>
-            <a href='/Invoice/home' class="btntwo">Cancel</a>
+            <a href='/Invoice/list' class="btntwo">Cancel</a>
 
         </form>
     </div>
@@ -73,6 +61,5 @@
             return true;
         }
     </script>
-</body>
 
-</html>
+<?= $this->view('Shared/header'); ?>

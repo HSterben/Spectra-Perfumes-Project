@@ -4,7 +4,7 @@ namespace app\models;
 use PDO;
 
 class User extends \app\core\Model{
-	public $user_id;
+	public $user_id; //PK
 	public $username;
 	public $password_hash;
 
@@ -23,7 +23,7 @@ class User extends \app\core\Model{
 	}
 
 	//get
-	public function get($username){
+	public function getbyUsername($username){
 		$SQL = 'SELECT * FROM user WHERE username = :username';//define the SQL
 		$STMT = self::$_conn->prepare($SQL);//prepare
 		$STMT->execute(['username' => $username]);//run

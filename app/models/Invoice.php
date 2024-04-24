@@ -5,7 +5,7 @@ use PDO;
 
 class Invoice extends \app\core\Model
 {
-	public $invoice_id; //PK
+	public $invoice_id; //PK (manual)
 	public $folder_id; //FK
 	public $invoice_title;
 	public $invoice_date;

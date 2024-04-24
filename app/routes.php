@@ -2,7 +2,7 @@
 //defined a few routes "url"=>"controller,method"
 $this->addRoute('Invoice/create', 'Invoice,create');
 $this->addRoute('Invoice/update', 'Invoice,update');
-$this->addRoute('Invoice/invoiceList', 'Invoice,index');
+$this->addRoute('Invoice/list', 'Invoice,index');
 
 $this->addRoute('Person/complete_registration','Person,complete_registration');
 $this->addRoute('Person/','Person,list');

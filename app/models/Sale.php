@@ -25,7 +25,7 @@ class Sale extends \app\core\Model
                 'sale_date' => $this->sale_date,
 				'return_value' => $this->return_value,
 				'purchase_value' => $this->purchase_value,
-				'total_value' => $this->total_value,
+				'total_value' => $this->total_value
 			]
 		);
 	}
@@ -63,7 +63,7 @@ class Sale extends \app\core\Model
                 'sale_date' => $this->sale_date,
 				'return_value' => $this->return_value,
 				'purchase_value' => $this->purchase_value,
-				'total_value' => $this->total_value,
+				'total_value' => $this->total_value
 			]
 		);
 	}

@@ -25,13 +25,12 @@ class Address extends \app\core\Model
 				'street' => $this->street,
 				'city' => $this->city,
 				'postal_code' => $this->postal_code,
-				'country' => $this->country,
+				'country' => $this->country
 			]
 		);
 	}
 
 	//Read
-
 	public function getInvoiceAddress($invoice_id)
 	{
 		$SQL = 'SELECT * FROM address WHERE invoice_id = :invoice_id';
@@ -43,6 +42,7 @@ class Address extends \app\core\Model
 		return $STMT->fetch();
 	}
 
+	//Update
 	public function update()
 	{
 		$SQL = 'UPDATE address SET invoice_id=:invoice_id, street=:street, city=:city, postal_code=:postal_code, country=:country WHERE address_id = :address_id';
@@ -53,12 +53,12 @@ class Address extends \app\core\Model
 				'street' => $this->street,
 				'city' => $this->city,
 				'postal_code' => $this->postal_code,
-				'country' => $this->country,
+				'country' => $this->country
 			]
 		);
 	}
 
-	//delete
+	//Delete
 	public function delete()
 	{
 		$SQL = 'DELETE FROM address WHERE address_id = :address_id';

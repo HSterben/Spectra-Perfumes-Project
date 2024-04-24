@@ -10,7 +10,7 @@ class Invoice extends \app\core\Controller
 		$invoice = $invoice->getAll();
 
 		//redirect a user that has no profile to the profile creation URL
-		$this->view('Invoice/invoiceList', $invoice);
+		$this->view('Invoice/list', $invoice);
 	}
 
 	public function create()
@@ -51,9 +51,9 @@ class Invoice extends \app\core\Controller
 			//Add to db
 			$invoice->create();
 			$address->create();
-			header('location:/Invoice/invoiceList');
+			header('location:/Invoice/list');
 		} else {
-			$this->view('Invoice/createInvoice');
+			$this->view('Invoice/create');
 		}
 	}
 
@@ -76,9 +76,9 @@ class Invoice extends \app\core\Controller
 			$invoice->note_date = $_POST['note_date'];
 			//Add to db
 			$invoice->update();
-			header('location:/Invoice/invoiceList');
+			header('location:/Invoice/list');
 		} else {
-			$this->view('Invoice/updateInvoice', $invoice);
+			$this->view('Invoice/update', $invoice);
 		}
 	}
 }

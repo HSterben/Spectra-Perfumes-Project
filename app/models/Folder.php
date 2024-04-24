@@ -4,8 +4,8 @@ namespace app\models;
 use PDO;
 
 class Folder extends \app\core\Model{
-    public $folder_id;
-    public $invoice_id;
+    public $folder_id; //PK
+    public $invoice_id; //FK
     public $folder_name;
 
     public function createFolder(){
@@ -14,7 +14,7 @@ class Folder extends \app\core\Model{
 		//prepare the statement
 		$STMT = self::$_conn->prepare($SQL);
 		//execute
-		$data = ['folder_name' => $this->folder_name,
+		$data = ['folder_name' => $this->folder_name
 				];
 		$STMT->execute($data);
 	}
