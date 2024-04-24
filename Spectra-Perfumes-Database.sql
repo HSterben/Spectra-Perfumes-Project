@@ -79,7 +79,7 @@ CREATE TABLE `address` (
   `invoice_id` int(16) NOT NULL,
   `street_name` varchar(128) NOT NULL,
   `city` varchar(128) NOT NULL,
-  `postal_code` int(6) NOT NULL,
+  `postal_code` varchar(7) NOT NULL,
   `country` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
