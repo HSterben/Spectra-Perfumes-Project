@@ -21,16 +21,15 @@ class Invoice extends \app\core\Model
 	public function create()
 	{
 		$SQL = 'INSERT INTO invoice(invoice_id, folder_id, invoice_title,
-		invoice_date, invoice_project_num, store_name, phone_number, return_quantity, perfume_price, note_text) 
+			 invoice_project_num, store_name, phone_number, return_quantity, perfume_price, note_text) 
 		VALUES (:invoice_id, :folder_id, :address_id, :invoice_title,
-		:invoice_date, :invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price, :note_text)';
+		:invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price, :note_text)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
 				'invoice_id' => $this->invoice_id,
 				'folder_id' => $this->folder_id,
 				'invoice_title' => $this->invoice_title,
-				'invoice_date' => $this->invoice_date,
 				'invoice_project_num' => $this->invoice_project_num,
 				'store_name' => $this->store_name,
 				'phone_number' => $this->phone_number,

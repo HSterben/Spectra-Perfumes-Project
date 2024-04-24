@@ -32,19 +32,15 @@ DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE `invoice` (
   `invoice_id` int(16) NOT NULL,
   `folder_id` int(16) NULL,
-  `address_id` int(16) NOT NULL,
-  `bookmark` boolean NOT NULL DEFAULT '0',
-  `invoice_date` timestamp NOT NULL,
-  `invoice_business_name` text NOT NULL,
-  `invoice_project_num` int(16) NOT NULL,
   `invoice_title` varchar(256) NOT NULL,
+  `invoice_date` timestamp NOT NULL,
+  `invoice_project_num` int(16) NOT NULL,
+  `store_name` text NOT NULL,
   `phone_number` varchar(10) NOT NULL,
   `return_quantity` int(16) NULL,
-  `perfume_code` int(16) NOT NULL,
   `perfume_price` double NOT NULL,
   `note_text` varchar(256) NULL,
-  `note_date` timestamp NULL
-
+  `bookmark` boolean NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -81,15 +77,10 @@ DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address` (
   `address_id` int(16) NOT NULL,
   `invoice_id` int(16) NOT NULL,
-  `country` varchar(64) NOT NULL,
-  `region` varchar(64) NOT NULL,
-  `city` varchar(128) NOT NULL,
   `street_name` varchar(128) NOT NULL,
-  `building_number` int(8) NOT NULL,
+  `city` varchar(128) NOT NULL,
   `postal_code` int(6) NOT NULL,
-  `is_apartment` boolean NOT NULL,
-  `apartment_number` int(16) NULL
-
+  `country` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- -------------------------------------------------------
@@ -136,9 +127,7 @@ ALTER TABLE `user`
 --
 ALTER TABLE `invoice`
   ADD PRIMARY KEY (`invoice_id`),
-  ADD KEY `folder_id` (`folder_id`),
-  ADD KEY `address_id` (`address_id`);
-
+  ADD KEY `folder_id` (`folder_id`);
 --
 -- Indexes for table `folder`
 --
@@ -218,8 +207,7 @@ ALTER TABLE `user`
 -- Constraints for table `invoice`
 --
 ALTER TABLE `invoice`
-  ADD CONSTRAINT `invoice_id_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folder` (`folder_id`),
-  ADD CONSTRAINT `invoice_id_ibfk_2` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`);
+  ADD CONSTRAINT `invoice_id_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folder` (`folder_id`);
 
 --
 -- Constraints for table `folder`

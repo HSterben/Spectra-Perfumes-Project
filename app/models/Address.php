@@ -7,7 +7,7 @@ class Address extends \app\core\Model
 {
 	public $address_id;//PK
 	public $invoice_id;//FK
-	public $street;
+	public $street_name;
 	public $city;
 	public $postal_code;
 	public $country;
@@ -17,12 +17,12 @@ class Address extends \app\core\Model
 	//Create
 	public function create()
 	{
-		$SQL = 'INSERT INTO address(invoice_id,street,city,postal_code,country) VALUE (:invoice_id,:street,city,:postal_code,:country)';
+		$SQL = 'INSERT INTO address(invoice_id, street_name, city, postal_code, country) VALUES (:invoice_id, :street_name, :city, :postal_code, :country)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
 				'invoice_id' => $this->invoice_id,
-				'street' => $this->street,
+				'street_name' => $this->street_name,
 				'city' => $this->city,
 				'postal_code' => $this->postal_code,
 				'country' => $this->country
@@ -45,12 +45,12 @@ class Address extends \app\core\Model
 	//Update
 	public function update()
 	{
-		$SQL = 'UPDATE address SET invoice_id=:invoice_id, street=:street, city=:city, postal_code=:postal_code, country=:country WHERE address_id = :address_id';
+		$SQL = 'UPDATE address SET invoice_id=:invoice_id, street_name=:street_name, city=:city, postal_code=:postal_code, country=:country WHERE address_id = :address_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
 				'invoice_id' => $this->invoice_id,
-				'street' => $this->street,
+				'street_name' => $this->street_name,
 				'city' => $this->city,
 				'postal_code' => $this->postal_code,
 				'country' => $this->country

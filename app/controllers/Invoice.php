@@ -21,13 +21,12 @@ class Invoice extends \app\core\Controller
 			//populate object
 			$id = $_POST['invoice_id'];
 			$address->invoice_id = $id;
-			$address->street = $_POST['street'];
+			$address->street_name = $_POST['street_name'];
 			$address->city = $_POST['city'];
 			$address->postal_code = $_POST['postal_code'];
 			$address->country = $_POST['country'];
 			$invoice->invoice_id = $id;
 			$invoice->invoice_title = $_POST['invoice_title'];
-			$invoice->invoice_date = $_POST['invoice_date'];
 			$invoice->invoice_project_num = $_POST['invoice_project_num'];
 			$invoice->store_name = $_POST['store_name'];
 			$invoice->phone_number = $_POST['phone_number'];
