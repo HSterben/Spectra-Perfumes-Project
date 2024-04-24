@@ -7,7 +7,6 @@ class Invoice extends \app\core\Model
 {
 	public $invoice_id; //PK
 	public $folder_id; //FK
-	public $address_id; //FK
 	public $invoice_title;
 	public $invoice_date;
 	public $invoice_project_num;
@@ -17,20 +16,19 @@ class Invoice extends \app\core\Model
 	public $perfume_price;
 	public $note_text;
 	public $bookmark;
-	public $note_date;
 
 	//create
 	public function create()
 	{
-		$SQL = 'INSERT INTO invoice(folder_id, address_id, invoice_title,
+		$SQL = 'INSERT INTO invoice(invoice_id, folder_id, invoice_title,
 		invoice_date, invoice_project_num, store_name, phone_number, return_quantity, perfume_price, note_text) 
-		VALUES (:folder_id, :address_id, :invoice_title,
+		VALUES (:invoice_id, :folder_id, :address_id, :invoice_title,
 		:invoice_date, :invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price, :note_text)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
+				'invoice_id' => $this->invoice_id,
 				'folder_id' => $this->folder_id,
-				'address_id' => $this->address_id,
 				'invoice_title' => $this->invoice_title,
 				'invoice_date' => $this->invoice_date,
 				'invoice_project_num' => $this->invoice_project_num,
@@ -38,7 +36,7 @@ class Invoice extends \app\core\Model
 				'phone_number' => $this->phone_number,
 				'return_quantity' => $this->return_quantity,
 				'perfume_price' => $this->perfume_price,
-				'note_text' => $this->note_text,
+				'note_text' => $this->note_text
 			]
 		);
 	}
@@ -82,12 +80,12 @@ class Invoice extends \app\core\Model
 	//update
 	public function update()
 	{
-		$SQL = 'UPDATE invoice SET folder_id=:folder_id,address_id=:address_id,invoice_title=:invoice_title,invoice_date=:invoice_date,invoice_project_num=:invoice_project_num,store_name=:store_name,phone_number=:phone_number,return_quantity=:return_quantity,perfume_price=:perfume_price,note_text=:note_text,bookmark=:bookmark, WHERE invoice_id = :invoice_id';
+		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id,folder_id=:folder_id,address_id=:address_id,invoice_title=:invoice_title,invoice_date=:invoice_date,invoice_project_num=:invoice_project_num,store_name=:store_name,phone_number=:phone_number,return_quantity=:return_quantity,perfume_price=:perfume_price,note_text=:note_text,bookmark=:bookmark, WHERE invoice_id = :invoice_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
+				'invoice_id' => $this->invoice_id,
 				'folder_id' => $this->folder_id,
-				'address_id' => $this->address_id,
 				'invoice_title' => $this->invoice_title,
 				'invoice_date' => $this->invoice_date,
 				'invoice_project_num' => $this->invoice_project_num,
