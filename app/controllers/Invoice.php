@@ -14,47 +14,53 @@ class Invoice extends \app\core\Controller
 	}
 
 	public function create()
-	{
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$invoice = new \app\models\Invoice(); //Instantiate invoice object
-			$address = new \app\models\Address(); //Instantiate address object
-			//populate object
-			$id = $_POST['invoice_id'];
-			$address->invoice_id = $id;
-			$address->street_name = $_POST['street_name'];
-			$address->city = $_POST['city'];
-			$address->postal_code = $_POST['postal_code'];
-			$address->country = $_POST['country'];
-			$invoice->invoice_id = $id;
-			$invoice->invoice_title = $_POST['invoice_title'];
-			$invoice->invoice_project_num = $_POST['invoice_project_num'];
-			$invoice->store_name = $_POST['store_name'];
-			$invoice->phone_number = $_POST['phone_number'];
-			$invoice->return_quantity = $_POST['return_quantity'];
-			$invoice->perfume_price = $_POST['perfume_price'];
-			$invoice->phone_number = $_POST['phone_number'];
-			$invoice->return_quantity = $_POST['return_quantity'];
-			$address->create();
-			$invoice->create();
-			$perfumeNumber = $_POST['perfume_number'];
-			$quantities = $_POST['quantity'];
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Instantiate and populate objects
+        $invoice = new \app\models\Invoice();
+        $invoice->invoice_title = $_POST['invoice_title'];
+        $invoice->invoice_project_num = $_POST['invoice_project_num'];
+        $invoice->store_name = $_POST['store_name'];
+        $invoice->phone_number = $_POST['phone_number'];
+        $invoice->return_quantity = $_POST['return_quantity'];
+        $invoice->perfume_price = $_POST['perfume_price'];
+        
+        $address = new \app\models\Address();
+        $address->street_name = $_POST['street_name'];
+        $address->city = $_POST['city'];
+        $address->postal_code = $_POST['postal_code'];
+        $address->country = $_POST['country'];
+        
+        // Create the invoice record first
+        $invoiceId = $invoice->create();
+        
+        if ($invoiceId) {
+            // Set the invoice_id for the address
+            $address->invoice_id = $invoiceId;
+            
+            // Create the address record
+            $address->create();
+            
+            // Create PerfumeOrder records
+            $perfumeNumber = $_POST['perfume_number'];
+            $quantities = $_POST['quantity'];
 
-			for ($i = 0; $i < count($perfumeNumber); $i++) {
-				$perfumeOrder = new \app\models\PerfumeOrder();
-				$perfumeOrder->invoice_id = $id;
-				$perfumeOrder->perfume_number = $perfumeNumber[$i];;
-				$perfumeOrder->quantity = $quantities[$i];
-				$perfumeOrder->create();
-			}
+            for ($i = 0; $i < count($perfumeNumber); $i++) {
+                $perfumeOrder = new \app\models\PerfumeOrder();
+                $perfumeOrder->invoice_id = $invoiceId;
+                $perfumeOrder->perfume_number = $perfumeNumber[$i];
+                $perfumeOrder->quantity = $quantities[$i];
+                $perfumeOrder->create();
+            }
+        }
+        
+        // Redirect after successful creation
+        header('location:/Invoice/list');
+    } else {
+        $this->view('Invoice/create');
+    }
+}
 
-			//Add to db
-			$invoice->create();
-			$address->create();
-			header('location:/Invoice/list');
-		} else {
-			$this->view('Invoice/create');
-		}
-	}
 
 	public function update()
 	{

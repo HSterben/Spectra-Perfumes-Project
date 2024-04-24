@@ -22,7 +22,7 @@ class Invoice extends \app\core\Model
 	{
 		$SQL = 'INSERT INTO invoice(invoice_id, folder_id, invoice_title,
 			 invoice_project_num, store_name, phone_number, return_quantity, perfume_price, note_text) 
-		VALUES (:invoice_id, :folder_id, :address_id, :invoice_title,
+		VALUES (:invoice_id, :folder_id, :invoice_title,
 		:invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price, :note_text)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
