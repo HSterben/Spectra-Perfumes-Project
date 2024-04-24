@@ -67,11 +67,12 @@ CREATE TABLE `folder` (
 DROP TABLE IF EXISTS `activity_log`;
 CREATE TABLE `activity_log` (
   `activity_id` int(16) NOT NULL,
+  `user_id` int(16) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `message` text(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+-- -------------------------------------------------------
 
 --
 -- Table structure for table `address`
@@ -90,6 +91,45 @@ CREATE TABLE `address` (
   `apartment_number` int(16) NULL
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- -------------------------------------------------------
+
+--
+-- Table structure for table `sale`
+--
+DROP TABLE IF EXISTS `sale`;
+CREATE TABLE `sale` (
+  `sale_id` int(11) NOT NULL,
+  `invoice_id` int(11) NOT NULL,
+  `sale_date` date NOT NULL DEFAULT current_timestamp(),
+  `return_value` float NOT NULL,
+  `purchase_value` float NOT NULL,
+  `total_value` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `user`
+--
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `username` text NOT NULL,
+  `email` text NOT NULL,
+  `password_hash` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for table `sale`
+--
+ALTER TABLE `sale`
+  ADD PRIMARY KEY (`sale_id`),
+  ADD KEY `invoice_id` (`invoice_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- Indexes for table `invoice`
@@ -163,12 +203,23 @@ ALTER TABLE `activity_log`
   MODIFY `activity_id` int(16) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `sale`
+--
+ALTER TABLE `sale`
+  MODIFY `sale_id` int(16) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `activity_log`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(16) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for table `invoice`
 --
 ALTER TABLE `invoice`
   ADD CONSTRAINT `invoice_id_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folder` (`folder_id`),
   ADD CONSTRAINT `invoice_id_ibfk_2` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`);
-
 
 --
 -- Constraints for table `folder`
@@ -180,7 +231,20 @@ ALTER TABLE `folder`
 -- Constraints for table `address`
 --
 ALTER TABLE `address`
-  ADD CONSTRAINT `publication_comment_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`);
+  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`);
+
+--
+-- Constraints for table `sale`
+--
+ALTER TABLE `sale`
+  ADD CONSTRAINT `sale_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`);
+
+--
+-- Constraints for table `activity_log`
+--
+ALTER TABLE `activity_log`
+  ADD CONSTRAINT `activity_log_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
