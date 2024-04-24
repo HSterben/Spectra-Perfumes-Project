@@ -14,6 +14,26 @@
                 <?= $data->invoice_business_name ?>
             </dd>
             <br>
+            <dt>Street:</dt>
+            <dd>
+                <?= $data->street ?>
+            </dd>
+            <br>
+            <dt>City:</dt>
+            <dd>
+                <?= $data->city ?>
+            </dd>
+            <br>
+            <dt>Postal Code:</dt>
+            <dd>
+                <?= $data->postal_code ?>
+            </dd>
+            <br>
+            <dt>Country:</dt>
+            <dd>
+                <?= $data->country ?>
+            </dd>
+            <br>
             <dt>Phone Number:</dt>
             <dd>
                 <?= $data->phone_number ?>
