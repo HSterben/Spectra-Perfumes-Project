@@ -45,11 +45,10 @@ class Address extends \app\core\Model
 	//Update
 	public function update()
 	{
-		$SQL = 'UPDATE address SET invoice_id=:invoice_id, street_name=:street_name, city=:city, postal_code=:postal_code, country=:country WHERE address_id = :address_id';
+		$SQL = 'UPDATE address SET street_name=:street_name, city=:city, postal_code=:postal_code, country=:country WHERE address_id = :address_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
-				'invoice_id' => $this->invoice_id,
 				'street_name' => $this->street_name,
 				'city' => $this->city,
 				'postal_code' => $this->postal_code,
