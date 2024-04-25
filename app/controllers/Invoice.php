@@ -18,12 +18,15 @@ class Invoice extends \app\core\Controller
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Instantiate and populate objects
         $invoice = new \app\models\Invoice();
+        $invoice->invoice_id = $_POST['invoice_id'];
         $invoice->invoice_title = $_POST['invoice_title'];
         $invoice->invoice_project_num = $_POST['invoice_project_num'];
         $invoice->store_name = $_POST['store_name'];
         $invoice->phone_number = $_POST['phone_number'];
         $invoice->return_quantity = $_POST['return_quantity'];
         $invoice->perfume_price = $_POST['perfume_price'];
+        // Create the invoice record
+        $invoice->create();
         
         $address = new \app\models\Address();
         $address->street_name = $_POST['street_name'];
@@ -31,12 +34,13 @@ class Invoice extends \app\core\Controller
         $address->postal_code = $_POST['postal_code'];
         $address->country = $_POST['country'];
         
-        // Create the invoice record first
-        $invoiceId = $invoice->create();
-        
         if ($invoiceId) {
             // Set the invoice_id for the address
+<<<<<<< Updated upstream
             $address->invoice_id = $invoiceId->invoice_id;
+=======
+            $address->invoice_id = $invoice->invoice_id;
+>>>>>>> Stashed changes
             
             // Create the address record
             $address->create();
@@ -64,9 +68,10 @@ class Invoice extends \app\core\Controller
 
 	public function update()
 	{
-		$invoice = new \app\models\Invoice();//Instantiate invoice object
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			//populate object
+			//Instantiate and populate objects
+			$invoice = new \app\models\Invoice();
+			//Update invoice object with new values
 			$invoice->address_id = $_POST['address_id'];
 			$invoice->bookmark = $_POST['bookmark'];
 			$invoice->invoice_date = $_POST['invoice_date'];

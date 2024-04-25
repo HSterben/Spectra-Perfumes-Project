@@ -6,6 +6,7 @@ use PDO;
 class Invoice extends \app\core\Model
 {
 	public $invoice_id; //PK (manual)
+	//TODO: I don't think we need this foreign key here
 	public $folder_id; //FK
 	public $invoice_title;
 	public $invoice_date;
