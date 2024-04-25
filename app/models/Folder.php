@@ -35,10 +35,32 @@ class Folder extends \app\core\Model{
 		return $STMT->fetchAll();
     }
 
+    public function getByFolderId($folder_id){
+    	$SQL = 'SELECT * FROM folder WHERE folder_id = :folder_id';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			['folder_id' => $folder_id]
+		);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Folder');//set the type of data returned by fetches
+		return $STMT->fetch();
+    }
+
     //TODO: search
 
-    //update
-    public function rename() {
+    //update 1.0
+    public function rename($folder_id) {
+    	$SQL = 'UPDATE folder SET folder_name = :folder_name WHERE folder_id = :folder_id';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			[
+				'folder_name' => $this->folder_name,
+				'folder_id' => $folder_id
+			]
+		);
+    }
+
+    //update 2.0 TODO
+    public function update() {
     	$SQL = 'UPDATE folder SET folder_name=:folder_name WHERE invoice_id = :invoice_id';
 
 		$STMT = self::$_conn->prepare($SQL);
