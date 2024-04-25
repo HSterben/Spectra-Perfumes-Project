@@ -7,8 +7,12 @@
         <h1>Create Note</h1>
 
         <div class="form-group">
-            <label>Invoice ID:<input type="text" class="form-control" name="invoice_id" id="invoice_id"
-                    placeholder="0001" required="true"/></label>
+            <label>Invoice Note:<input type="textArea" class="form-control" name="note_text" id="note_text"
+                    placeholder="This is a note!"/></label>
         </div><br>
+        <div class="form-group">
+            <input type="submit" name="action" class='btn' value="Create Note"/>
+        </div> <br>
+        <a href='/Invoice/list' class="btntwo">Cancel</a>
 
 <?= $this->view('Shared/header'); ?>
