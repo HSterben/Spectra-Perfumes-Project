@@ -55,8 +55,8 @@
         </div><br>
 
         <div class="form-group">
-            <label>Perfume Code:<input type="number" class="form-control" name="perfume_code" placeholder="12345"
-                    id="pcode" value='<?= $data->perfume_code ?>' required="true"/></label>
+            <label>Perfume Code:<input type="number" class="form-control" name="perfume_number" placeholder="12345"
+                    id="pcode" value='<?= $data->perfume_number ?>' required="true"/></label>
         </div><br>
 
         <div class="form-group">
