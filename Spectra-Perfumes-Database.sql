@@ -216,7 +216,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `folder`
 --
 ALTER TABLE `folder`
-  MODIFY `folder_id` int(16) NOT NULL AUTO_INCREMENT=3;
+  MODIFY `folder_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `activity_log`
