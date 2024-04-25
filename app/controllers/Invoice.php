@@ -36,7 +36,7 @@ class Invoice extends \app\core\Controller
         
         if ($invoiceId) {
             // Set the invoice_id for the address
-            $address->invoice_id = $invoiceId;
+            $address->invoice_id = $invoiceId->invoice_id;
             
             // Create the address record
             $address->create();
