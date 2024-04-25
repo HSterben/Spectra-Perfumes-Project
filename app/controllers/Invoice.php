@@ -174,5 +174,12 @@ class Invoice extends \app\core\Controller
         }
     }
 
+    public function read($invoice_id)
+    {
+        $specificInvoice = new \app\models\Invoice();
 
+        $specificInvoice = $specificInvoice->getById($invoice_id);
+
+        $this->view('Invoice/read', ['invoice' => $specificInvoice]);
+    }
 }

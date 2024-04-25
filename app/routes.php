@@ -8,6 +8,8 @@ $this->addRoute('Invoice/list', 'Invoice,index');
 $this->addRoute('Invoice/delete/{invoice_id}', 'Invoice,delete');
 $this->addRoute('Invoice/confirmBulkDelete', 'Invoice,confirmBulkDelete');
 $this->addRoute('Invoice/performBulkDelete', 'Invoice,performBulkDelete');
+$this->addRoute('Invoice/read/{invoice_id}','Invoice,read');
+
 
 
 //For folder

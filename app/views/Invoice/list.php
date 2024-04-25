@@ -11,7 +11,9 @@
                 <tr>
                     <td><input type="checkbox" name="selected_invoices[]" value="<?= $invoice->invoice_id ?>"></td>
                     <td><?= $invoice->invoice_id ?></td>
-                    <td><?= $invoice->invoice_title ?></td>
+                    <td><a href='/Invoice/read/<?= $invoice->invoice_id ?>'>
+                                <?= $invoice->invoice_title ?>
+                            </a></td>
                     <?php
                     echo "<td><br><a href='/Invoice/update/{$invoice->invoice_id}'class='btn'>Edit</a>
                 <a href='/Invoice/delete/{$invoice->invoice_id}'class='btn'>Delete</a></td>";
