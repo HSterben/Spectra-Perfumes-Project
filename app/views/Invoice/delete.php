@@ -45,7 +45,7 @@
             <br>
             <dt>Perfume Code:</dt>
             <dd>
-                <?= $data->perfume_code ?>
+                <?= $data->perfume_number ?>
             </dd>
             <br>
             <dt>Perfume Price:</dt>
