@@ -7,10 +7,16 @@ class Invoice extends \app\core\Controller
     public function index()
     {
         $invoice = new \app\models\Invoice();
-        $invoice = $invoice->getAll();
 
-        //redirect a user that has no profile to the profile creation URL
-        $this->view('Invoice/list', $invoice);
+        // Check if a search query is provided
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $searchQuery = $_POST['query'];
+            $invoice = $invoice->searchInvoices($searchQuery);
+        } else {
+            $invoice = $invoice->getAll();
+        }
+        $data = $invoice;
+        $this->view('Invoice/list', $data);
     }
 
     public function create()
@@ -46,7 +52,7 @@ class Invoice extends \app\core\Controller
                 $perfumeNumber = $_POST['perfume_number'];
                 $quantities = $_POST['quantity'];
 
-                for ($i = 0; $i < count($perfumeNumber); $i++) {
+                for ($i = 0; $i < sizeof($perfumeNumber); $i++) {
                     $perfumeOrder = new \app\models\PerfumeOrder();
                     $perfumeOrder->invoice_id = $invoice->invoice_id;
                     $perfumeOrder->perfume_number = $perfumeNumber[$i];
@@ -91,12 +97,13 @@ class Invoice extends \app\core\Controller
             $perfumeNumber = $_POST['perfume_number'];
             $quantities = $_POST['quantity'];
 
+            $perfumes = new \app\models\PerfumeOrder();
+            $perfumes = $perfumes->getById($invoice_id);
             for ($i = 0; $i < sizeof($perfumeNumber); $i++) {
-                $perfumeOrder = new \app\models\PerfumeOrder();
-                $perfumeOrder->invoice_id = $invoice->invoice_id;
-                $perfumeOrder->perfume_number = $perfumeNumber[$i];
-                $perfumeOrder->quantity = $quantities[$i];
-                $perfumeOrder->update();
+                $perfumes[$i]->invoice_id = $invoice->invoice_id;
+                $perfumes[$i]->perfume_number = $perfumeNumber[$i];
+                $perfumes[$i]->quantity = $quantities[$i];
+                $perfumes[$i]->update();
             }
 
             // Redirect after successful creation
@@ -141,17 +148,17 @@ class Invoice extends \app\core\Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_invoices'])) {
             $invoiceIds = $_POST['selected_invoices'];
             foreach ($invoiceIds as $invoiceId) {
-                 
+
                 // $address = new \app\models\Address();
                 // $address->invoice_id = $invoiceId;
                 // $address->delete();
 
                 //only the delete invoice works FIX
-                
+
                 $invoice = new \app\models\Invoice();
                 $invoice->invoice_id = $invoiceId;
                 $invoice->delete();
-               
+
             }
             header('location:/Invoice/list');
         } else {
@@ -163,22 +170,25 @@ class Invoice extends \app\core\Controller
         $address = new \app\models\Address();
         $address = $address->getById($invoice_id);
 
+        $perfumeOrder = new \app\models\PerfumeOrder();
+        $perfumeOrder = $perfumeOrder->getById($invoice_id);
+
         // Delete the publication
         $invoice = new \app\models\Invoice();
         $invoice = $invoice->getById($invoice_id);
 
 
-        // Redirect or handle the response accordingly
-
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $address->deleteByInvoiceId($invoice_id);
             $invoice->delete();
+            $address->deleteByInvoiceId($invoice_id);
+            foreach ($perfumeOrder as $perfume) {
+                $perfume->delete();
+            }
 
             header('location:/Invoice/list');
         } else {
-            $this->view('Invoice/delete', ['invoice' => $invoice, 'address' => $address]);
+            $this->view('Invoice/delete', ['invoice' => $invoice, 'address' => $address, 'perfumeOrder' => $perfumeOrder]);
         }
     }
 
@@ -221,7 +231,8 @@ class Invoice extends \app\core\Controller
         $this->view('Invoice/read', ['invoice' => $specificInvoice, 'address' => $specificAddress]);
     }
 
-    public function updateNote($invoice_id) { //Could perhaps remove Address and PerfumeNumber from this method
+    public function updateNote($invoice_id)
+    { //Could perhaps remove Address and PerfumeNumber from this method
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Instantiate and populate objects
             $invoice = new \app\models\Invoice();
@@ -273,10 +284,4 @@ class Invoice extends \app\core\Controller
         }
     }
 
-    public function searchByTitle($invoice_title) {
-        $invoice = new \app\models\Invoice();
-        $invoice = $invoice->getByTitle($invoice_title);
-
-        $this->view('Invoice/search', $invoice_title);
-    }
 }

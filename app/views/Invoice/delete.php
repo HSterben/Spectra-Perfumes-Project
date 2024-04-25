@@ -34,7 +34,7 @@
         <dd><?= $invoice->return_quantity ?></dd><br>
 
 
-    <form method="post" action='/Invoice/delete'>
+    <form method="post" action=''>
         <input type="hidden" name="invoice_id" value="<?= $invoice->invoice_id ?>">
         <input type="submit" name="action" class="btn" value="Delete"><br><br>
         <a href='/Invoice/list' class="btntwo">Cancel</a>

@@ -62,9 +62,9 @@
 
         <div id="dynamic">
             <div class="form-group">
-                <label>Perfume Code:<input type="number" class="form-control" name="perfume_number" placeholder="999"
+                <label>Perfume Code:<input type="number" class="form-control" name="perfume_number[]" placeholder="999"
                         id="perfume_number" required /></label>
-                <label>Quantity:<input type="number" class="form-control" name="perfume_number" placeholder="999"
+                <label>Quantity:<input type="number" class="form-control" name="quantity[]" placeholder="999"
                         id="quantity" required /></label>
             </div><br>
         </div>

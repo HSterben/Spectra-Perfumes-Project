@@ -19,14 +19,14 @@ class PerfumeOrder extends \app\core\Model
 		$STMT->execute(
 			[
 				'invoice_id' => $this->invoice_id,
-                'perfume_number' => $this->perfume_number,
+				'perfume_number' => $this->perfume_number,
 				'quantity' => $this->quantity
 			]
 		);
 	}
 
 	//Read
-    public function getAll()
+	public function getAll()
 	{
 		$SQL = 'SELECT * FROM perfume_order ORDER BY perfume_number';
 		$STMT = self::$_conn->prepare($SQL);
@@ -44,7 +44,7 @@ class PerfumeOrder extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 
-    //We don't know search functions yet
+	//We don't know search functions yet
 
 	// public function getInvoiceSale($invoice_id)
 	// {
@@ -57,14 +57,16 @@ class PerfumeOrder extends \app\core\Model
 	// 	return $STMT->fetch();
 	// }
 
+
 	public function update()
 	{
 		$SQL = 'UPDATE perfume_order SET perfume_number=:perfume_number, quantity=:quantity WHERE perfume_order_id = :perfume_order_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
-                'perfume_number' => $this->perfume_number,
-				'quantity' => $this->quantity
+				'perfume_number' => $this->perfume_number,
+				'quantity' => $this->quantity,
+				'perfume_order_id' => $this->perfume_order_id
 			]
 		);
 	}
@@ -79,5 +81,10 @@ class PerfumeOrder extends \app\core\Model
 		);
 	}
 
-
+	public function deleteByInvoiceId($invoice_id)
+	{
+		$SQL = 'DELETE FROM perfume_order WHERE invoice_id = :invoice_id';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['invoice_id' => $invoice_id]);
+	}
 }

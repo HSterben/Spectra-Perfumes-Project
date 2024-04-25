@@ -128,4 +128,13 @@ class Invoice extends \app\core\Model
 		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice');//set the type of data returned by fetches
 		return $STMT->fetchAll();
 	}
+	public function searchInvoices($query)
+	{
+		$SQL = 'SELECT * FROM invoice WHERE invoice_title LIKE :query';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['query' => "%$query%"]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice');
+		return $STMT->fetchAll();
+	}
+	
 }
