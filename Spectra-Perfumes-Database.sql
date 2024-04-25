@@ -110,10 +110,29 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Table structure for table `perfume_order`
+--
+DROP TABLE IF EXISTS `perfume_order`;
+CREATE TABLE `perfume_order` (
+  `perfume_order` int(16) NOT NULL,
+  `invoice_id` int(16) NOT NULL,
+  `perfume_number` int(16) NOT NULL,
+  `quantity` int(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
 -- Indexes for table `sale`
 --
 ALTER TABLE `sale`
   ADD PRIMARY KEY (`sale_id`),
+  ADD KEY `invoice_id` (`invoice_id`);
+
+--
+-- Indexes for table `perfume_order`
+--
+ALTER TABLE `perfume_order`
+  ADD PRIMARY KEY (`perfume_order`),
   ADD KEY `invoice_id` (`invoice_id`);
 
 --
@@ -153,6 +172,12 @@ ALTER TABLE `address`
 --
 ALTER TABLE `invoice`
   MODIFY `invoice_id` int(16) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `perfume_order`
+--
+ALTER TABLE `perfume_order`
+  MODIFY `perfume_order` int(16) NOT NULL AUTO_INCREMENT;
 
 --
 -- TRIGGER for table 'invoice' for 'invoice_project_num'
@@ -208,6 +233,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `invoice`
   ADD CONSTRAINT `invoice_id_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folder` (`folder_id`);
+
+--
+-- Constraints for table `perfume_order`
+--
+ALTER TABLE `perfume_order`
+  ADD CONSTRAINT `perfume_order_id_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`);
 
 --
 -- Constraints for table `folder`
