@@ -8,67 +8,89 @@
 
         <div class="form-group">
             <label>Invoice ID:<input type="text" class="form-control" name="invoice_id" id="invoice_id"
-                    placeholder="0001" required="true"/></label>
+                    placeholder="0001" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label>Project Number:<input type="text" class="form-control" name="invoice_project_num" id="invoice_project_num"
-                    placeholder="0001" required="true"/></label>
+            <label>Project Number:<input type="text" class="form-control" name="invoice_project_num"
+                    id="invoice_project_num" placeholder="0001" required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Invoice Title:<input type="text" class="form-control" name="invoice_title" id="title"
-                    placeholder="Spectra Invoice" required="true"/></label>
+                    placeholder="Spectra Invoice" required /></label>
         </div><br>
         <div class="form-group">
             <label>Business Name:<input type="text" class="form-control" name="store_name" id="busname"
-                    placeholder="Spectra" required="true"/></label> <!-- id is for the browser and name is for the server -->
+                    placeholder="Spectra" required /></label>
+            <!-- id is for the browser and name is for the server -->
         </div><br>
         <div class="form-group">
             <label>Street:<input type="text" class="form-control" name="street_name" id="street_name"
-                    placeholder="12345 Example Road" required="true"/></label>
+                    placeholder="12345 Example Road" required /></label>
 
         </div><br>
         <div class="form-group">
-            <label>City:<input type="text" class="form-control" name="city" id="city" placeholder="New York" required="true"/></label>
+            <label>City:<input type="text" class="form-control" name="city" id="city" placeholder="New York"
+                    required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Postal Code:<input type="text" class="form-control" name="postal_code" id="postal_code"
-                    placeholder="A1E 5T8" required="true"/></label>
+                    placeholder="A1E 5T8" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label>Country:<input type="text" class="form-control" name="country" id="country"
-                    placeholder="Canada" required="true"/></label>
+            <label>Country:<input type="text" class="form-control" name="country" id="country" placeholder="Canada"
+                    required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Phone Number:<input type="text" class="form-control" name="phone_number" placeholder="5141234567"
-                    id="pnum" required="true"/></label>
+                    id="pnum" required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Return Quantity:<input type="number" class="form-control" name="return_quantity" placeholder="10"
-                    id="return" required="true"/></label>
+                    id="return" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label>Perfume Code:<input type="number" class="form-control" name="perfume_code" placeholder="12345"
-                    id="pcode" required="true"/></label>
+            <label>Perfume Price:<input type="text" class="form-control" name="perfume_price" placeholder="12345"
+                    id="price" required /></label>
         </div><br>
 
-        <div class="form-group">
-            <label>Perfume Price:<input type="number" class="form-control" name="perfume_price" placeholder="12345"
-                    id="price" required="true"/></label>
-        </div><br>
+        <div id="dynamic">
+            <div class="form-group">
+                <label>Perfume Code:<input type="number" class="form-control" name="perfume_number" placeholder="999"
+                        id="perfume_number" required /></label>
+                <label>Quantity:<input type="number" class="form-control" name="perfume_number" placeholder="999"
+                        id="quantity" required /></label>
+            </div><br>
+        </div>
+
+        <button type="button" onclick="addPerfumeField()">+</button>
 
         <div class="form-group">
-            <input type="submit" name="action" class='btn' value="Create Invoice" required="true"/>
+            <input type="submit" name="action" class='btn' value="Create Invoice" required />
         </div> <br>
         <a href='/Invoice/list' class="btntwo">Cancel</a>
 
     </form>
+    <script>
+        function addPerfumeField() {
+            // Create HTML string for the new dynamic field
+            var newFieldHTML = `
+        <div class="form-group">
+            <label>Perfume Code:<input type="number" class="form-control" name="perfume_number[]" placeholder="999" required="true" /></label>
+            <label>Quantity:<input type="number" class="form-control" name="quantity[]" placeholder="999" required="true" /></label>
+        </div><br>
+    `;
+
+            // Append the new HTML to the dynamic-fields container
+            document.getElementById('dynamic').innerHTML += newFieldHTML;
+        }
+    </script>
 </div>
 
 <?= $this->view('Shared/header'); ?>

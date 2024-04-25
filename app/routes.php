@@ -14,6 +14,7 @@ $this->addRoute('Invoice/performBulkDelete', 'Invoice,performBulkDelete');
 $this->addRoute('Folder/list', 'Folder,index');
 $this->addRoute('Folder/create', 'Folder,create');
 $this->addRoute('Folder/update', 'Folder,update');
+$this->addRoute('Folder/delete', 'Folder,delete');
 
 $this->addRoute('Person/complete_registration','Person,complete_registration');
 $this->addRoute('Person/','Person,list');
