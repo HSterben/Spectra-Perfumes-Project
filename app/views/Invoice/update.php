@@ -2,7 +2,7 @@
 <?= $this->view('Shared/header'); ?>
 
 <div class='container'>
-    <form method='post' action='' onsubmit="return validateForm()"><br>
+    <form method='post' action=''><br>
 
         <h1>Update Invoice</h1>
 
@@ -71,31 +71,5 @@
 
     </form>
 </div>
-
-<script>
-    function validateForm() {
-        var invoice_id = document.getElementById("invoice_id").value;
-        var invoice_project_num = document.getElementById("project_num").value;
-        var title = document.getElementById("title").value;
-        var business = document.getElementById("busname").value;
-        var phone = document.getElementById("pnum").value;
-        var return = document.getElementById("return").value;
-        var code = document.getElementById("pcode").value;
-        var price = document.getElementById("pprice").value;
-        var street_name = document.getElementById("street_name").value;
-        var city = document.getElementById("city").value;
-        var postal_code = document.getElementById("postal_code").value;
-        var country = document.getElementById("country").value;
-
-
-
-
-        if (invoice_project_num.trim() === '' || invoice_id.trim() === '' || title.trim() === '' || country.trim() === '' || postal_code.trim() === '' || city.trim() === '' || street_name.trim() === '' || business.trim() === '' || phone.trim() === '' || code.trim() === '' || price.trim() === '') {
-            alert("Please fill in all fields.");
-            return false;
-        }
-        return true;
-    }
-</script>
 
 <?= $this->view('Shared/header'); ?>

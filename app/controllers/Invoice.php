@@ -34,13 +34,9 @@ class Invoice extends \app\core\Controller
         $address->postal_code = $_POST['postal_code'];
         $address->country = $_POST['country'];
         
-        if ($invoiceId) {
+        if ($invoice->invoice_id) {
             // Set the invoice_id for the address
-<<<<<<< Updated upstream
-            $address->invoice_id = $invoiceId->invoice_id;
-=======
             $address->invoice_id = $invoice->invoice_id;
->>>>>>> Stashed changes
             
             // Create the address record
             $address->create();
@@ -51,7 +47,7 @@ class Invoice extends \app\core\Controller
 
             for ($i = 0; $i < count($perfumeNumber); $i++) {
                 $perfumeOrder = new \app\models\PerfumeOrder();
-                $perfumeOrder->invoice_id = $invoiceId;
+                $perfumeOrder->invoice_id = $invoice->invoice_id;
                 $perfumeOrder->perfume_number = $perfumeNumber[$i];
                 $perfumeOrder->quantity = $quantities[$i];
                 $perfumeOrder->create();
@@ -66,29 +62,54 @@ class Invoice extends \app\core\Controller
 }
 
 
-	public function update()
+	public function update($invoice_id)
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			//Instantiate and populate objects
-			$invoice = new \app\models\Invoice();
-			//Update invoice object with new values
-			$invoice->address_id = $_POST['address_id'];
-			$invoice->bookmark = $_POST['bookmark'];
-			$invoice->invoice_date = $_POST['invoice_date'];
-			$invoice->invoice_business_name = $_POST['invoice_business_name'];
-			$invoice->invoice_project_num = $_POST['invoice_project_num'];
-			$invoice->invoice_title = $_POST['invoice_title'];
-			$invoice->phone_number = $_POST['phone_number'];
-			$invoice->return_quantity = $_POST['return_quantity'];
-			$invoice->perfume_code = $_POST['perfume_code'];
-			$invoice->perfume_price = $_POST['perfume_price'];
-			$invoice->note_text = $_POST['note_text'];
-			$invoice->note_date = $_POST['note_date'];
-			//Add to db
-			$invoice->update();
-			header('location:/Invoice/list');
-		} else {
-			$this->view('Invoice/update', $invoice);
-		}
-	}
+            // Instantiate and populate objects
+            $i = new \app\models\Invoice();
+            $invoice = $i->getById($invoice_id);
+
+            $invoice->invoice_id = $_POST['invoice_id'];
+            $invoice->invoice_title = $_POST['invoice_title'];
+            $invoice->invoice_project_num = $_POST['invoice_project_num'];
+            $invoice->store_name = $_POST['store_name'];
+            $invoice->phone_number = $_POST['phone_number'];
+            $invoice->return_quantity = $_POST['return_quantity'];
+            $invoice->perfume_price = $_POST['perfume_price'];
+            // Update the invoice record
+            $invoice->update();
+            
+            $a = new \app\models\Address();
+            $address = $a->getById($invoice_id);
+            $address->street_name = $_POST['street_name'];
+            $address->city = $_POST['city'];
+            $address->postal_code = $_POST['postal_code'];
+            $address->country = $_POST['country'];
+            
+            if ($invoice->invoice_id) {
+                // Set the invoice_id for the address
+                $address->invoice_id = $invoice->invoice_id;
+                
+                // Create the address record
+                $address->update();
+                
+                // Create PerfumeOrder records
+                $perfumeNumber = $_POST['perfume_number'];
+                $quantities = $_POST['quantity'];
+    
+                for ($i = 0; $i < count($perfumeNumber); $i++) {
+                    $perfumeOrder = new \app\models\PerfumeOrder();
+                    $perfumeOrder->invoice_id = $invoice->invoice_id;
+                    $perfumeOrder->perfume_number = $perfumeNumber[$i];
+                    $perfumeOrder->quantity = $quantities[$i];
+                    $perfumeOrder->update();
+                }
+            }
+            
+            // Redirect after successful creation
+            header('location:/Invoice/list');
+        } else {
+            $this->view('Invoice/update');
+        }
+    }
 }

@@ -68,5 +68,12 @@ class Address extends \app\core\Model
 		);
 	}
 
-
+	public function getById($invoice_id)
+	{
+		$SQL = 'SELECT * FROM address WHERE invoice_id = :invoice_id LIMIT 1';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['invoice_id' => $invoice_id]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice'); // Set the type of data returned by fetches
+		return $STMT->fetch(); // Return the record
+	}
 }

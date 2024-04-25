@@ -82,7 +82,7 @@ class Invoice extends \app\core\Model
 	{
 		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id, folder_id=:folder_id, invoice_title=:invoice_title,
 		invoice_project_num=:invoice_project_num, store_name=:store_name, phone_number=:phone_number,
-		return_quantity=:return_quantity, perfume_price=:perfume_price, note_text=:note_text, WHERE invoice_id = :invoice_id';
+		return_quantity=:return_quantity, perfume_price=:perfume_price, note_text=:note_text WHERE invoice_id = :invoice_id';
 
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
@@ -109,5 +109,14 @@ class Invoice extends \app\core\Model
 		$STMT->execute(
 			['invoice_id' => $this->invoice_id]
 		);
+	}
+
+	public function getById($invoice_id)
+	{
+		$SQL = 'SELECT * FROM invoice WHERE invoice_id = :invoice_id LIMIT 1';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['invoice_id' => $invoice_id]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice'); // Set the type of data returned by fetches
+		return $STMT->fetch(); // Return the record
 	}
 }
