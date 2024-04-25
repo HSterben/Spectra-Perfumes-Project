@@ -7,8 +7,8 @@
 		<?php
 		foreach($data as $index => $invoice){
 			echo "<tr><td>$invoice->invoice_id </td><td>$invoice->invoice_title</td>
-			<td><a href='/Invoice/update?id=$index'> Update </a></td>
-			<td><a href='/Invoice/delete?id=$index'> Delete </a></td>
+			<td><a href='/Invoice/update?id=$invoice_id'> Update </a></td>
+			<td><a href='/Invoice/delete?id=$invoice_id'> Delete </a></td>
 			</tr>";
 		}
 		?>
