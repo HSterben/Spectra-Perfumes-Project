@@ -82,8 +82,8 @@
             // Create HTML string for the new dynamic field
             var newFieldHTML = `
         <div class="form-group">
-            <label>Perfume Code:<input type="number" class="form-control" name="perfume_number[]" placeholder="999" required="true" /></label>
-            <label>Quantity:<input type="number" class="form-control" name="quantity[]" placeholder="999" required="true" /></label>
+            <label>Perfume Code:<input type="number" class="form-control" name="perfume_number[]" placeholder="999" required /></label>
+            <label>Quantity:<input type="number" class="form-control" name="quantity[]" placeholder="999" required /></label>
         </div><br>
     `;
 

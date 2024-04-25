@@ -91,7 +91,7 @@ class Invoice extends \app\core\Controller
             $perfumeNumber = $_POST['perfume_number'];
             $quantities = $_POST['quantity'];
 
-            for ($i = 0; $i < count($perfumeNumber); $i++) {
+            for ($i = 0; $i < sizeof($perfumeNumber); $i++) {
                 $perfumeOrder = new \app\models\PerfumeOrder();
                 $perfumeOrder->invoice_id = $invoice->invoice_id;
                 $perfumeOrder->perfume_number = $perfumeNumber[$i];
@@ -102,7 +102,16 @@ class Invoice extends \app\core\Controller
             // Redirect after successful creation
             header('location:/Invoice/list');
         } else {
-            $this->view('Invoice/update');
+            $invoice = new \app\models\Invoice();
+            $invoice = $invoice->getById($invoice_id);
+            $address = new \app\models\Address();
+            $address = $address->getById($invoice_id);
+            $perfumeOrders = new \app\models\PerfumeOrder();
+            $perfumeOrders = $perfumeOrders->getById($invoice_id);
+
+            $data = [$invoice, $address, $perfumeOrders];
+
+            $this->view('Invoice/update', $data);
         }
     }
 

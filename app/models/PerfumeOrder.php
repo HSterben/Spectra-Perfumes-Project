@@ -35,6 +35,15 @@ class PerfumeOrder extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 
+	public function getById($invoice_id)
+	{
+		$SQL = 'SELECT * FROM perfume_order WHERE invoice_id = :invoice_id';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['invoice_id' => $invoice_id]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\PerfumeOrder'); // Set the type of data returned by fetches
+		return $STMT->fetchAll();
+	}
+
     //We don't know search functions yet
 
 	// public function getInvoiceSale($invoice_id)
@@ -50,11 +59,10 @@ class PerfumeOrder extends \app\core\Model
 
 	public function update()
 	{
-		$SQL = 'UPDATE perfume_order SET invoice_id=:invoice_id, perfume_number=:perfume_number, quantity=:quantity WHERE perfume_order_id = :perfume_order_id';
+		$SQL = 'UPDATE perfume_order SET perfume_number=:perfume_number, quantity=:quantity WHERE perfume_order_id = :perfume_order_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
-				'invoice_id' => $this->invoice_id,
                 'perfume_number' => $this->perfume_number,
 				'quantity' => $this->quantity
 			]

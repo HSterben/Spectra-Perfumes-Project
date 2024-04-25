@@ -1018,7 +1018,7 @@ class YourClient extends \Guzzle\Service\Client
         </command>
         <command name="search_groups" method="GET" uri='search.json?query="{{query}} type:group"'>
             <doc>Uses a search query to get a list of groups</doc>
-            <param name="query" type="string" required="true" />
+            <param name="query" type="string" required />
         </command>
         <command name="create_group" method="POST" uri="groups.json">
             <doc>Create a group</doc>
@@ -1027,14 +1027,14 @@ class YourClient extends \Guzzle\Service\Client
         </command>
         <command name="delete_group" method="DELETE" uri="groups/{{id}}.json">
             <doc>Delete a group by ID</doc>
-            <param name="id" type="integer" required="true"/>
+            <param name="id" type="integer" required/>
         </command>
         <command name="get_group" method="GET" uri="groups/{{id}}.json">
-            <param name="id" type="integer" required="true"/>
+            <param name="id" type="integer" required/>
         </command>
         <command name="update_group" method="PUT" uri="groups/{{id}}.json">
             <doc>Update a group</doc>
-            <param name="id" type="integer" required="true"/>
+            <param name="id" type="integer" required/>
             <param name="data" type="array" location="body" filters="json_encode" doc="Group JSON"/>
             <param name="Content-Type" location="header" static="application/json"/>
         </command>
