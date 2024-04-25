@@ -75,4 +75,11 @@ class Address extends \app\core\Model
 		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice'); // Set the type of data returned by fetches
 		return $STMT->fetch(); // Return the record
 	}
+
+	public function deleteByInvoiceId($invoice_id)
+{
+    $SQL = 'DELETE FROM address WHERE invoice_id = :invoice_id';
+    $STMT = self::$_conn->prepare($SQL);
+    $STMT->execute(['invoice_id' => $invoice_id]);
+}
 }

@@ -4,16 +4,18 @@
 <form method="post" action="/Invoice/confirmBulkDelete">
     <div class='container'>
         <table>
-		<button type="submit">Bulk Delete</button>
-		<br><br>
+            <button type="submit">Bulk Delete</button>
+            <br><br>
 
             <?php foreach ($data as $invoice): ?>
                 <tr>
                     <td><input type="checkbox" name="selected_invoices[]" value="<?= $invoice->invoice_id ?>"></td>
                     <td><?= $invoice->invoice_id ?></td>
                     <td><?= $invoice->invoice_title ?></td>
-                    <td><a href='/Invoice/update?id=<?= $invoice->invoice_id ?>'> Update </a></td>
-                    <td><a href='/Invoice/delete?id=<?= $invoice->invoice_id ?>'> Delete </a></td>
+                    <?php
+                    echo "<td><br><a href='/Invoice/update/{$invoice->invoice_id}'class='btn'>Edit</a>
+                <a href='/Invoice/delete/{$invoice->invoice_id}'class='btn'>Delete</a></td>";
+                    ?>
                 </tr>
             <?php endforeach; ?>
         </table>

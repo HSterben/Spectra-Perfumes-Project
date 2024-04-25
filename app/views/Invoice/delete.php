@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<?= $this->view('Shared/footer'); ?>
-=======
             <dt>Business Name:</dt>
             <dd>
                 <?= $data->invoice_business_name ?>
@@ -53,4 +50,3 @@
     </div>
 
 <?= $this->view('Shared/header'); ?>
->>>>>>> 099c2f90b13eb925047be5d6a872b229b4f237ff
