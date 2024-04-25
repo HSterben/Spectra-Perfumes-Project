@@ -33,6 +33,9 @@
         <dt>Return Quantity:</dt>
         <dd><?= $invoice->return_quantity ?></dd><br>
 
+        <dt>Note:</dt>
+        <dd><?= $invoice->note_text ?></dd><br>
+
 
         <a href='/Invoice/list' class="btntwo">Back</a>
     </form>

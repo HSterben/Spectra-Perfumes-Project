@@ -220,4 +220,63 @@ class Invoice extends \app\core\Controller
 
         $this->view('Invoice/read', ['invoice' => $specificInvoice, 'address' => $specificAddress]);
     }
+
+    public function updateNote($invoice_id) { //Could perhaps remove Address and PerfumeNumber from this method
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Instantiate and populate objects
+            $invoice = new \app\models\Invoice();
+            $invoice = $invoice->getById($invoice_id);
+
+            $invoice->invoice_id = $_POST['invoice_id'];
+            $invoice->invoice_title = $_POST['invoice_title'];
+            $invoice->invoice_project_num = $_POST['invoice_project_num'];
+            $invoice->store_name = $_POST['store_name'];
+            $invoice->phone_number = $_POST['phone_number'];
+            $invoice->return_quantity = $_POST['return_quantity'];
+            $invoice->perfume_price = $_POST['perfume_price'];
+            $invoice->note_text = $_POST['note_text'];
+            // Update the invoice record
+            $invoice->update();
+
+            $address = new \app\models\Address();
+            $address = $address->getById($invoice_id);
+            $address->street_name = $_POST['street_name'];
+            $address->city = $_POST['city'];
+            $address->postal_code = $_POST['postal_code'];
+            $address->country = $_POST['country'];
+
+            // Create PerfumeOrder records
+            $perfumeNumber = $_POST['perfume_number'];
+            $quantities = $_POST['quantity'];
+
+            for ($i = 0; $i < sizeof($perfumeNumber); $i++) {
+                $perfumeOrder = new \app\models\PerfumeOrder();
+                $perfumeOrder->invoice_id = $invoice->invoice_id;
+                $perfumeOrder->perfume_number = $perfumeNumber[$i];
+                $perfumeOrder->quantity = $quantities[$i];
+                $perfumeOrder->update();
+            }
+
+            // Redirect after successful creation
+            header('location:/Invoice/list');
+        } else {
+            $invoice = new \app\models\Invoice();
+            $invoice = $invoice->getById($invoice_id);
+            $address = new \app\models\Address();
+            $address = $address->getById($invoice_id);
+            $perfumeOrders = new \app\models\PerfumeOrder();
+            $perfumeOrders = $perfumeOrders->getById($invoice_id);
+
+            $data = [$invoice, $address, $perfumeOrders];
+
+            $this->view('Invoice/updateNote', $data);
+        }
+    }
+
+    public function searchByTitle($invoice_title) {
+        $invoice = new \app\models\Invoice();
+        $invoice = $invoice->getByTitle($invoice_title);
+
+        $this->view('Invoice/search', $invoice_title);
+    }
 }

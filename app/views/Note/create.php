@@ -7,7 +7,7 @@
         <h1>Create Note</h1>
 
         <div class="form-group">
-            <label>Invoice Note:<input type="textArea" class="form-control" name="note_text" id="note_text"
+            <label>Invoice Note:<input type="textarea" class="form-control" name="note_text" id="note_text"
                     placeholder="This is a note!"/></label>
         </div><br>
         <div class="form-group">

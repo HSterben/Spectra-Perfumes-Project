@@ -119,4 +119,13 @@ class Invoice extends \app\core\Model
 		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice'); // Set the type of data returned by fetches
 		return $STMT->fetch(); // Return the record
 	}
+
+	public function getByTitle($invoice_title)
+	{
+		$SQL = 'SELECT * FROM invoice WHERE $invoice_title = :invoice title ORDER BY invoice_date';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['invoice_title' => $invoice_title]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice');//set the type of data returned by fetches
+		return $STMT->fetchAll();
+	}
 }

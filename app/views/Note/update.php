@@ -7,8 +7,8 @@
         <h1>Update Note</h1>
 
         <div class="form-group">
-            <label>Invoice Note:<input type="textArea" class="form-control" name="note_text" id="note_text"
-                    placeholder="This is a note!" value=<?= $data->note_text ?>/></label>
+            <label>Invoice Note:<input type="textarea" class="form-control" name="note_text" id="note_text"
+                    placeholder="This is a note!" value=<?= $data['invoice']->note_text ?>></label>
         </div><br>
         <div class="form-group">
             <input type="submit" name="action" class='btn' value="Update Note"/>

@@ -10,7 +10,10 @@ $this->addRoute('Invoice/confirmBulkDelete', 'Invoice,confirmBulkDelete');
 $this->addRoute('Invoice/performBulkDelete', 'Invoice,performBulkDelete');
 $this->addRoute('Invoice/read/{invoice_id}','Invoice,read');
 
-
+//For note
+$this->addRoute('Note/create/{invoice_id}','Note,create');
+$this->addRoute('Note/update/{invoice_id}','Note,update');
+$this->addRoute('Note/delete/{invoice_id}','Note,delete');
 
 //For folder
 $this->addRoute('Folder/list', 'Folder,index');

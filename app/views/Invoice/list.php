@@ -16,7 +16,10 @@
                             </a></td>
                     <?php
                     echo "<td><br><a href='/Invoice/update/{$invoice->invoice_id}'class='btn'>Edit</a>
-                <a href='/Invoice/delete/{$invoice->invoice_id}'class='btn'>Delete</a></td>";
+                <a href='/Invoice/delete/{$invoice->invoice_id}'class='btn'>Delete</a>
+                <a href='/Note/create/{$invoice->invoice_id}'class='btn'>Create Note</a>
+                <a href='/Note/update/{$invoice->invoice_id}'class='btn'>Update Note</a>
+                <a href='/Note/delete/{$invoice->invoice_id}'class='btn'>Delete Note</a></td>";
                     ?>
                 </tr>
             <?php endforeach; ?>
