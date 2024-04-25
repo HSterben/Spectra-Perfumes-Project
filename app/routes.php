@@ -1,8 +1,15 @@
 <?php
-//defined a few routes "url"=>"controller,method"
+//define a few routes "url"=>"controller,method"
+
+//For invoice
 $this->addRoute('Invoice/create', 'Invoice,create');
 $this->addRoute('Invoice/update', 'Invoice,update');
 $this->addRoute('Invoice/list', 'Invoice,index');
+
+//For folder
+$this->addRoute('Folder/list', 'Folder,index');
+$this->addRoute('Folder/create', 'Folder,create');
+$this->addRoute('Folder/update', 'Folder,update');
 
 $this->addRoute('Person/complete_registration','Person,complete_registration');
 $this->addRoute('Person/','Person,list');
