@@ -141,9 +141,17 @@ class Invoice extends \app\core\Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_invoices'])) {
             $invoiceIds = $_POST['selected_invoices'];
             foreach ($invoiceIds as $invoiceId) {
+                 
+                // $address = new \app\models\Address();
+                // $address->invoice_id = $invoiceId;
+                // $address->delete();
+
+                //only the delete invoice works FIX
+                
                 $invoice = new \app\models\Invoice();
                 $invoice->invoice_id = $invoiceId;
                 $invoice->delete();
+               
             }
             header('location:/Invoice/list');
         } else {
@@ -152,8 +160,8 @@ class Invoice extends \app\core\Controller
     }
     public function delete($invoice_id)
     {
-        // Delete related comments first
-        $a = new \app\models\Address();
+        $address = new \app\models\Address();
+        $address = $address->getById($invoice_id);
 
         // Delete the publication
         $invoice = new \app\models\Invoice();
@@ -165,14 +173,40 @@ class Invoice extends \app\core\Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            $address->deleteByInvoiceId($invoice_id);
             $invoice->delete();
-            $a->deleteByInvoiceId($invoice_id);
 
             header('location:/Invoice/list');
         } else {
-            $this->view('Invoice/delete', ['invoice' => $invoice]);
+            $this->view('Invoice/delete', ['invoice' => $invoice, 'address' => $address]);
         }
     }
+
+    // idk if this is good
+    // public function delete($invoice_id)
+    // {
+    //     // Delete related comments first
+    //     $address = new \app\models\Address();
+    //     $address = $address->getById($invoice_id);
+
+    //     // Delete the publication
+    //     $invoice = new \app\models\Invoice();
+    //     $invoice = $invoice->getById($invoice_id);
+
+
+    //     // Redirect or handle the response accordingly
+
+
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    //         $invoice->delete();
+    //         $address->delete();
+
+    //         header('location:/Invoice/list');
+    //     } else {
+    //         $this->view('Invoice/delete', ['invoice' => $invoice]);
+    //     }
+    // }
 
     public function read($invoice_id)
     {
@@ -180,6 +214,10 @@ class Invoice extends \app\core\Controller
 
         $specificInvoice = $specificInvoice->getById($invoice_id);
 
-        $this->view('Invoice/read', ['invoice' => $specificInvoice]);
+        $specificAddress = new \app\models\Address();
+
+        $specificAddress = $specificAddress->getById($invoice_id);
+
+        $this->view('Invoice/read', ['invoice' => $specificInvoice, 'address' => $specificAddress]);
     }
 }

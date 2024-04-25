@@ -75,7 +75,7 @@
         </div><br>
 
         <div class="form-group">
-            <input type="submit" name="action" class='btn' value="Create Invoice" required />
+            <input type="submit" name="action" class='btn' value="Update Invoice" required />
         </div> <br>
         <a href='/Invoice/list' class="btntwo">Cancel</a>
 
