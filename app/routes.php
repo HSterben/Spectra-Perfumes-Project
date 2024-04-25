@@ -5,6 +5,10 @@
 $this->addRoute('Invoice/create', 'Invoice,create');
 $this->addRoute('Invoice/update', 'Invoice,update');
 $this->addRoute('Invoice/list', 'Invoice,index');
+$this->addRoute('Invoice/delete', 'Invoice,delete');
+$this->addRoute('Invoice/confirmBulkDelete', 'Invoice,confirmBulkDelete');
+$this->addRoute('Invoice/performBulkDelete', 'Invoice,performBulkDelete');
+
 
 //For folder
 $this->addRoute('Folder/list', 'Folder,index');
