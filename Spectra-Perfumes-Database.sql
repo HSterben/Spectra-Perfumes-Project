@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `Spectra-Perfumes`
 --
-CREATE DATABASE IF NOT EXISTS `Spectra-Perfumes` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+DROP DATABASE IF EXISTS `Spectra-Perfumes`;
+CREATE DATABASE `Spectra-Perfumes` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `Spectra-Perfumes`;
 
 -- --------------------------------------------------------
@@ -52,14 +53,14 @@ DROP TABLE IF EXISTS `folder`;
 CREATE TABLE `folder` (
   `folder_name` varchar(256) NOT NULL,
   `invoice_id` int(16) DEFAULT NULL,
-  `parent_folder` varchar(256) DEFAULT NULL
+  `parent_folder_name` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --
 -- -- Dumping data for table `folder`
 -- --
 
--- INSERT INTO `folder` (`folder_name`, `invoice_id`, `parent_folder`) VALUES
+-- INSERT INTO `folder` (`folder_name`, `invoice_id`, `parent_folder_name`) VALUES
 -- ('Harharhar', 2, NULL),
 -- ('Real!', NULL, NULL),
 -- ('wow', NULL, 'Real!');
