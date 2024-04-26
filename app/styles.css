@@ -1,0 +1,138 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a2e;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+td, th {
+    padding: 15px;
+    text-align: left;
+}
+
+input[type="text"],
+button,
+input[type="submit"],
+input[type="checkbox"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 20px;
+}
+
+input[type="text"] {
+    width: calc(102% - 24px); /* Full width minus padding and border */
+}
+
+button,
+input[type="submit"] {
+    background-color: #4e4e50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #5757d1;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 20px;
+    background-color: #5653d4;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4343d8;
+}
+
+.header {
+    background-color: #16213e;
+    margin-left: 330px;
+    padding: 20px 80px;
+    text-align: center;
+    border-radius: 25px;
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 24px;
+    font-size: 3em;
+
+    font-weight: bold;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+
+.header a {
+    padding: 10px 25px;
+    border-radius: 20px;
+    background-color: #4e4e50;
+}
+
+.header a:hover {
+    background-color: #5757d1;
+}
+
+/* Footer styles if necessary */
+.footer {
+    background-color: #16213e;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+}
+
+
+.button2{
+    margin: 25px 25px;
+}
+
+.invoice-container {
+    display: flex;
+    align-items: center; /* Align the items vertically */
+    justify-content: space-between; /* Distribute space between items */
+    background-color: #2c2c54;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.invoice-id {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.invoice-title {
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+.invoice-actions {
+    display: flex;
+    align-items: center;
+}
