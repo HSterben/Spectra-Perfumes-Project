@@ -53,7 +53,6 @@ CREATE TABLE `folder` (
   `folder_id` int(16) NOT NULL,
   `invoice_id` int(16) DEFAULT NULL,
   `folder_name` varchar(256) NOT NULL,
-  `subfolder` varchar(256) DEFAULT NULL,
   `parent_folder` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
