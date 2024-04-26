@@ -8,7 +8,7 @@ class Folder extends \app\core\Controller
 	{
 		//Create and populate our object
 		$folder = new \app\models\Folder();
-		$folders = $folder->getAll();
+		$folders = $folder->getAllRoot();
 		//Send the data to the view
 		$this->view('Folder/index', $folders);
 	}
@@ -66,7 +66,7 @@ class Folder extends \app\core\Controller
 		//Instantiate folder object
 		$folder = new \app\models\Folder();
 		//Set the folder being deleted
-		$folder = $folder->getByFolderId($folder_name);
+		$folder = $folder->getByFolderName($folder_name);
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			//Delete the folder record

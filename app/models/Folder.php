@@ -22,10 +22,18 @@ class Folder extends \app\core\Model{
 			$data = [
 				'folder_name' => $this->folder_name,
 				'invoice_id' => $this->invoice_id
-			];	
+			];
     	} else {
-    		//if we're in a folder, then there is a parent folder
-    		//TODO
+    		//if not at root, then there is a parent folder
+    		$SQL = 'INSERT INTO folder (folder_name, invoice_id, parent_folder_name) VALUES (:folder_name, :invoice_id, :parent_folder_name)';
+			//prepare the statement
+			$STMT = self::$_conn->prepare($SQL);
+			//execute
+			$data = [
+				'folder_name' => $this->folder_name,
+				'invoice_id' => $this->invoice_id,
+				'parent_folder_name' => $parent_folder_name
+			];
     	}
 		$STMT->execute($data);
 	}
@@ -35,6 +43,16 @@ class Folder extends \app\core\Model{
 		$SQL = 'SELECT * FROM folder';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute();
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Folder');//set the type of data returned by fetches
+		return $STMT->fetchAll();
+    }
+
+    public function getAllRoot() {
+		$SQL = 'SELECT * FROM folder WHERE parent_folder_name = :parent_folder_name';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			['parent_folder_name' => 0]
+		);
 		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Folder');//set the type of data returned by fetches
 		return $STMT->fetchAll();
     }

@@ -1,4 +1,4 @@
-<?= $this->view('Shared/header'); ?>
+<?= $this->view('Shared/header', ['title'=>'Folder Rename']); ?>
 
 <div class='container'>
     <form method='post' action=''><br>
@@ -12,7 +12,7 @@
         <div class="form-group">
             <input type="submit" name="action" class='btn btn-primary' value="Confirm Edit"/>
         </div> <br>
-        <a href='/Folder/list' class="btn btn-link">Cancel</a>
+        <a href='/Folder/list' class="btn">Cancel</a>
 
     </form>
 </div>
