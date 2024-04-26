@@ -1,7 +1,7 @@
 <?= $this->view('Shared/header'); ?>
 
 <div class='container'>
-	<a href='/Folder/create/<?= $folder->folder_id ?>'>Add new folder here</a>
+	<a href='/Folder/create/<?= $folder->folder_name ?>'>Add new folder here</a>
 </div>
 
 <div class='container'>

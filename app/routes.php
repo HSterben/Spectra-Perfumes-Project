@@ -14,13 +14,13 @@ $this->addRoute('Invoice/copy/{invoice_id}', 'Invoice,copy');
 $this->addRoute('Note/create/{invoice_id}','Note,create');
 $this->addRoute('Note/update/{invoice_id}','Note,update');
 $this->addRoute('Note/delete/{invoice_id}','Note,delete');
-
 //For folder
 $this->addRoute('Folder/list', 'Folder,index');
-$this->addRoute('Folder/create/{parent_folder_id}', 'Folder,create');
-$this->addRoute('Folder/read/{folder_id}', 'Folder,read');
-$this->addRoute('Folder/rename/{folder_id}', 'Folder,rename');
-$this->addRoute('Folder/delete/{folder_id}', 'Folder,delete');
+$this->addRoute('Folder/create/{parent_folder_name}', 'Folder,create');
+$this->addRoute('Folder/read/{folder_name}', 'Folder,read');
+$this->addRoute('Folder/rename/{folder_name}', 'Folder,rename');
+$this->addRoute('Folder/delete/{folder_name}', 'Folder,delete');
+
 
 $this->addRoute('Person/complete_registration','Person,complete_registration');
 $this->addRoute('Person/','Person,list');

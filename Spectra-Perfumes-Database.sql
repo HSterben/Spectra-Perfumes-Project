@@ -31,7 +31,7 @@ USE `Spectra-Perfumes`;
 DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE `invoice` (
   `invoice_id` int(16) NOT NULL,
-  `folder_id` int(16) NULL,
+  `folder_name` varchar(256) NULL,
   `invoice_title` varchar(256) NOT NULL,
   `invoice_date` timestamp NOT NULL,
   `invoice_project_num` int(16) NOT NULL,
@@ -50,9 +50,8 @@ CREATE TABLE `invoice` (
 --
 DROP TABLE IF EXISTS `folder`;
 CREATE TABLE `folder` (
-  `folder_id` int(16) NOT NULL,
-  `invoice_id` int(16) DEFAULT NULL,
   `folder_name` varchar(256) NOT NULL,
+  `invoice_id` int(16) DEFAULT NULL,
   `parent_folder` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,9 +59,10 @@ CREATE TABLE `folder` (
 -- -- Dumping data for table `folder`
 -- --
 
--- INSERT INTO `folder` (`folder_id`, `invoice_id`, `folder_name`) VALUES
--- (1, 2, 'Harharhar'),
--- (2, NULL, 'Real!');
+-- INSERT INTO `folder` (`folder_name`, `invoice_id`, `parent_folder`) VALUES
+-- ('Harharhar', 2, NULL),
+-- ('Real!', NULL, NULL),
+-- ('wow', NULL, 'Real!');
 
 -- --------------------------------------------------------
 
@@ -155,12 +155,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `invoice`
   ADD PRIMARY KEY (`invoice_id`),
-  ADD KEY `folder_id` (`folder_id`);
+  ADD KEY `folder_name` (`folder_name`);
 --
 -- Indexes for table `folder`
 --
 ALTER TABLE `folder`
-  ADD PRIMARY KEY (`folder_id`),
+  ADD PRIMARY KEY (`folder_name`),
   ADD KEY `invoice_id` (`invoice_id`);
 
 --
@@ -214,12 +214,6 @@ ALTER TABLE `address`
   MODIFY `address_id` int(16) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `folder`
---
-ALTER TABLE `folder`
-  MODIFY `folder_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
@@ -241,7 +235,7 @@ ALTER TABLE `user`
 -- Constraints for table `invoice`
 --
 ALTER TABLE `invoice`
-  ADD CONSTRAINT `invoice_id_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `folder` (`folder_id`);
+  ADD CONSTRAINT `invoice_id_ibfk_1` FOREIGN KEY (`folder_name`) REFERENCES `folder` (`folder_name`);
 
 --
 -- Constraints for table `perfume_order`

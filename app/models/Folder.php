@@ -4,25 +4,29 @@ namespace app\models;
 use PDO;
 
 class Folder extends \app\core\Model{
-    //TODO: make folder_name the PK
-    //ALSO TODO: change update route to rename
-    public $folder_id; //PK
+    public $folder_name; //PK
     public $invoice_id; //FK
-    public $folder_name;
+    public $parent_folder_name;
 
     //CRUD
 
     //create
-    public function create($folder_id){
+    public function create($parent_folder_name){
 		//define the SQL query
-		$SQL = 'INSERT INTO folder (folder_name, invoice_id) VALUES (:folder_name, :invoice_id)';
-		//prepare the statement
-		$STMT = self::$_conn->prepare($SQL);
-		//execute
-		$data = [
-			'folder_name' => $this->folder_name,
-			'invoice_id' => $this->invoice_id
-		];
+    	if(!$parent_folder_name) {
+	    	//if at the root, there is no parent folder
+			$SQL = 'INSERT INTO folder (folder_name, invoice_id) VALUES (:folder_name, :invoice_id)';
+			//prepare the statement
+			$STMT = self::$_conn->prepare($SQL);
+			//execute
+			$data = [
+				'folder_name' => $this->folder_name,
+				'invoice_id' => $this->invoice_id
+			];	
+    	} else {
+    		//if we're in a folder, then there is a parent folder
+    		//TODO
+    	}
 		$STMT->execute($data);
 	}
 
@@ -35,11 +39,11 @@ class Folder extends \app\core\Model{
 		return $STMT->fetchAll();
     }
 
-    public function getByFolderId($folder_id){
-    	$SQL = 'SELECT * FROM folder WHERE folder_id = :folder_id';
+    public function getByFolderName($folder_name){
+    	$SQL = 'SELECT * FROM folder WHERE folder_name = :folder_name';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['folder_id' => $folder_id]
+			['folder_name' => $folder_name]
 		);
 		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Folder');//set the type of data returned by fetches
 		return $STMT->fetch();
@@ -48,13 +52,12 @@ class Folder extends \app\core\Model{
     //TODO: search
 
     //update 1.0
-    public function rename($folder_id) {
-    	$SQL = 'UPDATE folder SET folder_name = :folder_name WHERE folder_id = :folder_id';
+    public function rename($folder_name) {
+    	$SQL = 'UPDATE folder SET folder_name = :folder_name WHERE folder_name = :folder_name';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
-				'folder_name' => $this->folder_name,
-				'folder_id' => $folder_id
+				'folder_name' => $this->folder_name
 			]
 		);
     }
@@ -71,10 +74,10 @@ class Folder extends \app\core\Model{
 
     //delete
     public function delete() {
-    	$SQL = 'DELETE FROM folder WHERE folder_id = :folder_id';
+    	$SQL = 'DELETE FROM folder WHERE folder_name = :folder_name';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['folder_id' => $this->folder_id]
+			['folder_name' => $this->folder_name]
 		);
     }
 }

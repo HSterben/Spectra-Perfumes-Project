@@ -7,7 +7,7 @@ class Invoice extends \app\core\Model
 {
 	public $invoice_id; //PK (manual)
 	//TODO: I don't think we need this foreign key here
-	public $folder_id; //FK
+	public $folder_name; //FK
 	public $invoice_title;
 	public $invoice_date;
 	public $invoice_project_num;
@@ -21,15 +21,15 @@ class Invoice extends \app\core\Model
 	//create
 	public function create()
 	{
-		$SQL = 'INSERT INTO invoice(invoice_id, folder_id, invoice_title,
+		$SQL = 'INSERT INTO invoice(invoice_id, folder_name, invoice_title,
 			 invoice_project_num, store_name, phone_number, return_quantity, perfume_price, note_text) 
-		VALUES (:invoice_id, :folder_id, :invoice_title,
+		VALUES (:invoice_id, :folder_name, :invoice_title,
 		:invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price, :note_text)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
 				'invoice_id' => $this->invoice_id,
-				'folder_id' => $this->folder_id,
+				'folder_name' => $this->folder_name,
 				'invoice_title' => $this->invoice_title,
 				'invoice_project_num' => $this->invoice_project_num,
 				'store_name' => $this->store_name,
@@ -80,7 +80,7 @@ class Invoice extends \app\core\Model
 	//update
 	public function update()
 	{
-		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id, folder_id=:folder_id, invoice_title=:invoice_title,
+		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id, folder_name=:folder_name, invoice_title=:invoice_title,
 		invoice_project_num=:invoice_project_num, store_name=:store_name, phone_number=:phone_number,
 		return_quantity=:return_quantity, perfume_price=:perfume_price, note_text=:note_text WHERE invoice_id = :invoice_id';
 
@@ -88,7 +88,7 @@ class Invoice extends \app\core\Model
 		$STMT->execute(
 			[
 				'invoice_id' => $this->invoice_id,
-				'folder_id' => $this->folder_id,
+				'folder_name' => $this->folder_name,
 				'invoice_title' => $this->invoice_title,
 				'invoice_date' => $this->invoice_date,
 				'invoice_project_num' => $this->invoice_project_num,
@@ -138,15 +138,15 @@ class Invoice extends \app\core\Model
 	}
 	
 	public function copy() {
-		$SQL = 'INSERT INTO invoice(invoice_id, folder_id, invoice_title,
+		$SQL = 'INSERT INTO invoice(invoice_id, folder_name, invoice_title,
 			 invoice_project_num, store_name, phone_number, return_quantity, perfume_price) 
-		VALUES (:invoice_id, :folder_id, :invoice_title,
+		VALUES (:invoice_id, :folder_name, :invoice_title,
 		:invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price)';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
 				'invoice_id' => $this->invoice_id,
-				'folder_id' => $this->folder_id,
+				'folder_name' => $this->folder_name,
 				'invoice_title' => $this->invoice_title,
 				'invoice_project_num' => $this->invoice_project_num,
 				'store_name' => $this->store_name,

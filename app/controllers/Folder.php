@@ -13,16 +13,16 @@ class Folder extends \app\core\Controller
 		$this->view('Folder/index', $folders);
 	}
 
-	public function read($folder_id)
+	public function read($folder_name)
 	{
 		//Create and populate our object
 		$folder = new \app\models\Folder();
-		$folder = $folder->getByFolderId($folder_id);
+		$folder = $folder->getByFolderName($folder_name);
 		//Send the data to the view
 		$this->view('Folder/read', ['folder' => $folder]);
 	}
 
-	public function create($folder_id=null)
+	public function create($parent_folder_name)
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// Instantiate and populate folder object
@@ -30,7 +30,7 @@ class Folder extends \app\core\Controller
 			$folder = new \app\models\Folder();
 			$folder->folder_name = $_POST['folder_name'];
 			//Create the folder record
-			$folder->create($folder_id);
+			$folder->create($parent_folder_name);
 			//Redirect after successful creation
 			header('location:/Folder/list');
 		} else {
@@ -39,7 +39,7 @@ class Folder extends \app\core\Controller
 		}
 	}
 
-	public function rename($folder_id)
+	public function rename($folder_name)
 	{
 		//Instantiate folder object
 		$folder = new \app\models\Folder();
@@ -48,12 +48,12 @@ class Folder extends \app\core\Controller
 			//Update folder object name
 			$folder->folder_name = $_POST['folder_name'];
 			//Update the folder record
-			$folder->rename($folder_id);
+			$folder->rename($folder_name);
 			//Redirect after successful update
 			header('location:/Folder/list');
 		} else {
 			//Set the folder being renamed
-			$folder = $folder->getByFolderId($folder_id);
+			$folder = $folder->getByFolderName($folder_name);
 			//Redirect to the folder rename view
 			$this->view('Folder/rename',['folder' => $folder]);
 		}
@@ -61,16 +61,16 @@ class Folder extends \app\core\Controller
 
 	//TODO: update 2.0
 
-	public function delete($folder_id)
+	public function delete($folder_name)
 	{
 		//Instantiate folder object
 		$folder = new \app\models\Folder();
 		//Set the folder being deleted
-		$folder = $folder->getByFolderId($folder_id);
+		$folder = $folder->getByFolderId($folder_name);
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			//Delete the folder record
-			$folder->delete($folder_id);
+			$folder->delete($folder_name);
 			//Redirect after successful update
 			header('location:/Folder/list');
 		} else {
