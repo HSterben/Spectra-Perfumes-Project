@@ -137,4 +137,23 @@ class Invoice extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 	
+	public function copy() {
+		$SQL = 'INSERT INTO invoice(invoice_id, folder_id, invoice_title,
+			 invoice_project_num, store_name, phone_number, return_quantity, perfume_price) 
+		VALUES (:invoice_id, :folder_id, :invoice_title,
+		:invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price)';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			[
+				'invoice_id' => $this->invoice_id,
+				'folder_id' => $this->folder_id,
+				'invoice_title' => $this->invoice_title,
+				'invoice_project_num' => $this->invoice_project_num,
+				'store_name' => $this->store_name,
+				'phone_number' => $this->phone_number,
+				'return_quantity' => $this->return_quantity,
+				'perfume_price' => $this->perfume_price
+			]
+		);
+	}
 }

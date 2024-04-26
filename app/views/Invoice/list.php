@@ -29,6 +29,7 @@
             <a href='/Note/create/<?= $invoice->invoice_id ?>' class='btn'>Create Note</a>
             <a href='/Note/update/<?= $invoice->invoice_id ?>' class='btn'>Update Note</a>
             <a href='/Note/delete/<?= $invoice->invoice_id ?>' class='btn'>Delete Note</a>
+            <a href='/Invoice/copy/<?= $invoice->invoice_id ?>' class='btn'>Copy Invoice</a>
         </div>
     </div>
 <?php endforeach; ?>

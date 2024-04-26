@@ -9,6 +9,7 @@ $this->addRoute('Invoice/delete/{invoice_id}', 'Invoice,delete');
 $this->addRoute('Invoice/confirmBulkDelete', 'Invoice,confirmBulkDelete');
 $this->addRoute('Invoice/performBulkDelete', 'Invoice,performBulkDelete');
 $this->addRoute('Invoice/read/{invoice_id}','Invoice,read');
+$this->addRoute('Invoice/copy/{invoice_id}', 'Invoice,copy');
 //For note
 $this->addRoute('Note/create/{invoice_id}','Note,create');
 $this->addRoute('Note/update/{invoice_id}','Note,update');
@@ -16,7 +17,7 @@ $this->addRoute('Note/delete/{invoice_id}','Note,delete');
 
 //For folder
 $this->addRoute('Folder/list', 'Folder,index');
-$this->addRoute('Folder/create', 'Folder,create');
+$this->addRoute('Folder/create/{parent_folder_id}', 'Folder,create');
 $this->addRoute('Folder/read/{folder_id}', 'Folder,read');
 $this->addRoute('Folder/rename/{folder_id}', 'Folder,rename');
 $this->addRoute('Folder/delete/{folder_id}', 'Folder,delete');
