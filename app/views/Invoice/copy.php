@@ -6,6 +6,8 @@
 
         <h1>Copy Invoice</h1>
 
+        <PRE> <?= var_dump($invoice)?> </PRE>
+
         <div class="form-group">
             <label>Invoice ID:<input type="text" class="form-control" name="invoice_id" id="invoice_id"
                     placeholder="0001" required /></label>
@@ -13,7 +15,7 @@
 
         <div class="form-group">
             <label>Would you like to rename the Invoice Title? :<input type="text" class="form-control" name="invoice_title" id="title"
-            value='Copy of <?= $data->invoice_title ?>' required /></label>
+            value='Copy of <?= $invoice->invoice_title ?>' required /></label>
         </div><br>
 
         <div class="form-group">

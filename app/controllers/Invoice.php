@@ -211,19 +211,41 @@ class Invoice extends \app\core\Controller
 
     public function copy($invoice_id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $invoice = new \app\models\Invoice();
-            $invoice = $invoice->getById($invoice_id);
-            // Instantiate and populate objects
-            $invoice_id = $_POST['invoice_id'];
-            $invoice->invoice_id = $invoice_id;
-            $invoice->invoice_title = $_POST['invoice_title'];
+            // Create new invoice
+            $newInvoice = new \app\models\Invoice();
+            $newInvoice = $newInvoice->getById($invoice_id);
+            $newInvoice->invoice_id = $_POST['invoice_id']; 
+            $newInvoice->invoice_title = $_POST['invoice_title'];
+    
+            // Create the new invoice
+            $newInvoice->copy();
+    
+            // Create address for the new invoice
+            $address = new \app\models\Address();
+            $address = $address->getInvoiceAddress($invoice_id);
+            $address->invoice_id = $newInvoice->invoice_id;
+            $address->create();
+    
+            // Copy perfume orders
+            $perfumes = new \app\models\PerfumeOrder();
+            $existingPerfumes = $perfumes->getById($invoice_id);
+            foreach ($existingPerfumes as $existingPerfume) {
+                // Create a new perfume order for the new invoice
+                $newPerfume = new \app\models\PerfumeOrder();
+                $newPerfume->invoice_id = $newInvoice->invoice_id;
+                $newPerfume->perfume_number = $existingPerfume->perfume_number;
+                $newPerfume->quantity = $existingPerfume->quantity;
+                $newPerfume->create();
             }
+    
             // Redirect after successful creation
             header('location:/Invoice/list');
         } else {
+            // Retrieve existing invoice, address, and perfume orders
             $invoice = new \app\models\Invoice();
             $invoice = $invoice->getById($invoice_id);
-            $data = $invoice;
-            $this->view('Invoice/copy', $data);
+            $this->view('Invoice/copy', ['invoice'=>$invoice]);
         }
     }
+    
+}
