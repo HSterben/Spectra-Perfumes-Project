@@ -13,7 +13,16 @@ class Folder extends \app\core\Controller
 		$this->view('Folder/index', $folders);
 	}
 
-	public function create()
+	public function read($folder_id)
+	{
+		//Create and populate our object
+		$folder = new \app\models\Folder();
+		$folder = $folder->getByFolderId($folder_id);
+		//Send the data to the view
+		$this->view('Folder/read', ['folder' => $folder]);
+	}
+
+	public function create($folder_id=null)
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// Instantiate and populate folder object
@@ -21,7 +30,7 @@ class Folder extends \app\core\Controller
 			$folder = new \app\models\Folder();
 			$folder->folder_name = $_POST['folder_name'];
 			//Create the folder record
-			$folder->create();
+			$folder->create($folder_id);
 			//Redirect after successful creation
 			header('location:/Folder/list');
 		} else {

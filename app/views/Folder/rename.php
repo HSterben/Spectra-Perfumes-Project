@@ -17,4 +17,4 @@
     </form>
 </div>
 
-<?= $this->view('Shared/header'); ?>
+<?= $this->view('Shared/footer'); ?>

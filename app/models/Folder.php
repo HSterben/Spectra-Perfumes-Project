@@ -13,7 +13,7 @@ class Folder extends \app\core\Model{
     //CRUD
 
     //create
-    public function create(){
+    public function create($folder_id){
 		//define the SQL query
 		$SQL = 'INSERT INTO folder (folder_name, invoice_id) VALUES (:folder_name, :invoice_id)';
 		//prepare the statement

@@ -18,4 +18,4 @@
 
 <!-- TODO: add other folder info such as subfolders and invoices -->
 
-<?= $this->view('Shared/header'); ?>
+<?= $this->view('Shared/footer'); ?>

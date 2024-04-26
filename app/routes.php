@@ -17,6 +17,7 @@ $this->addRoute('Note/delete/{invoice_id}','Note,delete');
 //For folder
 $this->addRoute('Folder/list', 'Folder,index');
 $this->addRoute('Folder/create', 'Folder,create');
+$this->addRoute('Folder/read/{folder_id}', 'Folder,read');
 $this->addRoute('Folder/rename/{folder_id}', 'Folder,rename');
 $this->addRoute('Folder/delete/{folder_id}', 'Folder,delete');
 
