@@ -149,11 +149,15 @@ class Invoice extends \app\core\Controller
             $invoiceIds = $_POST['selected_invoices'];
             foreach ($invoiceIds as $invoiceId) {
 
-                // $address = new \app\models\Address();
-                // $address->invoice_id = $invoiceId;
-                // $address->delete();
-
-                //only the delete invoice works FIX
+                $address = new \app\models\Address();
+                $address = $address->getById($invoiceId);
+                $address->deleteByInvoiceId();
+        
+                $perfumeOrder = new \app\models\PerfumeOrder();
+                $perfumeOrder = $perfumeOrder->getById($invoiceId);
+                foreach ($perfumeOrder as $perfume) {
+                    $perfume->deleteByInvoiceId();
+                }
 
                 $invoice = new \app\models\Invoice();
                 $invoice->invoice_id = $invoiceId;
@@ -165,6 +169,7 @@ class Invoice extends \app\core\Controller
             $this->view('Invoice/bulkDeletion');
         }
     }
+    
     public function delete($invoice_id)
     {
         $address = new \app\models\Address();
@@ -192,43 +197,16 @@ class Invoice extends \app\core\Controller
         }
     }
 
-    // idk if this is good
-    // public function delete($invoice_id)
-    // {
-    //     // Delete related comments first
-    //     $address = new \app\models\Address();
-    //     $address = $address->getById($invoice_id);
-
-    //     // Delete the publication
-    //     $invoice = new \app\models\Invoice();
-    //     $invoice = $invoice->getById($invoice_id);
-
-
-    //     // Redirect or handle the response accordingly
-
-
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    //         $invoice->delete();
-    //         $address->delete();
-
-    //         header('location:/Invoice/list');
-    //     } else {
-    //         $this->view('Invoice/delete', ['invoice' => $invoice]);
-    //     }
-    // }
-
     public function read($invoice_id)
     {
-        $specificInvoice = new \app\models\Invoice();
+        $invoice = new \app\models\Invoice();
+            $invoice = $invoice->getById($invoice_id);
+            $address = new \app\models\Address();
+            $address = $address->getById($invoice_id);
+            $perfumeOrders = new \app\models\PerfumeOrder();
+            $perfumeOrders = $perfumeOrders->getById($invoice_id);
 
-        $specificInvoice = $specificInvoice->getById($invoice_id);
-
-        $specificAddress = new \app\models\Address();
-
-        $specificAddress = $specificAddress->getById($invoice_id);
-
-        $this->view('Invoice/read', ['invoice' => $specificInvoice, 'address' => $specificAddress]);
+        $this->view('Invoice/read', ['invoice' => $invoice, 'address' => $address, 'perfumeOrder' => $perfumeOrders]);
     }
 
     public function updateNote($invoice_id)

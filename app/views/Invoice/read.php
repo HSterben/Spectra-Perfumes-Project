@@ -32,6 +32,19 @@
 
         <dt>Return Quantity:</dt>
         <dd><?= $invoice->return_quantity ?></dd><br>
+        
+        <div class="form-group">
+            <div class="form-group">
+                <?php
+                foreach ($perfumeOrder as $perfume) {
+                    echo "<label>Perfume Code:<input type='number' class='form-control' name='perfume_number[]' placeholder='12345'
+                id='pcode' value='" . $perfume->perfume_number . "' readonly/></label>
+        <label>Perfume Quantity:<input type='number' class='form-control' name='quantity[]' placeholder='12345'
+                id='quantity' value='" . $perfume->quantity . "' readonly /></label>
+                <br>";
+                }
+                ?>
+            </div><br>
 
         <dt>Note:</dt>
         <dd><?= $invoice->note_text ?></dd><br>

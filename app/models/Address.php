@@ -76,10 +76,17 @@ class Address extends \app\core\Model
 		return $STMT->fetch(); // Return the record
 	}
 
-	public function deleteByInvoiceId($invoice_id)
+// 	public function deleteByInvoiceId($invoice_id)
+// {
+//     $SQL = 'DELETE FROM address WHERE invoice_id = :invoice_id';
+//     $STMT = self::$_conn->prepare($SQL);
+//     $STMT->execute(['invoice_id' => $invoice_id]);
+// }
+
+public function deleteByInvoiceId()
 {
     $SQL = 'DELETE FROM address WHERE invoice_id = :invoice_id';
     $STMT = self::$_conn->prepare($SQL);
-    $STMT->execute(['invoice_id' => $invoice_id]);
+    $STMT->execute(['invoice_id' => $this->invoice_id]);
 }
 }

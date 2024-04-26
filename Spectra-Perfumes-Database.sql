@@ -55,13 +55,13 @@ CREATE TABLE `folder` (
   `folder_name` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `folder`
---
+-- --
+-- -- Dumping data for table `folder`
+-- --
 
-INSERT INTO `folder` (`folder_id`, `invoice_id`, `folder_name`) VALUES
-(1, 2, 'Harharhar'),
-(2, NULL, 'Real!');
+-- INSERT INTO `folder` (`folder_id`, `invoice_id`, `folder_name`) VALUES
+-- (1, 2, 'Harharhar'),
+-- (2, NULL, 'Real!');
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,7 @@ CREATE TABLE `user` (
 --
 DROP TABLE IF EXISTS `perfume_order`;
 CREATE TABLE `perfume_order` (
-  `perfume_order` int(16) NOT NULL,
+  `perfume_order_id` int(16) NOT NULL,
   `invoice_id` int(16) NOT NULL,
   `perfume_number` int(16) NOT NULL,
   `quantity` int(16) NOT NULL
@@ -140,7 +140,7 @@ ALTER TABLE `sale`
 -- Indexes for table `perfume_order`
 --
 ALTER TABLE `perfume_order`
-  ADD PRIMARY KEY (`perfume_order`),
+  ADD PRIMARY KEY (`perfume_order_id`),
   ADD KEY `invoice_id` (`invoice_id`);
 
 --
@@ -185,7 +185,7 @@ ALTER TABLE `invoice`
 -- AUTO_INCREMENT for table `perfume_order`
 --
 ALTER TABLE `perfume_order`
-  MODIFY `perfume_order` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `perfume_order_id` int(16) NOT NULL AUTO_INCREMENT;
 
 --
 -- TRIGGER for table 'invoice' for 'invoice_project_num'

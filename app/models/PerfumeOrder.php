@@ -81,10 +81,17 @@ class PerfumeOrder extends \app\core\Model
 		);
 	}
 
-	public function deleteByInvoiceId($invoice_id)
+	// public function deleteByInvoiceId($invoice_id)
+	// {
+	// 	$SQL = 'DELETE FROM perfume_order WHERE invoice_id = :invoice_id';
+	// 	$STMT = self::$_conn->prepare($SQL);
+	// 	$STMT->execute(['invoice_id' => $invoice_id]);
+	// }
+
+	public function deleteByInvoiceId()
 	{
 		$SQL = 'DELETE FROM perfume_order WHERE invoice_id = :invoice_id';
 		$STMT = self::$_conn->prepare($SQL);
-		$STMT->execute(['invoice_id' => $invoice_id]);
+		$STMT->execute(['invoice_id' => $this->invoice_id]);
 	}
 }
