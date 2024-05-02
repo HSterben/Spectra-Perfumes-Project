@@ -21,6 +21,9 @@ $this->addRoute('Folder/read/{folder_name}', 'Folder,read');
 $this->addRoute('Folder/rename/{folder_name}', 'Folder,rename');
 $this->addRoute('Folder/delete/{folder_name}', 'Folder,delete');
 
+//For settings
+$this->addRoute('Settings/index', 'Settings,index');
+
 
 $this->addRoute('Person/complete_registration','Person,complete_registration');
 $this->addRoute('Person/','Person,list');
