@@ -7,11 +7,10 @@
 <div class='container'>
 	<table>
 	<?php
-	foreach($data as $folder){
+	foreach($folders as $folder){
 		echo "<tr>
 			<td><a href='/Folder/read/{$folder->folder_name}'>$folder->folder_name</td>
 			<td><a href='/Folder/rename/{$folder->folder_name}'>Rename</a></td>
-			<td><a href='/Folder/update/{$folder->folder_name}'>Update</a></td>
 			<td><a href='/Folder/delete/{$folder->folder_name}'>Delete</a></td>
 		</tr>";
 	}

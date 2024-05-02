@@ -67,6 +67,25 @@ class Folder extends \app\core\Model{
 		return $STMT->fetch();
     }
 
+    public function getSubfolders(){
+    	$SQL = 'SELECT * FROM folder WHERE parent_folder_name = :parent_folder_name';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			['parent_folder_name' => $this->folder_name]
+		);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Folder');//set the type of data returned by fetches
+		return $STMT->fetchAll();
+    }
+
+    public function getParentFolderName(){
+    	$SQL = 'SELECT parent_folder_name FROM folder WHERE folder_name = :folder_name';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			['folder_name' => $this->parent_folder_name]
+		);
+		return $STMT->fetchColumn();
+    }
+
     //TODO: search
 
     //update 1.0

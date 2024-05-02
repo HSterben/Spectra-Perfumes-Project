@@ -10,7 +10,7 @@ class Folder extends \app\core\Controller
 		$folder = new \app\models\Folder();
 		$folders = $folder->getAllRoot();
 		//Send the data to the view
-		$this->view('Folder/index', $folders);
+		$this->view('Folder/index', ['folders'=>$folders]);
 	}
 
 	public function read($folder_name)
@@ -18,8 +18,11 @@ class Folder extends \app\core\Controller
 		//Create and populate our object
 		$folder = new \app\models\Folder();
 		$folder = $folder->getByFolderName($folder_name);
+		$subfolders = $folder->getSubfolders();
+		//Set parent folder to tell view where to redirect if cancel
+		$parent_folder_name = $folder->getParentFolderName();
 		//Send the data to the view
-		$this->view('Folder/read', ['folder' => $folder]);
+		$this->view('Folder/read', ['folder'=>$folder, 'subfolders'=>$subfolders, 'parent_folder_name'=>$parent_folder_name]);
 	}
 
 	public function create($parent_folder_name)
@@ -35,7 +38,7 @@ class Folder extends \app\core\Controller
 			header('location:/Folder/list');
 		} else {
 			//Redirect to the folder create view
-			$this->view('Folder/create');
+			$this->view('Folder/create', ['parent_folder_name'=>$parent_folder_name]);
 		}
 	}
 
@@ -54,8 +57,10 @@ class Folder extends \app\core\Controller
 		} else {
 			//Set the folder being renamed
 			$folder = $folder->getByFolderName($folder_name);
+			//Set parent folder to tell view where to redirect if cancel
+			$parent_folder_name = $folder->getParentFolderName($folder_name);
 			//Redirect to the folder rename view
-			$this->view('Folder/rename',['folder' => $folder]);
+			$this->view('Folder/rename', ['folder'=>$folder, 'parent_folder_name'=>$parent_folder_name]);
 		}
 	}
 
@@ -75,7 +80,7 @@ class Folder extends \app\core\Controller
 			header('location:/Folder/list');
 		} else {
 			//Redirect to the folder delete confirmation view
-			$this->view('Folder/delete',['folder' => $folder]);
+			$this->view('Folder/delete',['folder'=>$folder]);
 		}
 	}
 }
