@@ -1,8 +1,9 @@
 <?= $this->view('Shared/header'); ?>
 <link rel="stylesheet" href="/app/styles.css">
 <button class=button2> <a href='/Invoice/create'>Add a new invoice</a></button>
+<button class=button2> <a href='/Main/sales'>Sales Analytics</a></button>
 
-<form method="post" action="/Invoice/confirmBulkDelete"  style="display: inline;">
+<form method="post" action="/Invoice/confirmBulkDelete" style="display: inline;">
     <button type="submit">Bulk Delete</button>
 
     <div class='container'>
@@ -22,7 +23,8 @@
     <div class="invoice-container">
         <input type="checkbox" name="selected_invoices[]" value="<?= $invoice->invoice_id ?>">
         <span class="invoice-id"><?= $invoice->invoice_id ?></span>
-        <span class="invoice-title"><a href='/Invoice/read/<?= $invoice->invoice_id ?>' class="invoice-title"><?= $invoice->invoice_title ?></a></span>
+        <span class="invoice-title"><a href='/Invoice/read/<?= $invoice->invoice_id ?>'
+                class="invoice-title"><?= $invoice->invoice_title ?></a></span>
         <div class='invoice-actions'>
             <a href='/Invoice/update/<?= $invoice->invoice_id ?>' class='btn'>Edit</a>
             <a href='/Invoice/delete/<?= $invoice->invoice_id ?>' class='btn'>Delete</a>

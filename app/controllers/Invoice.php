@@ -6,17 +6,7 @@ class Invoice extends \app\core\Controller
 
     public function index()
     {
-        $invoice = new \app\models\Invoice();
 
-        // Check if a search query is provided
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $searchQuery = $_POST['query'];
-            $invoice = $invoice->searchInvoices($searchQuery);
-        } else {
-            $invoice = $invoice->getAll();
-        }
-        $data = $invoice;
-        $this->view('Invoice/list', $data);
     }
 
     public function create()
@@ -31,7 +21,8 @@ class Invoice extends \app\core\Controller
             $invoice->store_name = $_POST['store_name'];
             $invoice->phone_number = $_POST['phone_number'];
             $invoice->return_quantity = $_POST['return_quantity'];
-            $invoice->perfume_price = $_POST['perfume_price'];
+            $unitPrice = $_POST['perfume_price'];
+            $invoice->perfume_price = $unitPrice;
             // Create the invoice record
             $invoice->create();
 
@@ -58,7 +49,16 @@ class Invoice extends \app\core\Controller
                     $perfumeOrder->perfume_number = $perfumeNumber[$i];
                     $perfumeOrder->quantity = $quantities[$i];
                     $perfumeOrder->create();
+
+                    $purchase_value = ($perfumeOrder->quantity * $unitPrice);
                 }
+                //Create the sales object
+                $sale = new \app\models\Sale();
+                $sale->invoice_id = $invoice_id;
+                $sale->sale_date = $invoice_id->invoice_date;
+                $sale->return_value = ($invoice->return_quantity * $unitPrice);
+                $sale->purchase_value = ($purchase_value - $sale->return_value);
+                $sale->total_value = ($purchase_value);
             }
 
             // Redirect after successful creation
@@ -152,7 +152,7 @@ class Invoice extends \app\core\Controller
                 $address = new \app\models\Address();
                 $address = $address->getById($invoiceId);
                 $address->deleteByInvoiceId();
-        
+
                 $perfumeOrder = new \app\models\PerfumeOrder();
                 $perfumeOrder = $perfumeOrder->getById($invoiceId);
                 foreach ($perfumeOrder as $perfume) {
@@ -169,7 +169,7 @@ class Invoice extends \app\core\Controller
             $this->view('Invoice/bulkDeletion');
         }
     }
-    
+
     public function delete($invoice_id)
     {
         $address = new \app\models\Address();
@@ -200,32 +200,33 @@ class Invoice extends \app\core\Controller
     public function read($invoice_id)
     {
         $invoice = new \app\models\Invoice();
-            $invoice = $invoice->getById($invoice_id);
-            $address = new \app\models\Address();
-            $address = $address->getById($invoice_id);
-            $perfumeOrders = new \app\models\PerfumeOrder();
-            $perfumeOrders = $perfumeOrders->getById($invoice_id);
+        $invoice = $invoice->getById($invoice_id);
+        $address = new \app\models\Address();
+        $address = $address->getById($invoice_id);
+        $perfumeOrders = new \app\models\PerfumeOrder();
+        $perfumeOrders = $perfumeOrders->getById($invoice_id);
 
         $this->view('Invoice/read', ['invoice' => $invoice, 'address' => $address, 'perfumeOrder' => $perfumeOrders]);
     }
 
-    public function copy($invoice_id) {
+    public function copy($invoice_id)
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Create new invoice
             $newInvoice = new \app\models\Invoice();
             $newInvoice = $newInvoice->getById($invoice_id);
-            $newInvoice->invoice_id = $_POST['invoice_id']; 
+            $newInvoice->invoice_id = $_POST['invoice_id'];
             $newInvoice->invoice_title = $_POST['invoice_title'];
-    
+
             // Create the new invoice
             $newInvoice->copy();
-    
+
             // Create address for the new invoice
             $address = new \app\models\Address();
             $address = $address->getInvoiceAddress($invoice_id);
             $address->invoice_id = $newInvoice->invoice_id;
             $address->create();
-    
+
             // Copy perfume orders
             $perfumes = new \app\models\PerfumeOrder();
             $existingPerfumes = $perfumes->getById($invoice_id);
@@ -237,15 +238,15 @@ class Invoice extends \app\core\Controller
                 $newPerfume->quantity = $existingPerfume->quantity;
                 $newPerfume->create();
             }
-    
+
             // Redirect after successful creation
             header('location:/Invoice/list');
         } else {
             // Retrieve existing invoice, address, and perfume orders
             $invoice = new \app\models\Invoice();
             $invoice = $invoice->getById($invoice_id);
-            $this->view('Invoice/copy', ['invoice'=>$invoice]);
+            $this->view('Invoice/copy', ['invoice' => $invoice]);
         }
     }
-    
+
 }

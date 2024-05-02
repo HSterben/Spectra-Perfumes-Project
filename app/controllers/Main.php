@@ -1,13 +1,34 @@
 <?php
 namespace app\controllers;
 
-class Invoice extends \app\core\Controller {
-
-	public function index(){
+class Main extends \app\core\Controller
+{
+	public function index()
+	{
 		$invoice = new \app\models\Invoice();
-		$invoice = $invoice->getAll();
 
-		//redirect a user that has no profile to the profile creation URL
-		$this->view('Main/index',$invoice);
+		// Check if a search query is provided
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$searchQuery = $_POST['query'];
+			$invoice = $invoice->searchInvoices($searchQuery);
+		} else {
+			$invoice = $invoice->getAll();
+		}
+		$data = $invoice;
+		$this->view('Main/index', $data);
+	}
+
+	public function sales() {
+		$invoice = new \app\models\Invoice();
+
+		// Check if a search query is provided
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$searchQuery = $_POST['query'];
+			$invoice = $invoice->searchInvoices($searchQuery);
+		} else {
+			$invoice = $invoice->getAll();
+		}
+		$data = $invoice;
+		$this->view('Main/index', $data);
 	}
 }

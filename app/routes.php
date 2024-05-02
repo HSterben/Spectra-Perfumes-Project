@@ -2,6 +2,9 @@
 //define a few routes "url"=>"controller,method"
 
 //For invoice
+$this->addRoute('', 'Main,index');
+$this->addRoute('Main/index', 'Main,index');
+$this->addRoute('Main/sales', 'Main,sales');
 $this->addRoute('Invoice/create', 'Invoice,create');
 $this->addRoute('Invoice/update/{invoice_id}', 'Invoice,update');
 $this->addRoute('Invoice/list', 'Invoice,index');
