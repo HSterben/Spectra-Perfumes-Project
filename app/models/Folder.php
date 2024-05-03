@@ -5,7 +5,6 @@ use PDO;
 
 class Folder extends \app\core\Model{
     public $folder_name; //PK
-    public $invoice_id; //FK
     public $parent_folder_name;
 
     //CRUD
@@ -14,24 +13,20 @@ class Folder extends \app\core\Model{
     public function create($parent_folder_name){
 		//define the SQL query
     	if(!$parent_folder_name) {
-	    	//if at the root, there is no parent folder
-			$SQL = 'INSERT INTO folder (folder_name, invoice_id) VALUES (:folder_name, :invoice_id)';
+	    	//if at the root, there is no parent folder (defaults to 0 which is root)
+			$SQL = 'INSERT INTO folder (folder_name) VALUES (:folder_name)';
 			//prepare the statement
 			$STMT = self::$_conn->prepare($SQL);
 			//execute
-			$data = [
-				'folder_name' => $this->folder_name,
-				'invoice_id' => $this->invoice_id
-			];
+			$data = ['folder_name' => $this->folder_name];
     	} else {
     		//if not at root, then there is a parent folder
-    		$SQL = 'INSERT INTO folder (folder_name, invoice_id, parent_folder_name) VALUES (:folder_name, :invoice_id, :parent_folder_name)';
+    		$SQL = 'INSERT INTO folder (folder_name, parent_folder_name) VALUES (:folder_name, :parent_folder_name)';
 			//prepare the statement
 			$STMT = self::$_conn->prepare($SQL);
 			//execute
 			$data = [
 				'folder_name' => $this->folder_name,
-				'invoice_id' => $this->invoice_id,
 				'parent_folder_name' => $parent_folder_name
 			];
     	}
@@ -81,7 +76,7 @@ class Folder extends \app\core\Model{
     	$SQL = 'SELECT parent_folder_name FROM folder WHERE folder_name = :folder_name';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['folder_name' => $this->parent_folder_name]
+			['folder_name' => $this->folder_name]
 		);
 		return $STMT->fetchColumn();
     }
@@ -93,15 +88,13 @@ class Folder extends \app\core\Model{
     	$SQL = 'UPDATE folder SET folder_name = :folder_name WHERE folder_name = :folder_name';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			[
-				'folder_name' => $this->folder_name
-			]
+			['folder_name' => $this->folder_name]
 		);
     }
 
     //update 2.0 TODO
     public function update() {
-    	$SQL = 'UPDATE folder SET folder_name=:folder_name WHERE invoice_id = :invoice_id';
+    	$SQL = 'UPDATE folder SET folder_name=:folder_name WHERE folder_name = :folder_name';
 
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(

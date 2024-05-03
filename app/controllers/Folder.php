@@ -35,7 +35,13 @@ class Folder extends \app\core\Controller
 			//Create the folder record
 			$folder->create($parent_folder_name);
 			//Redirect after successful creation
-			header('location:/Folder/list');
+			if($parent_folder_name == 0) {
+				//if at root, redirect to root listing
+				header('location:/Folder/list');
+			} else {
+				//redirect to parent folder view
+				header('location:/Folder/read/' . $parent_folder_name);
+			}
 		} else {
 			//Redirect to the folder create view
 			$this->view('Folder/create', ['parent_folder_name'=>$parent_folder_name]);
