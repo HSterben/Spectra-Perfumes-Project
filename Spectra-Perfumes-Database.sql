@@ -52,7 +52,6 @@ CREATE TABLE `invoice` (
 DROP TABLE IF EXISTS `folder`;
 CREATE TABLE `folder` (
   `folder_name` varchar(256) NOT NULL,
-  `invoice_id` int(16) DEFAULT NULL,
   `parent_folder_name` varchar(256) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,10 +59,10 @@ CREATE TABLE `folder` (
 -- -- Dumping data for table `folder`
 -- --
 
--- INSERT INTO `folder` (`folder_name`, `invoice_id`, `parent_folder_name`) VALUES
--- ('Harharhar', 2, NULL),
--- ('Real!', NULL, NULL),
--- ('wow', NULL, 'Real!');
+-- INSERT INTO `folder` (`folder_name`, `parent_folder_name`) VALUES
+-- ('Harharhar', NULL),
+-- ('Real!', NULL),
+-- ('wow', 'Real!');
 
 -- --------------------------------------------------------
 
@@ -161,8 +160,7 @@ ALTER TABLE `invoice`
 -- Indexes for table `folder`
 --
 ALTER TABLE `folder`
-  ADD PRIMARY KEY (`folder_name`),
-  ADD KEY `invoice_id` (`invoice_id`);
+  ADD PRIMARY KEY (`folder_name`);
 
 --
 -- Indexes for table `activity_log`
@@ -243,12 +241,6 @@ ALTER TABLE `invoice`
 --
 ALTER TABLE `perfume_order`
   ADD CONSTRAINT `perfume_order_id_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`);
-
---
--- Constraints for table `folder`
---
-ALTER TABLE `folder`
-  ADD CONSTRAINT `folder_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`);
 
 --
 -- Constraints for table `address`
