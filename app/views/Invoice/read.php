@@ -1,8 +1,9 @@
 <?= $this->view('Shared/header'); ?>
+<link rel="stylesheet" type="text/css" href="/app/printInvoice.css" media="print">
 
 <div class='container'><br>
     <h1>Invoice Details</h1>    
-    <button onclick="window.print();" class= "btn">Print</button>
+    <button onclick= "window.print();" class= "btn" id="print-btn">Print</button>
     <dl>
         <dt>Invoice ID:</dt>
         <dd><?= $invoice->invoice_id ?></dd><br>
@@ -47,11 +48,11 @@
                 ?>
             </div><br>
 
-        <dt>Note:</dt>
-        <dd><?= $invoice->note_text ?></dd><br>
+        <dt id="note">Note:</dt>
+        <dd id = "note"><?= $invoice->note_text ?></dd><br>
 
 
-        <button class= "btn"><a href='/Main/index' class="btntwo">Back</a></button>
+        <button class= "print-btn"><a href='/Main/index' class="btntwo" id="print-btn">Back</a></button>
     </form>
 </div>
 
