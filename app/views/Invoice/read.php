@@ -50,7 +50,7 @@
         <dd><?= $invoice->note_text ?></dd><br>
 
 
-        <a href='/Invoice/list' class="btntwo">Back</a>
+        <a href='/Main/index' class="btntwo">Back</a>
     </form>
 </div>
 

@@ -13,7 +13,7 @@
             <input type="hidden" name="selected_invoices[]" value="<?= $invoice->invoice_id ?>">
         <?php endforeach; ?>
         <input type="submit" name="action" class="btn" value="Delete"><br><br>
-        <a href='/Invoice/list' class="btntwo">Cancel</a>
+        <a href='/Main/index' class="btntwo">Cancel</a>
     </form>
 </div>
 

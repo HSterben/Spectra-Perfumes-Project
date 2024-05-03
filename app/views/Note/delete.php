@@ -13,6 +13,6 @@
         <div class="form-group">
             <input type="submit" name="action" class='btn' value="Delete Note"/>
         </div> <br>
-        <a href='/Invoice/list' class="btntwo">Cancel</a>
+        <a href='/Main/index' class="btntwo">Cancel</a>
 
 <?= $this->view('Shared/header'); ?>

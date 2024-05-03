@@ -37,7 +37,7 @@
     <form method="post" action=''>
         <input type="hidden" name="invoice_id" value="<?= $invoice->invoice_id ?>">
         <input type="submit" name="action" class="btn" value="Delete"><br><br>
-        <a href='/Invoice/list' class="btntwo">Cancel</a>
+        <a href='/Main/index' class="btntwo">Cancel</a>
     </form>
 </div>
 
