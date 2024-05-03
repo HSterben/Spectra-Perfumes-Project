@@ -1,7 +1,8 @@
 <?= $this->view('Shared/header'); ?>
 
 <div class='container'><br>
-    <h1>Invoice Details</h1>
+    <h1>Invoice Details</h1>    
+    <button onclick="window.print();" class= "btn">Print</button>
     <dl>
         <dt>Invoice ID:</dt>
         <dd><?= $invoice->invoice_id ?></dd><br>
@@ -50,7 +51,7 @@
         <dd><?= $invoice->note_text ?></dd><br>
 
 
-        <a href='/Main/index' class="btntwo">Back</a>
+        <button class= "btn"><a href='/Main/index' class="btntwo">Back</a></button>
     </form>
 </div>
 
