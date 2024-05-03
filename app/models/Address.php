@@ -52,7 +52,8 @@ class Address extends \app\core\Model
 				'street_name' => $this->street_name,
 				'city' => $this->city,
 				'postal_code' => $this->postal_code,
-				'country' => $this->country
+				'country' => $this->country,
+				'address_id' => $this->address_id
 			]
 		);
 	}

@@ -81,7 +81,7 @@ class Invoice extends \app\core\Model
 	//update
 	public function update($old_invoice_id)
 	{
-		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id, invoice_title=:invoice_title, invoice_date=:invoide_date,
+		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id, invoice_title=:invoice_title, invoice_date=:invoice_date,
 		invoice_project_num=:invoice_project_num, store_name=:store_name, phone_number=:phone_number,
 		return_quantity=:return_quantity, perfume_price=:perfume_price WHERE invoice_id = :old_invoice_id';
 
