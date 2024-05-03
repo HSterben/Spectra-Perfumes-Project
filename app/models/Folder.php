@@ -84,11 +84,14 @@ class Folder extends \app\core\Model{
     //TODO: search
 
     //update 1.0
-    public function rename($folder_name) {
-    	$SQL = 'UPDATE folder SET folder_name = :folder_name WHERE folder_name = :folder_name';
+    public function rename($old_folder_name) {
+    	$SQL = 'UPDATE folder SET folder_name = :folder_name WHERE folder_name = :old_folder_name';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
-			['folder_name' => $this->folder_name]
+			[
+				'folder_name' => $this->folder_name,
+				'old_folder_name' => $old_folder_name
+			]
 		);
     }
 
