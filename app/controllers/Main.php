@@ -19,16 +19,16 @@ class Main extends \app\core\Controller
 	}
 
 	public function sales() {
-		$invoice = new \app\models\Invoice();
+		$sale = new \app\models\Sale();
 
 		// Check if a search query is provided
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$searchQuery = $_POST['query'];
-			$invoice = $invoice->searchInvoices($searchQuery);
+			// $invoice = $invoice->searchInvoices($searchQuery);
 		} else {
-			$invoice = $invoice->getAll();
+			$sale = $sale->getAll();
 		}
-		$data = $invoice;
-		$this->view('Main/index', $data);
+		$data = $sale;
+		$this->view('Main/sales', $data);
 	}
 }

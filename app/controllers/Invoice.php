@@ -17,6 +17,7 @@ class Invoice extends \app\core\Controller
             $invoice_id = $_POST['invoice_id'];
             $invoice->invoice_id = $invoice_id;
             $invoice->invoice_title = $_POST['invoice_title'];
+            $invoice->invoice_date = $_POST['invoice_date'];
             $invoice->invoice_project_num = $_POST['invoice_project_num'];
             $invoice->store_name = $_POST['store_name'];
             $invoice->phone_number = $_POST['phone_number'];
@@ -43,6 +44,8 @@ class Invoice extends \app\core\Controller
                 $perfumeNumber = $_POST['perfume_number'];
                 $quantities = $_POST['quantity'];
 
+                $total_quantity = 0;
+
                 for ($i = 0; $i < sizeof($perfumeNumber); $i++) {
                     $perfumeOrder = new \app\models\PerfumeOrder();
                     $perfumeOrder->invoice_id = $invoice->invoice_id;
@@ -50,19 +53,20 @@ class Invoice extends \app\core\Controller
                     $perfumeOrder->quantity = $quantities[$i];
                     $perfumeOrder->create();
 
-                    $purchase_value = ($perfumeOrder->quantity * $unitPrice);
+                    $total_quantity += $perfumeOrder->quantity;
                 }
                 //Create the sales object
                 $sale = new \app\models\Sale();
                 $sale->invoice_id = $invoice_id;
-                $sale->sale_date = $invoice_id->invoice_date;
-                $sale->return_value = ($invoice->return_quantity * $unitPrice);
-                $sale->purchase_value = ($purchase_value - $sale->return_value);
-                $sale->total_value = ($purchase_value);
+                $sale->sale_date = $invoice->invoice_date;
+                $sale->return_value = -($invoice->return_quantity * $unitPrice);
+                $sale->purchase_value = ($total_quantity * $unitPrice);
+                $sale->total_value = ($sale->purchase_value + $sale->return_value);
+                $sale->create();
             }
 
             // Redirect after successful creation
-            header('location:/Invoice/list');
+            header('location:/');
         } else {
             $this->view('Invoice/create');
         }

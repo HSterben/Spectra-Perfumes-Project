@@ -21,6 +21,10 @@
                     placeholder="Spectra Invoice" required /></label>
         </div><br>
         <div class="form-group">
+            <label>Invoice Date:<input type="date" class="form-control" name="invoice_date" id="date"
+                    required /></label>
+        </div><br>
+        <div class="form-group">
             <label>Business Name:<input type="text" class="form-control" name="store_name" id="busname"
                     placeholder="Spectra" required /></label>
             <!-- id is for the browser and name is for the server -->
