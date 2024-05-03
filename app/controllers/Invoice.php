@@ -17,7 +17,7 @@ class Invoice extends \app\core\Controller
             $invoice_id = $_POST['invoice_id'];
             $invoice->invoice_id = $invoice_id;
             $invoice->invoice_title = $_POST['invoice_title'];
-            $invoice->invoice_date = strtotime($_POST['invoice_date']);
+            $invoice->invoice_date = $_POST['invoice_date'];
             $invoice->invoice_project_num = $_POST['invoice_project_num'];
             $invoice->store_name = $_POST['store_name'];
             $invoice->phone_number = $_POST['phone_number'];
@@ -32,6 +32,8 @@ class Invoice extends \app\core\Controller
             $address->city = $_POST['city'];
             $address->postal_code = $_POST['postal_code'];
             $address->country = $_POST['country'];
+            var_dump($invoice);
+            exit();
 
             if ($invoice->invoice_id) {
                 // Set the invoice_id for the address

@@ -34,7 +34,7 @@ CREATE TABLE `invoice` (
   `invoice_id` int(16) NOT NULL,
   `folder_name` varchar(256) NULL,
   `invoice_title` varchar(256) NOT NULL,
-  `invoice_date` timestamp NOT NULL,
+  `invoice_date` date NOT NULL DEFAULT current_timestamp(),
   `invoice_project_num` int(16) NOT NULL,
   `store_name` text NOT NULL,
   `phone_number` varchar(10) NOT NULL,
@@ -101,7 +101,7 @@ DROP TABLE IF EXISTS `sale`;
 CREATE TABLE `sale` (
   `sale_id` int(11) NOT NULL,
   `invoice_id` int(11) NOT NULL,
-  `sale_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `sale_date` date NOT NULL,
   `return_value` float NOT NULL,
   `purchase_value` float NOT NULL,
   `total_value` float NOT NULL
