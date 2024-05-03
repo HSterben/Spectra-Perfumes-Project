@@ -1,24 +1,15 @@
 <?= $this->view('Shared/header'); ?>
 <link rel="stylesheet" href="/app/styles.css">
-<button class=button2> <a href='/Invoice/create'>Add a new invoice</a></button>
-<button class=button2> <a href='/Main/sales'>Sales Analytics</a></button>
-
-<form method="post" action="/Invoice/confirmBulkDelete" style="display: inline;">
-    <button type="submit">Bulk Delete</button>
+<a href='/Invoice/create'><button class=button2>Add a new invoice</button></a>
+<a href='/Main/index'><button class=button2>Home</button></a>
 
     <div class='container'>
-        <div class=header>Home</div>
+        <div class=header>Sales Analytics</div>
         <table>
 
 </form>
 <br><br>
-<form method='post' action=''>
 
-    <input type="text" name="query" placeholder="Search invoices...">
-    <!-- <button type="submit" name="action">Search</button> -->
-
-
-</form><br><br>
 <?php foreach ($data as $sale): ?>
     <div class="invoice-container">
         <span class="invoice-id">Invoice id: <?= $sale->invoice_id ?></span>

@@ -6,7 +6,7 @@
 
         <h1>Copy Invoice</h1>
 
-        <PRE> <?= var_dump($invoice)?> </PRE>
+        <!-- <PRE> <?= var_dump($invoice)?> </PRE> -->
 
         <div class="form-group">
             <label>Invoice ID:<input type="text" class="form-control" name="invoice_id" id="invoice_id"

@@ -1,7 +1,7 @@
 <?= $this->view('Shared/header'); ?>
 <link rel="stylesheet" href="/app/styles.css">
-<button class=button2> <a href='/Invoice/create'>Add a new invoice</a></button>
-<button class=button2> <a href='/Main/sales'>Sales Analytics</a></button>
+<a href='/Invoice/create'><button class=button2>Add a new invoice</button></a>
+<a href='/Main/sales'><button class=button2>Sales Analytics</button></a>    
 
 <form method="post" action="/Invoice/confirmBulkDelete" style="display: inline;">
     <button type="submit">Bulk Delete</button>
@@ -28,10 +28,10 @@
         <div class='invoice-actions'>
             <a href='/Invoice/update/<?= $invoice->invoice_id ?>' class='btn'>Edit</a>
             <a href='/Invoice/delete/<?= $invoice->invoice_id ?>' class='btn'>Delete</a>
+            <a href='/Invoice/copy/<?= $invoice->invoice_id ?>' class='btn'>Copy Invoice</a>
             <a href='/Note/create/<?= $invoice->invoice_id ?>' class='btn'>Create Note</a>
             <a href='/Note/update/<?= $invoice->invoice_id ?>' class='btn'>Update Note</a>
             <a href='/Note/delete/<?= $invoice->invoice_id ?>' class='btn'>Delete Note</a>
-            <a href='/Invoice/copy/<?= $invoice->invoice_id ?>' class='btn'>Copy Invoice</a>
         </div>
     </div>
 <?php endforeach; ?>

@@ -10,7 +10,7 @@ class Note extends \app\core\Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $invoice->note_text = $_POST['note_text'];
             $invoice->update();
-            header('Location: /Invoice/list');
+            header('location:/Main/index');
         }
         $this->view('Note/update', ['invoice' => $invoice]);
     }
@@ -22,7 +22,7 @@ class Note extends \app\core\Controller
             if (!empty($_POST['note_text'])) {
                 $invoice->note_text = $_POST['note_text'];
                 $invoice->update();
-                header('Location: /Invoice/list');
+                header('location:/Main/index');
             }
         }
         $this->view('Note/create', ['invoice' => $invoice]);
@@ -35,7 +35,7 @@ class Note extends \app\core\Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $invoice->note_text = '';
             $invoice->update();
-            header('Location: /Invoice/list');
+            header('location:/Main/index');
         }
         $this->view('Note/delete', ['invoice' => $invoice]);
     }
