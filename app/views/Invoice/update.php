@@ -7,67 +7,67 @@
 
         <div class="form-group">
             <label>Invoice ID:<input type="text" class="form-control" name="invoice_id" id="invoice_id"
-                    placeholder="0001" value='<?= $data[0]->invoice_id ?>' required /></label>
+                    placeholder="0001" value='<?= $invoice->invoice_id ?>' required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Project Number:<input type="text" class="form-control" name="invoice_project_num"
-                    id="invoice_project_num" placeholder="0001" value='<?= $data[0]->invoice_project_num ?>'
+                    id="invoice_project_num" placeholder="0001" value='<?= $invoice->invoice_project_num ?>'
                     required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Invoice Title:<input type="text" class="form-control" name="invoice_title" id="title"
-                    placeholder="Spectra Invoice" value='<?= $data[0]->invoice_title ?>' required /></label>
+                    placeholder="Spectra Invoice" value='<?= $invoice->invoice_title ?>' required /></label>
         </div><br>
         <div class="form-group">
             <label>Invoice Date:<input type="date" class="form-control" name="invoice_date" id="date"
-            value='<?= $data[0]->invoice_date ?>' required /></label>
+            value='<?= $invoice->invoice_date ?>' required /></label>
         </div><br>
         <div class="form-group">
             <label>Business Name:<input type="text" class="form-control" name="store_name" id="busname"
-                    placeholder="Spectra" value='<?= $data[0]->store_name ?>' required /></label>
+                    placeholder="Spectra" value='<?= $invoice->store_name ?>' required /></label>
             <!-- id is for the browser and name is for the server -->
         </div><br>
         <div class="form-group">
             <label>Street:<input type="text" class="form-control" name="street_name" id="street_name"
-                    placeholder="12345 Example Road" value='<?= $data[1]->street_name ?>' required /></label>
+                    placeholder="12345 Example Road" value='<?= $address->street_name ?>' required /></label>
 
         </div><br>
         <div class="form-group">
             <label>City:<input type="text" class="form-control" name="city" id="city" placeholder="New York"
-                    value='<?= $data[1]->city ?>' required /></label>
+                    value='<?= $address->city ?>' required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Postal Code:<input type="text" class="form-control" name="postal_code" id="postal_code"
-                    placeholder="A1E 5T8" value='<?= $data[1]->postal_code ?>' required /></label>
+                    placeholder="A1E 5T8" value='<?= $address->postal_code ?>' required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Country:<input type="text" class="form-control" name="country" id="country" placeholder="Canada"
-                    value='<?= $data[1]->country ?>' required /></label>
+                    value='<?= $address->country ?>' required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Phone Number:<input type="text" class="form-control" name="phone_number" placeholder="5141234567"
-                    id="pnum" value='<?= $data[0]->phone_number ?>' required /></label>
+                    id="pnum" value='<?= $invoice->phone_number ?>' required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Return Quantity:<input type="number" class="form-control" name="return_quantity" placeholder="10"
-                    id="return" value='<?= $data[0]->return_quantity ?>' required /></label>
+                    id="return" value='<?= $invoice->return_quantity ?>' required /></label>
         </div><br>
 
         <div class="form-group">
             <label>Perfume Price:<input type="number" class="form-control" name="perfume_price" placeholder="12345"
-                    id="price" value='<?= $data[0]->perfume_price ?>' required/></label>
+                    id="price" value='<?= $invoice->perfume_price ?>' required/></label>
         </div><br>
 
         <div class="form-group">
             <div class="form-group">
                 <?php
-                foreach ($data[2] as $perfume) {
+                foreach ($perfumeOrders as $perfume) {
                     echo "<label>Perfume Code:<input type='number' class='form-control' name='perfume_number[]' placeholder='12345'
                 id='pcode' value='" . $perfume->perfume_number . "' required /></label>
         <label>Perfume Quantity:<input type='number' class='form-control' name='quantity[]' placeholder='12345'

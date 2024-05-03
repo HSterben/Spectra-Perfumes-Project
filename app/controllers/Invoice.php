@@ -32,8 +32,6 @@ class Invoice extends \app\core\Controller
             $address->city = $_POST['city'];
             $address->postal_code = $_POST['postal_code'];
             $address->country = $_POST['country'];
-            var_dump($invoice);
-            exit();
 
             if ($invoice->invoice_id) {
                 // Set the invoice_id for the address
@@ -82,7 +80,8 @@ class Invoice extends \app\core\Controller
             $invoice = new \app\models\Invoice();
             $invoice = $invoice->getById($invoice_id);
 
-            $invoice->invoice_id = $_POST['invoice_id'];
+            $new_invoice_id = $_POST['invoice_id'];
+            $invoice->invoice_id = $new_invoice_id;
             $invoice->invoice_title = $_POST['invoice_title'];
             $invoice->invoice_date = $_POST['invoice_date'];
             $invoice->invoice_project_num = $_POST['invoice_project_num'];
@@ -95,11 +94,12 @@ class Invoice extends \app\core\Controller
 
             $address = new \app\models\Address();
             $address = $address->getById($invoice_id);
+            $address->invoice_id = $new_invoice_id;
             $address->street_name = $_POST['street_name'];
             $address->city = $_POST['city'];
             $address->postal_code = $_POST['postal_code'];
             $address->country = $_POST['country'];
-
+            $address->update();
             // Create PerfumeOrder records
             $perfumeNumber = $_POST['perfume_number'];
             $quantities = $_POST['quantity'];
@@ -123,9 +123,7 @@ class Invoice extends \app\core\Controller
             $perfumeOrders = new \app\models\PerfumeOrder();
             $perfumeOrders = $perfumeOrders->getById($invoice_id);
 
-            $data = [$invoice, $address, $perfumeOrders];
-
-            $this->view('Invoice/update', $data);
+            $this->view('Invoice/update', ['invoice'=>$invoice, 'address'=>$address, 'perfumeOrders'=>$perfumeOrders]);
         }
     }
 
