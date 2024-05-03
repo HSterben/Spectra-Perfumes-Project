@@ -17,7 +17,7 @@ class Invoice extends \app\core\Controller
             $invoice_id = $_POST['invoice_id'];
             $invoice->invoice_id = $invoice_id;
             $invoice->invoice_title = $_POST['invoice_title'];
-            $invoice->invoice_date = $_POST['invoice_date'];
+            $invoice->invoice_date = strtotime($_POST['invoice_date']);
             $invoice->invoice_project_num = $_POST['invoice_project_num'];
             $invoice->store_name = $_POST['store_name'];
             $invoice->phone_number = $_POST['phone_number'];
@@ -82,13 +82,14 @@ class Invoice extends \app\core\Controller
 
             $invoice->invoice_id = $_POST['invoice_id'];
             $invoice->invoice_title = $_POST['invoice_title'];
+            $invoice->invoice_date = $_POST['invoice_date'];
             $invoice->invoice_project_num = $_POST['invoice_project_num'];
             $invoice->store_name = $_POST['store_name'];
             $invoice->phone_number = $_POST['phone_number'];
             $invoice->return_quantity = $_POST['return_quantity'];
             $invoice->perfume_price = $_POST['perfume_price'];
             // Update the invoice record
-            $invoice->update();
+            $invoice->update($invoice_id);
 
             $address = new \app\models\Address();
             $address = $address->getById($invoice_id);

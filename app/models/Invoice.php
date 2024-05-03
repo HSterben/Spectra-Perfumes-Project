@@ -78,11 +78,11 @@ class Invoice extends \app\core\Model
 
 
 	//update
-	public function update()
+	public function update($old_invoice_id)
 	{
-		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id, folder_name=:folder_name, invoice_title=:invoice_title,
+		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id, folder_name=:folder_name, invoice_title=:invoice_title, invoice_date=:invoide_date,
 		invoice_project_num=:invoice_project_num, store_name=:store_name, phone_number=:phone_number,
-		return_quantity=:return_quantity, perfume_price=:perfume_price, note_text=:note_text WHERE invoice_id = :invoice_id';
+		return_quantity=:return_quantity, perfume_price=:perfume_price, note_text=:note_text WHERE invoice_id = :old_invoice_id';
 
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
@@ -96,7 +96,8 @@ class Invoice extends \app\core\Model
 				'phone_number' => $this->phone_number,
 				'return_quantity' => $this->return_quantity,
 				'perfume_price' => $this->perfume_price,
-				'note_text' => $this->note_text
+				'note_text' => $this->note_text,
+				'old_invoice_id' => $old_invoice_id
 			]
 		);
 	}

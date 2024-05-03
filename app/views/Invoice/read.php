@@ -14,6 +14,9 @@
         <dt>Invoice Title:</dt>
         <dd><?= $invoice->invoice_title ?></dd><br>
 
+        <dt>Invoice Date:</dt>
+        <dd><?= $invoice->invoice_date ?></dd><br>
+
         <dt>Business Name:</dt>
         <dd><?= $invoice->store_name ?></dd><br>
 

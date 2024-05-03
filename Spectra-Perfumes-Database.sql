@@ -102,7 +102,7 @@ DROP TABLE IF EXISTS `sale`;
 CREATE TABLE `sale` (
   `sale_id` int(11) NOT NULL,
   `invoice_id` int(11) NOT NULL,
-  `sale_date` date NOT NULL DEFAULT current_timestamp(),
+  `sale_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `return_value` float NOT NULL,
   `purchase_value` float NOT NULL,
   `total_value` float NOT NULL
