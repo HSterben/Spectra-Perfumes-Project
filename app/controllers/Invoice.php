@@ -66,7 +66,7 @@ class Invoice extends \app\core\Controller
             }
 
             // Redirect after successful creation
-            header('location:/');
+            header('location:/Main/index');
         } else {
             $this->view('Invoice/create');
         }
@@ -111,7 +111,7 @@ class Invoice extends \app\core\Controller
             }
 
             // Redirect after successful creation
-            header('location:/Invoice/list');
+            header('location:/Main/index');
         } else {
             $invoice = new \app\models\Invoice();
             $invoice = $invoice->getById($invoice_id);
@@ -142,7 +142,7 @@ class Invoice extends \app\core\Controller
             $this->view('Invoice/bulkDeletion', $invoices);
         } else {
             // Redirect or show an error if no invoice was selected
-            header('location:/Invoice/list');
+            header('location:/Main/index');
         }
 
     }
@@ -168,7 +168,7 @@ class Invoice extends \app\core\Controller
                 $invoice->delete();
 
             }
-            header('location:/Invoice/list');
+            header('location:/Main/index');
         } else {
             $this->view('Invoice/bulkDeletion');
         }
@@ -195,7 +195,7 @@ class Invoice extends \app\core\Controller
                 $perfume->delete();
             }
 
-            header('location:/Invoice/list');
+            header('location:/Main/index');
         } else {
             $this->view('Invoice/delete', ['invoice' => $invoice, 'address' => $address, 'perfumeOrder' => $perfumeOrder]);
         }
@@ -222,7 +222,7 @@ class Invoice extends \app\core\Controller
             $newInvoice->invoice_id = $_POST['invoice_id'];
             $newInvoice->invoice_title = $_POST['invoice_title'];
 
-            // Create the new invoice
+            // Copy the new invoice (Create it with a new id and title)
             $newInvoice->copy();
 
             // Create address for the new invoice
@@ -244,7 +244,7 @@ class Invoice extends \app\core\Controller
             }
 
             // Redirect after successful creation
-            header('location:/Invoice/list');
+            header('location:/Main/index');
         } else {
             // Retrieve existing invoice, address, and perfume orders
             $invoice = new \app\models\Invoice();
