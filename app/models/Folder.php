@@ -95,6 +95,17 @@ class Folder extends \app\core\Model{
 		);
     }
 
+    public function updateParentFolderAttribute() {
+    	$SQL = 'UPDATE folder SET parent_folder_name = :new_parent_folder_name WHERE folder_name = :subfolder_name';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			[
+				'new_parent_folder_name' => $this->parent_folder_name,
+				'subfolder_name' => $this->folder_name
+			]
+		);
+    }
+
     //update 2.0 TODO
     public function update() {
     	$SQL = 'UPDATE folder SET folder_name=:folder_name WHERE folder_name = :folder_name';

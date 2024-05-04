@@ -48,25 +48,35 @@ class Folder extends \app\core\Controller
 		}
 	}
 
-	public function rename($folder_name)
+	public function rename($old_folder_name)
 	{
-		//Instantiate folder object
+		//Instantiate new and old folder objects
 		$folder = new \app\models\Folder();
+		$old_folder = new \app\models\Folder();
+		//Populate old folder object
+		$old_folder = $old_folder->getByFolderName($old_folder_name);
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			//Update folder object name
+			//Update new folder object name
 			$folder->folder_name = $_POST['folder_name'];
+			//Get all subfolders from old_folder_name
+			$subfolders = $old_folder->getSubfolders();
+			//Then update parent_folder attribute in the subfolders (basically manual cascade)
+			foreach ($subfolders as $subfolder) {
+				//First update the subfolder object's parent_folder_name
+				$subfolder->parent_folder_name = $folder->folder_name;
+				//Then update it in the database
+				$subfolder->updateParentFolderAttribute();
+			}
 			//Update the folder record
-			$folder->rename($folder_name);
+			$folder->rename($old_folder_name);
 			//Redirect after successful update
 			header('location:/Folder/list');
 		} else {
-			//Set the folder being renamed
-			$folder = $folder->getByFolderName($folder_name);
 			//Set parent folder to tell view where to redirect if cancel
-			$parent_folder_name = $folder->getParentFolderName($folder_name);
+			$parent_folder_name = $folder->getParentFolderName($old_folder_name);
 			//Redirect to the folder rename view
-			$this->view('Folder/rename', ['folder'=>$folder, 'parent_folder_name'=>$parent_folder_name]);
+			$this->view('Folder/rename', ['folder'=>$old_folder, 'parent_folder_name'=>$parent_folder_name]);
 		}
 	}
 
