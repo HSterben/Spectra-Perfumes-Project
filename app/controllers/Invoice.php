@@ -135,8 +135,6 @@ class Invoice extends \app\core\Controller
 
             $sale = new \app\models\Sale();
             $sale = $sale->getById($invoice_id);
-            var_dump($sale);
-            exit();
             $sale->invoice_id = $new_invoice_id;
             $sale->sale_date = $invoice->invoice_date;
             $sale->return_value = -($invoice->return_quantity * $unitPrice);

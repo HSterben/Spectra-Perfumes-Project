@@ -55,6 +55,7 @@ class Sale extends \app\core\Model
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
+				'sale_id' => $this->sale_id,
 				'invoice_id' => $this->invoice_id,
                 'sale_date' => $this->sale_date,
 				'return_value' => $this->return_value,
