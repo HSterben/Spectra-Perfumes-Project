@@ -88,7 +88,8 @@ class Invoice extends \app\core\Controller
             $invoice->store_name = $_POST['store_name'];
             $invoice->phone_number = $_POST['phone_number'];
             $invoice->return_quantity = $_POST['return_quantity'];
-            $invoice->perfume_price = $_POST['perfume_price'];
+            $unitPrice = $_POST['perfume_price'];
+            $invoice->perfume_price = $unitPrice;
             // Update the invoice record
             $invoice->update($invoice_id);
 
@@ -104,14 +105,44 @@ class Invoice extends \app\core\Controller
             $perfumeNumber = $_POST['perfume_number'];
             $quantities = $_POST['quantity'];
 
+            $total_quantity = 0;
+
             $perfumes = new \app\models\PerfumeOrder();
             $perfumes = $perfumes->getById($invoice_id);
             for ($i = 0; $i < sizeof($perfumeNumber); $i++) {
-                $perfumes[$i]->invoice_id = $invoice->invoice_id;
-                $perfumes[$i]->perfume_number = $perfumeNumber[$i];
-                $perfumes[$i]->quantity = $quantities[$i];
-                $perfumes[$i]->update();
+                if ($i < sizeof($perfumes)) {
+                    // Update existing perfume order
+                    $perfumes[$i]->invoice_id = $invoice->invoice_id;
+                    $perfumes[$i]->perfume_number = $perfumeNumber[$i];
+                    $perfumes[$i]->quantity = $quantities[$i];
+                    $perfumes[$i]->update();
+
+                    $total_quantity += $perfumes[$i]->quantity;
+                } else {
+                    // Add new perfume order
+                    $newPerfume = new \app\models\PerfumeOrder();
+                    $newPerfume->invoice_id = $invoice->invoice_id;
+                    $newPerfume->perfume_number = $perfumeNumber[$i];
+                    $newPerfume->quantity = $quantities[$i];
+                    $newPerfume->create();
+
+                    $total_quantity += $newPerfume->quantity;
+                }
             }
+            for ($i = sizeof($perfumeNumber); $i < sizeof($perfumes); $i++) {
+                $perfumes[$i]->delete();
+            }
+
+            $sale = new \app\models\Sale();
+            $sale = $sale->getById($invoice_id);
+            var_dump($sale);
+            exit();
+            $sale->invoice_id = $new_invoice_id;
+            $sale->sale_date = $invoice->invoice_date;
+            $sale->return_value = -($invoice->return_quantity * $unitPrice);
+            $sale->purchase_value = ($total_quantity * $unitPrice);
+            $sale->total_value = ($sale->purchase_value + $sale->return_value);
+            $sale->update();
 
             // Redirect after successful creation
             header('location:/Main/index');
@@ -123,7 +154,7 @@ class Invoice extends \app\core\Controller
             $perfumeOrders = new \app\models\PerfumeOrder();
             $perfumeOrders = $perfumeOrders->getById($invoice_id);
 
-            $this->view('Invoice/update', ['invoice'=>$invoice, 'address'=>$address, 'perfumeOrders'=>$perfumeOrders]);
+            $this->view('Invoice/update', ['invoice' => $invoice, 'address' => $address, 'perfumeOrders' => $perfumeOrders]);
         }
     }
 

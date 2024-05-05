@@ -40,18 +40,14 @@ class Sale extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 
-    //We don't know search functions yet
-
-	// public function getInvoiceSale($invoice_id)
-	// {
-	// 	$SQL = 'SELECT * FROM sale WHERE invoice_id = :invoice_id';
-	// 	$STMT = self::$_conn->prepare($SQL);
-	// 	$STMT->execute(
-	// 		['invoice_id' => $invoice_id]
-	// 	);
-	// 	$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Address');
-	// 	return $STMT->fetch();
-	// }
+	public function getById($invoice_id)
+	{
+		$SQL = 'SELECT * FROM sale WHERE invoice_id = :invoice_id';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['invoice_id' => $invoice_id]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Sale'); // Set the type of data returned by fetches
+		return $STMT->fetch(); // Return the record
+	}
 
 	public function update()
 	{
