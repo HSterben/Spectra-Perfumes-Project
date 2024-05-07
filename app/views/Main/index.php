@@ -7,13 +7,14 @@
 <form method="post" action="/Invoice/confirmBulkDelete" style="display: inline;">
     <button type="submit">Bulk Delete</button>
 
-    <a href='User/logout'><button class=button2>Logout</button></a>
+
 
     <div class='container'>
         <div class=header>Home</div>
         <table>
 
 </form>
+<a href="/User/logout">Logout</a>
 <br><br>
 <form method='post' action=''>
 
