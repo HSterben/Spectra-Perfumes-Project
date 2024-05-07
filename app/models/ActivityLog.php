@@ -8,18 +8,19 @@ class ActivityLog extends \app\core\Model
 	public $activity_id;
 	public $date;
 	public $message;
+	public $user_id;
 
 	//insert
 	public function insert()
 	{
 		//define the SQL query
-		$SQL = 'INSERT INTO activity_log (message, date) VALUES (:message, :date)';
+		$SQL = 'INSERT INTO activity_log (message, user_id) VALUES (:message, :user_id)';
 		//prepare the statement
 		$STMT = self::$_conn->prepare($SQL);
 		//execute
 		$data = [
 			'message' => $this->message,
-			'date' => $this->date
+			'user_id' => $this->user_id
 		];
 		$STMT->execute($data);
 	}

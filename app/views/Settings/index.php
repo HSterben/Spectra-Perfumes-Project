@@ -6,6 +6,11 @@
 <body>
     <table>
         <tr>
+            <th>
+                <a href="/ActivityLog/index"><button class=button2>Activity Log</button></a>
+            </th>
+        </tr>
+        <tr>
             <th><label>Current currency: &nbsp;</label><input type='button' id='money' value='CAD'
                     onclick=convert()></input>
             </th>

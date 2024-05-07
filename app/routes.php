@@ -11,12 +11,12 @@ $this->addRoute('Invoice/list', 'Invoice,index');
 $this->addRoute('Invoice/delete/{invoice_id}', 'Invoice,delete');
 $this->addRoute('Invoice/confirmBulkDelete', 'Invoice,confirmBulkDelete');
 $this->addRoute('Invoice/performBulkDelete', 'Invoice,performBulkDelete');
-$this->addRoute('Invoice/read/{invoice_id}','Invoice,read');
+$this->addRoute('Invoice/read/{invoice_id}', 'Invoice,read');
 $this->addRoute('Invoice/copy/{invoice_id}', 'Invoice,copy');
 //For note
-$this->addRoute('Note/create/{invoice_id}','Note,create');
-$this->addRoute('Note/update/{invoice_id}','Note,update');
-$this->addRoute('Note/delete/{invoice_id}','Note,delete');
+$this->addRoute('Note/create/{invoice_id}', 'Note,create');
+$this->addRoute('Note/update/{invoice_id}', 'Note,update');
+$this->addRoute('Note/delete/{invoice_id}', 'Note,delete');
 //For folder
 $this->addRoute('Folder/index', 'Folder,index');
 $this->addRoute('Folder/create/{parent_folder_name}', 'Folder,create');
@@ -28,11 +28,14 @@ $this->addRoute('Folder/delete/{folder_name}', 'Folder,delete');
 $this->addRoute('Settings/index', 'Settings,index');
 
 //For user
-$this->addRoute('User/register' , 'User,register');
-$this->addRoute('User/login' , 'User,login');
-$this->addRoute('User/logout' , 'User,logout');
-$this->addRoute('User/update' , 'User,update');
-$this->addRoute('User/delete' , 'User,delete');
-$this->addRoute('User/securePlace' , 'Profile,index');
+$this->addRoute('User/register', 'User,register');
+$this->addRoute('User/login', 'User,login');
+$this->addRoute('User/logout', 'User,logout');
+$this->addRoute('User/update', 'User,update');
+$this->addRoute('User/delete', 'User,delete');
+$this->addRoute('User/securePlace', 'Profile,index');
 //2FA
-$this->addRoute('User/setup2fa' , 'User,setup2fa');
+$this->addRoute('User/setup2fa', 'User,setup2fa');
+
+//for ActivityLog
+$this->addRoute('ActivityLog/index', 'ActivityLog,index');

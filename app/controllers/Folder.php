@@ -34,6 +34,10 @@ class Folder extends \app\core\Controller
 			$folder->folder_name = $_POST['folder_name'];
 			//Create the folder record
 			$folder->create($parent_folder_name);
+
+			$activity = new \app\Controllers\ActivityLog();
+			$activity->create("created folder {$folder->folder_name}");
+
 			//Redirect after successful creation
 			if($parent_folder_name == 0) {
 				//if at root, redirect to root listing
@@ -71,6 +75,11 @@ class Folder extends \app\core\Controller
 			}
 			//Update the folder record
 			$folder->rename($old_folder_name);
+
+			//Activity log
+			$activity = new \app\Controllers\ActivityLog();
+			$activity->create("renamed {$old_folder_name} folder to {$folder->folder_name}");
+
 			//Redirect after successful update
 			header('location:/Folder/index');
 		} else {
@@ -93,6 +102,11 @@ class Folder extends \app\core\Controller
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			//Delete the folder record
 			$folder->delete($folder_name);
+
+			//Activity log
+			$activity = new \app\Controllers\ActivityLog();
+			$activity->create("deleted folder {$folder_name}");
+
 			//Redirect after successful update
 			header('location:/Folder/index');
 		} else {

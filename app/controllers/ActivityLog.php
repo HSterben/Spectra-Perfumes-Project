@@ -15,9 +15,15 @@ class ActivityLog extends \app\core\Controller
         $this->view('ActivityLog/index', ['activityLog' => $log]);
     }
 
-    public function create()
+    public function create($action)
     {
-        $user = new \
-    }
+        $user = new \app\models\User();
+        $user = $user->getById($_SESSION['user_id']);
+        var_dump($user);
+        $activity = new \app\models\ActivityLog();
+        $activity->user_id = $user->user_id;
 
+        $activity->message = ": {$user->username} {$action} at ";
+        $activity->insert();
+    }
 }

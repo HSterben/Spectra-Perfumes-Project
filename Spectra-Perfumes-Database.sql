@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE `invoice` (
   `invoice_id` int(16) NOT NULL,
   `folder_name` varchar(256) NULL,
-  `invoice_title` varchar(256) NOT NULL,
+  `invoice_title` varchar(256) NOT NULL, 
   `invoice_date` date NOT NULL DEFAULT current_timestamp(),
   `invoice_project_num` int(16) NOT NULL,
   `store_name` text NOT NULL,
@@ -129,6 +129,15 @@ CREATE TABLE `perfume_order` (
   `quantity` int(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+DELIMITER $$
+
+CREATE TRIGGER adjust_activity_log_date BEFORE INSERT ON activity_log
+FOR EACH ROW
+BEGIN
+    SET NEW.date = DATE_SUB(NEW.date, INTERVAL 4 HOUR);
+END$$
+
+DELIMITER ;
 
 --
 -- Indexes for table `sale`
