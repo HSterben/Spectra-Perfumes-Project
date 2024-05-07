@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+#[\app\filters\Login]
 class Main extends \app\core\Controller
 {
 	public function index()
@@ -18,7 +19,8 @@ class Main extends \app\core\Controller
 		$this->view('Main/index', $data);
 	}
 
-	public function sales() {
+	public function sales()
+	{
 		$sale = new \app\models\Sale();
 
 		// Check if a search query is provided

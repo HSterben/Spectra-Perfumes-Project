@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+#[\app\filters\Login]
 class Invoice extends \app\core\Controller
 {
 

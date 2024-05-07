@@ -27,19 +27,10 @@ $this->addRoute('Folder/delete/{folder_name}', 'Folder,delete');
 //For settings
 $this->addRoute('Settings/index', 'Settings,index');
 
-
-$this->addRoute('Person/complete_registration','Person,complete_registration');
-$this->addRoute('Person/','Person,list');
-$this->addRoute('Person/delete' , 'Person,delete');
-$this->addRoute('Person/edit/{id}' , 'Person,edit');
-$this->addRoute('Person/update' , 'Person,update');
+//For user
 $this->addRoute('User/register' , 'User,register');
 $this->addRoute('User/login' , 'User,login');
 $this->addRoute('User/logout' , 'User,logout');
 $this->addRoute('User/update' , 'User,update');
 $this->addRoute('User/delete' , 'User,delete');
 $this->addRoute('User/securePlace' , 'Profile,index');
-$this->addRoute('Profile/index' , 'Profile,index');
-$this->addRoute('Profile/create' , 'Profile,create');
-$this->addRoute('Profile/modify' , 'Profile,modify');
-$this->addRoute('Profile/delete' , 'Profile,delete');
