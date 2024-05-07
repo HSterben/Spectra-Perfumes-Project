@@ -48,6 +48,7 @@ class Folder extends \app\core\Controller
 		}
 	}
 
+	//TODO: fix routing issue with back button (it thihnks its the parent folder and for some reason the parent folder is always root)
 	public function rename($old_folder_name)
 	{
 		//Instantiate new and old folder objects
