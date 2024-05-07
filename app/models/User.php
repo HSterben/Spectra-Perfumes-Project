@@ -6,6 +6,7 @@ use PDO;
 class User extends \app\core\Model{
 	public $user_id; //PK
 	public $username;
+	public $email;
 	public $password_hash;
 
 	//implement CRUD

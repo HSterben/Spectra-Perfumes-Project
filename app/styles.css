@@ -136,8 +136,7 @@ input[type="submit"]:hover {
 }
 
 .logout-container {
-  display: flex;
-  justify-content: flex-end; /* Align items to the right */
-  margin-top: 10px; /* Adjust margin top as needed */
-  margin-right: 10px; /* Adjust margin right as needed */
+  position: absolute;
+  top: 0;
+  right: 0;
 }

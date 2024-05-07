@@ -114,7 +114,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` text NOT NULL,
-  `email` text NOT NULL,
+  `email` text NOT NULL DEFAULT 'test@gmail.com',
   `password_hash` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
