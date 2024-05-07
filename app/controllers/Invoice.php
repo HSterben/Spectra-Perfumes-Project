@@ -64,6 +64,11 @@ class Invoice extends \app\core\Controller
                 $sale->purchase_value = ($total_quantity * $unitPrice);
                 $sale->total_value = ($sale->purchase_value + $sale->return_value);
                 $sale->create();
+
+                //Activity log
+                $activity = new \app\Controllers\ActivityLog();
+                $activity->create("created invoice: {$invoice->invoice_title}");
+
             }
 
             // Redirect after successful creation
@@ -143,6 +148,10 @@ class Invoice extends \app\core\Controller
             $sale->total_value = ($sale->purchase_value + $sale->return_value);
             $sale->update();
 
+            //Activity log
+            $activity = new \app\Controllers\ActivityLog();
+            $activity->create("updated invoice: {$invoice->invoice_title}");
+
             // Redirect after successful creation
             header('location:/Main/index');
         } else {
@@ -197,7 +206,6 @@ class Invoice extends \app\core\Controller
                 $invoice = new \app\models\Invoice();
                 $invoice->invoice_id = $invoiceId;
                 $invoice->delete();
-
             }
             header('location:/Main/index');
         } else {
@@ -225,6 +233,10 @@ class Invoice extends \app\core\Controller
             foreach ($perfumeOrder as $perfume) {
                 $perfume->delete();
             }
+
+            //Activity log
+            $activity = new \app\Controllers\ActivityLog();
+            $activity->create("deleted invoice: {$invoice->invoice_title}");
 
             header('location:/Main/index');
         } else {
@@ -273,6 +285,10 @@ class Invoice extends \app\core\Controller
                 $newPerfume->quantity = $existingPerfume->quantity;
                 $newPerfume->create();
             }
+
+            //Activity log
+            $activity = new \app\Controllers\ActivityLog();
+            $activity->create("copied invoice: {$newInvoice->getById($invoice_id)->invoice_title}");
 
             // Redirect after successful creation
             header('location:/Main/index');
