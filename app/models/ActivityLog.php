@@ -3,28 +3,33 @@ namespace app\models;
 
 use PDO;
 
-class ActivityLog extends \app\core\Model{
-    public $activity_id;
-    public $date;
-    public $message;
+class ActivityLog extends \app\core\Model
+{
+	public $activity_id;
+	public $date;
+	public $message;
 
-    //insert
-	public function insert(){
+	//insert
+	public function insert()
+	{
 		//define the SQL query
-		$SQL = 'INSERT INTO activity_log (message) VALUES (:message)';
+		$SQL = 'INSERT INTO activity_log (message, date) VALUES (:message, :date)';
 		//prepare the statement
 		$STMT = self::$_conn->prepare($SQL);
 		//execute
-		$data = ['message' => $this->message,
-				];
+		$data = [
+			'message' => $this->message,
+			'date' => $this->date
+		];
 		$STMT->execute($data);
 	}
 
-    public function getAll(){
+	public function getAll()
+	{
 		$SQL = 'SELECT * FROM activity_log';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute();
-		$STMT->setFetchMode(PDO::FETCH_CLASS,'app\models\ActivityLog');
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\ActivityLog');
 		return $STMT->fetchAll();
 	}
 }

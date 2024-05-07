@@ -121,7 +121,7 @@ CREATE TABLE `user` (
 --
 -- Table structure for table `perfume_order`
 --
-DROP TABLE IF EXISTS `perfume_order`;
+DROP TABLE IF EXISTS `perfume_order`;s
 CREATE TABLE `perfume_order` (
   `perfume_order_id` int(16) NOT NULL,
   `invoice_id` int(16) NOT NULL,
