@@ -37,7 +37,7 @@ class Folder extends \app\core\Controller
 			//Redirect after successful creation
 			if($parent_folder_name == 0) {
 				//if at root, redirect to root listing
-				header('location:/Folder/list');
+				header('location:/Folder/index');
 			} else {
 				//redirect to parent folder view
 				header('location:/Folder/read/' . $parent_folder_name);
@@ -72,7 +72,7 @@ class Folder extends \app\core\Controller
 			//Update the folder record
 			$folder->rename($old_folder_name);
 			//Redirect after successful update
-			header('location:/Folder/list');
+			header('location:/Folder/index');
 		} else {
 			//Set parent folder to tell view where to redirect if cancel
 			$parent_folder_name = $folder->getParentFolderName($old_folder_name);
@@ -94,7 +94,7 @@ class Folder extends \app\core\Controller
 			//Delete the folder record
 			$folder->delete($folder_name);
 			//Redirect after successful update
-			header('location:/Folder/list');
+			header('location:/Folder/index');
 		} else {
 			//Redirect to the folder delete confirmation view
 			$this->view('Folder/delete',['folder'=>$folder]);

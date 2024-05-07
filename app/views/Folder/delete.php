@@ -10,7 +10,7 @@
         <div class="form-group">
             <form method="post" action='/Folder/delete'>
                 <input type="submit" name="action" class="btn btn-primary" value="Delete"><br><br>
-                <a href='/Folder/list' class="btntwo">Cancel</a>
+                <a href='/Folder/index' class="btntwo">Cancel</a>
             </form>
         </div>
     </form>
