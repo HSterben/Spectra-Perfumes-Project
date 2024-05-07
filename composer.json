@@ -3,5 +3,9 @@
         "codeception/codeception": "^5.1",
         "codeception/module-phpbrowser": "*",
         "codeception/module-asserts": "*"
+    },
+    "require": {
+        "chillerlan/php-authenticator": "^5.1",
+        "chillerlan/php-qrcode": "^5.0"
     }
 }
