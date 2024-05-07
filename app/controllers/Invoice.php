@@ -80,8 +80,7 @@ class Invoice extends \app\core\Controller
             $invoice = new \app\models\Invoice();
             $invoice = $invoice->getById($invoice_id);
 
-            $new_invoice_id = $_POST['invoice_id'];
-            $invoice->invoice_id = $new_invoice_id;
+            $invoice->invoice_id = $_POST['invoice_id'];
             $invoice->invoice_title = $_POST['invoice_title'];
             $invoice->invoice_date = $_POST['invoice_date'];
             $invoice->invoice_project_num = $_POST['invoice_project_num'];
@@ -90,12 +89,13 @@ class Invoice extends \app\core\Controller
             $invoice->return_quantity = $_POST['return_quantity'];
             $unitPrice = $_POST['perfume_price'];
             $invoice->perfume_price = $unitPrice;
-            // Update the invoice record
             $invoice->update($invoice_id);
+            // Update the invoice record
+            $invoice_id = $invoice->invoice_id;
 
             $address = new \app\models\Address();
             $address = $address->getById($invoice_id);
-            $address->invoice_id = $new_invoice_id;
+            $address->invoice_id = $invoice_id;
             $address->street_name = $_POST['street_name'];
             $address->city = $_POST['city'];
             $address->postal_code = $_POST['postal_code'];
@@ -112,7 +112,7 @@ class Invoice extends \app\core\Controller
             for ($i = 0; $i < sizeof($perfumeNumber); $i++) {
                 if ($i < sizeof($perfumes)) {
                     // Update existing perfume order
-                    $perfumes[$i]->invoice_id = $invoice->invoice_id;
+                    $perfumes[$i]->invoice_id = $invoice_id;
                     $perfumes[$i]->perfume_number = $perfumeNumber[$i];
                     $perfumes[$i]->quantity = $quantities[$i];
                     $perfumes[$i]->update();
@@ -121,7 +121,7 @@ class Invoice extends \app\core\Controller
                 } else {
                     // Add new perfume order
                     $newPerfume = new \app\models\PerfumeOrder();
-                    $newPerfume->invoice_id = $invoice->invoice_id;
+                    $newPerfume->invoice_id = $invoice_id;
                     $newPerfume->perfume_number = $perfumeNumber[$i];
                     $newPerfume->quantity = $quantities[$i];
                     $newPerfume->create();
@@ -135,7 +135,7 @@ class Invoice extends \app\core\Controller
 
             $sale = new \app\models\Sale();
             $sale = $sale->getById($invoice_id);
-            $sale->invoice_id = $new_invoice_id;
+            $sale->invoice_id = $invoice_id;
             $sale->sale_date = $invoice->invoice_date;
             $sale->return_value = -($invoice->return_quantity * $unitPrice);
             $sale->purchase_value = ($total_quantity * $unitPrice);
