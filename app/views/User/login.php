@@ -11,7 +11,6 @@
 
 			<div class="form-group">
 				<input type="submit" name="action" value="Login" /> 
-				<a href='/User/register'>I have no account, bring me to the registration page</a>
 			</div>
 		</form>
 	</div>

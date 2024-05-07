@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+#[\app\filters\Login]
 class Note extends \app\core\Controller
 {
     public function update($invoice_id) {

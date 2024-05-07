@@ -1,10 +1,13 @@
 <?= $this->view('Shared/header'); ?>
 <link rel="stylesheet" href="/app/styles.css">
 <a href='/Invoice/create'><button class=button2>Add a new invoice</button></a>
-<a href='/Main/sales'><button class=button2>Sales Analytics</button></a>    
+<a href='/Main/sales'><button class=button2>Sales Analytics</button></a>
+
 
 <form method="post" action="/Invoice/confirmBulkDelete" style="display: inline;">
     <button type="submit">Bulk Delete</button>
+
+    <div class='logout-container'><a href='/User/logout'><button class=button2>Logout</button></a></div>
 
     <div class='container'>
         <div class=header>Home</div>
