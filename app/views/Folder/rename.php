@@ -12,8 +12,6 @@
         <div class="form-group">
             <input type="submit" name="action" class='btn btn-primary' value="Confirm Edit"/>
         </div> <br>
-        <PRE><?= var_dump($folder) ?></PRE>
-        <PRE><?= var_dump($folder->parent_folder_name) ?></PRE>
         <?php
             if($parent_folder_name == 0) {
                 //if the folder is at the root bring user to root listing

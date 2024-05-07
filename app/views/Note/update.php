@@ -15,4 +15,4 @@
         </div> <br>
         <a href='/Main/index' class="btntwo">Cancel</a>
 
-<?= $this->view('Shared/header'); ?>
+<?= $this->view('Shared/footer'); ?>

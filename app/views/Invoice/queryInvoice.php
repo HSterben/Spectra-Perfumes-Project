@@ -2,6 +2,8 @@
 $name = ''; // This seems unnecessary if you're not using it elsewhere in the view
 ?>
 
+<!-- TODO: replace header with header call -->
+
 <!DOCTYPE html>
 <html lang="en">
 

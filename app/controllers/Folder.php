@@ -25,6 +25,7 @@ class Folder extends \app\core\Controller
 		$this->view('Folder/read', ['folder'=>$folder, 'subfolders'=>$subfolders, 'parent_folder_name'=>$parent_folder_name]);
 	}
 
+	//TODO: a user not logged in shouldn't have access, otherwise it breaks
 	public function create($parent_folder_name)
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
