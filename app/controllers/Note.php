@@ -11,7 +11,7 @@ class Note extends \app\core\Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $invoice->note_text = $_POST['note_text'];
-            $invoice->update();
+            $invoice->update($invoice_id);
 
             //Activity log
             $activity = new \app\Controllers\ActivityLog();
@@ -29,7 +29,7 @@ class Note extends \app\core\Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!empty($_POST['note_text'])) {
                 $invoice->note_text = $_POST['note_text'];
-                $invoice->update();
+                $invoice->update($invoice_id);
 
                 //Activity log
                 $activity = new \app\Controllers\ActivityLog();
@@ -48,7 +48,7 @@ class Note extends \app\core\Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $invoice->note_text = '';
-            $invoice->update();
+            $invoice->update($invoice_id);
 
             //Activity log
             $activity = new \app\Controllers\ActivityLog();

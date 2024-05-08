@@ -83,7 +83,7 @@ class Invoice extends \app\core\Model
 	{
 		$SQL = 'UPDATE invoice SET invoice_id=:invoice_id, invoice_title=:invoice_title, invoice_date=:invoice_date,
 		invoice_project_num=:invoice_project_num, store_name=:store_name, phone_number=:phone_number,
-		return_quantity=:return_quantity, perfume_price=:perfume_price WHERE invoice_id = :old_invoice_id';
+		return_quantity=:return_quantity, perfume_price=:perfume_price, note_text=:note_text WHERE invoice_id = :old_invoice_id';
 
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
@@ -96,6 +96,7 @@ class Invoice extends \app\core\Model
 				'phone_number' => $this->phone_number,
 				'return_quantity' => $this->return_quantity,
 				'perfume_price' => $this->perfume_price,
+				'note_text' => $this->note_text,
 				'old_invoice_id' => $old_invoice_id
 			]
 		);
@@ -136,8 +137,9 @@ class Invoice extends \app\core\Model
 		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice');
 		return $STMT->fetchAll();
 	}
-	
-	public function copy() {
+
+	public function copy()
+	{
 		$SQL = 'INSERT INTO invoice(invoice_id, folder_name, invoice_title,
 			 invoice_project_num, store_name, phone_number, return_quantity, perfume_price) 
 		VALUES (:invoice_id, :folder_name, :invoice_title,
