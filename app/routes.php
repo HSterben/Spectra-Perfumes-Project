@@ -22,6 +22,7 @@ $this->addRoute('Folder/index', 'Folder,index');
 $this->addRoute('Folder/create/{parent_folder_name}', 'Folder,create');
 $this->addRoute('Folder/read/{folder_name}', 'Folder,read');
 $this->addRoute('Folder/rename/{old_folder_name}', 'Folder,rename');
+$this->addRoute('Folder/update/{folder_name}', 'Folder,update');
 $this->addRoute('Folder/delete/{folder_name}', 'Folder,delete');
 
 //For settings

@@ -19,10 +19,12 @@ class Folder extends \app\core\Controller
 		$folder = new \app\models\Folder();
 		$folder = $folder->getByFolderName($folder_name);
 		$subfolders = $folder->getSubfolders();
+		//Get the invoices in the folder
+		$invoices = $folder->getInvoices();
 		//Set parent folder to tell view where to redirect if cancel
 		$parent_folder_name = $folder->getParentFolderName();
 		//Send the data to the view
-		$this->view('Folder/read', ['folder'=>$folder, 'subfolders'=>$subfolders, 'parent_folder_name'=>$parent_folder_name]);
+		$this->view('Folder/read', ['folder'=>$folder, 'subfolders'=>$subfolders, 'invoices'=>$invoices, 'parent_folder_name'=>$parent_folder_name]);
 	}
 
 	//TODO: a user not logged in shouldn't have access, otherwise it breaks
@@ -53,7 +55,7 @@ class Folder extends \app\core\Controller
 		}
 	}
 
-	//TODO: fix routing issue with back button (it thihnks its the parent folder and for some reason the parent folder is always root)
+	//TODO: fix cancel rerouting
 	public function rename($old_folder_name)
 	{
 		//Instantiate new and old folder objects
@@ -91,7 +93,30 @@ class Folder extends \app\core\Controller
 		}
 	}
 
-	//TODO: update 2.0
+	public function update($folder_name)
+	{
+		//Instantiate folder and invoice objects
+		$folder = new \app\models\Folder();
+		//Set the folder being updated
+		$folder = $folder->getByFolderName($folder_name);
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			//Delete the folder record
+			$folder->delete($folder_name);
+
+			//Activity log
+			$activity = new \app\Controllers\ActivityLog();
+			$activity->create("deleted folder {$folder_name}");
+
+			//Redirect after successful update
+			header('location:/Folder/index');
+		} else {
+			//Get the invoices in the folder
+			$invoices = $folder->getInvoices();
+			//Redirect to the folder update view
+			$this->view('Folder/update',['folder'=>$folder, 'invoices'=>$invoices]);
+		}
+	}
 
 	public function delete($folder_name)
 	{

@@ -81,6 +81,16 @@ class Folder extends \app\core\Model{
 		return $STMT->fetchColumn();
     }
 
+    public function getInvoices(){
+    	$SQL = 'SELECT * FROM invoice WHERE folder_name = :folder_name';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			['folder_name' => $this->folder_name]
+		);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice');//set the type of data returned by fetches
+		return $STMT->fetchAll();
+    }
+
     //TODO: search
 
     //update 1.0
