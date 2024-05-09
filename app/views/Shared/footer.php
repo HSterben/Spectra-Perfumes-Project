@@ -7,7 +7,16 @@
     }
     // Event listener to listen for keydown events
     document.addEventListener('keydown', handleShortcut);
-</script>
 
+    //font size loading
+    document.addEventListener('DOMContentLoaded', function () {
+        var fontSize = localStorage.getItem('font_size');
+        if (fontSize) {
+            document.documentElement.style.setProperty('--font-size', fontSize + 'pt');
+        }
+    });
+
+</script>
 </body>
+
 </html>

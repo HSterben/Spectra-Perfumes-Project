@@ -47,8 +47,28 @@
                         value='Reset to Default Settings'></input></a>
             </th>
             <th>
-                <input type='submit' id='action' value='Save changes'>
+                <input type='submit' id='save' value='Save changes'>
+            </th>
+            <th>
+                <p>This a font test <?= $user->user_id ?> | <?= $user->font_size ?></p>
             </th>
         </table>
     </form>
+
+    <script>
+        document.getElementById('save').addEventListener('click', function (event) {
+            var font_size = document.getElementById('fontSelect').value;
+            document.documentElement.style.setProperty('--font-size', font_size + 'pt');
+            localStorage.setItem('font_size', font_size);
+            document.forms[0].submit();
+        });
+
+        document.getElementById('reset').addEventListener('click', function (event) {
+            var font_size = document.getElementById('fontSelect').value;
+            document.documentElement.style.setProperty('--font-size', 12 + 'pt');
+            localStorage.setItem('font_size', 12);
+            document.forms[0].submit();
+        });
+    </script>
 </body>
+<?= $this->view('Shared/footer'); ?>

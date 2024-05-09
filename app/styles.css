@@ -1,5 +1,5 @@
 :root {
-  --font-size: 16px;
+  --font-size: 12pt;
 }
 
 body {
@@ -150,5 +150,9 @@ dt {
 }
 
 dd {
+  font-size: var(--font-size);
+}
+
+p {
   font-size: var(--font-size);
 }

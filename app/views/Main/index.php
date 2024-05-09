@@ -39,6 +39,7 @@
         </div>
     </div>
 <?php endforeach; ?>
+<p>This a second test for the font size</p>
 </table>
 </div>
 
