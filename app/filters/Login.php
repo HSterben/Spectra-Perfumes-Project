@@ -10,6 +10,10 @@ class Login implements \app\core\AccessFilter{
 			header('location:/User/login');
 			return true;
 		}
+		if($_SESSION['secret']!=NULL){
+			header('location:/User/check2fa');
+			return true;
+		}
 		return false;//not denied
 	}
 

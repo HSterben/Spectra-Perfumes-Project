@@ -117,6 +117,7 @@ CREATE TABLE `user` (
   `username` TEXT NOT NULL,
   `email` TEXT NOT NULL DEFAULT 'test@gmail.com',
   `password_hash` VARCHAR(60) NOT NULL,
+  `secret` VARCHAR(32) DEFAULT NULL,
   `current_currency` TEXT NOT NULL DEFAULT 'CAD',
   `theme` TEXT NOT NULL DEFAULT 'Dark',
   `font_size` INT(2) NOT NULL DEFAULT 16

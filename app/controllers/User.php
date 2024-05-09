@@ -1,6 +1,9 @@
 <?php
 namespace app\controllers;
 
+use chillerlan\Authenticator\{Authenticator, AuthenticatorOptions};
+use chillerlan\QRCode\QRCode;
+
 class User extends \app\core\Controller
 {
 
@@ -18,7 +21,7 @@ class User extends \app\core\Controller
 			if ($user && password_verify($password, $user->password_hash)) {
 				//remember that this is the user logging in...
 				$_SESSION['user_id'] = $user->user_id;
-
+				$_SESSION['secret'] = $user->secret;
 				header('location:/Main/index');
 			} else {
 				header('location:/User/login');
@@ -60,6 +63,54 @@ class User extends \app\core\Controller
 			header('location:/User/login');
 		} else {
 			$this->view('User/registration');
+		}
+	}
+
+	function setup2fa(){
+		$options = new AuthenticatorOptions();
+		$authenticator = new Authenticator($options);
+
+		if($_SERVER['REQUEST_METHOD'] === 'POST'){
+			if(isset($_SESSION['secret_setup'])){
+				$authenticator->setSecret($_SESSION['secret_setup']);
+			}else{
+				header('location:/User/setup2fa');
+			}
+			//was submitted, check the TOTP
+			$totp = $_POST['totp'];
+			if($authenticator->verify($totp)){
+				//record to the user record
+				echo 'yay!';
+				$user = new \app\models\User();
+				$user = $user->getById($_SESSION['user_id']);
+				$user->secret=$_SESSION['secret_setup'];
+				$user->add2FA();
+			}else{
+				echo 'Nope!';
+			}
+		}else{
+			$_SESSION['secret_setup'] = $authenticator->createSecret();
+			//generate the URI with the secret for the user
+			$uri = $authenticator->getUri('Superb application', 'localhost');
+			$QRCode = (new QRCode)->render($uri);
+			$this->view('User/setup2fa',['QRCode'=>$QRCode]);
+		}
+	}
+
+	function check2fa(){
+		if($_SERVER['REQUEST_METHOD']==='POST'){
+			$options = new AuthenticatorOptions();
+			$authenticator = new Authenticator($options);
+			$authenticator->setSecret($_SESSION['secret']);
+			if($authenticator->verify($_POST['totp'])){
+				unset($_SESSION['secret']);
+				header('location:/Main/index');//the good place
+			}else{
+				session_destroy();
+				header('location:/User/login');
+			}
+		}else{
+			$this->view('User/check2fa');
 		}
 	}
 
