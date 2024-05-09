@@ -248,6 +248,14 @@ class Invoice extends \app\core\Controller
     {
         $invoice = new \app\models\Invoice();
         $invoice = $invoice->getById($invoice_id);
+        $user = new \app\models\User();
+        $user = $user->getById($_SESSION['user_id']);
+
+        //Checking to see if the user changed the currency to AED
+        if ($user->current_currency === 'AED') {
+            $invoice->perfume_price = $invoice->perfume_price * 2.68;
+        }
+
         $address = new \app\models\Address();
         $address = $address->getById($invoice_id);
         $perfumeOrders = new \app\models\PerfumeOrder();

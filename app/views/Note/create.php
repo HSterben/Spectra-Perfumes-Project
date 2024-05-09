@@ -8,11 +8,12 @@
 
         <div class="form-group">
             <label>Invoice Note:<input type="textarea" class="form-control" name="note_text" id="note_text"
-                    placeholder="This is a note!"/></label>
+                    placeholder="This is a note!" /></label>
         </div><br>
         <div class="form-group">
-            <input type="submit" name="action" class='btn' value="Create Note"/>
+            <input type="submit" name="action" class='btn' value="Create Note" />
         </div> <br>
         <a href='/Main/index' class="btntwo">Cancel</a>
 
-<?= $this->view('Shared/footer'); ?>
+        <script>document.documentElement.style.setProperty('--font-size', '<?= $_SESSION['user_id']->getById($_SESSION['user_id'])->font_size ?>');</script>
+        <?= $this->view('Shared/footer'); ?>

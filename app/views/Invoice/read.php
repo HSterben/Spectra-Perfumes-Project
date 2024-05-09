@@ -2,8 +2,8 @@
 <link rel="stylesheet" type="text/css" href="/app/printInvoice.css" media="print">
 
 <div class='container'><br>
-    <h1>Invoice Details</h1>    
-    <button onclick= "window.print();" class= "btn" id="print-btn">Print</button>
+    <h1>Invoice Details</h1>
+    <button onclick="window.print();" class="btn" id="print-btn">Print</button>
     <dl>
         <dt>Invoice ID:</dt>
         <dd><?= $invoice->invoice_id ?></dd><br>
@@ -37,7 +37,10 @@
 
         <dt>Return Quantity:</dt>
         <dd><?= $invoice->return_quantity ?></dd><br>
-        
+
+        <dt>Perfume Price:</dt>
+        <dd>$<?= number_format((double) $invoice->perfume_price, 2, '.', '') ?></dd><br>
+
         <div class="form-group">
             <div class="form-group">
                 <?php
@@ -51,12 +54,12 @@
                 ?>
             </div><br>
 
-        <dt id="note">Note:</dt>
-        <dd id = "note"><?= $invoice->note_text ?></dd><br>
+            <dt id="note">Note:</dt>
+            <dd id="note"><?= $invoice->note_text ?></dd><br>
 
 
-        <button class= "print-btn"><a href='/Main/index' class="btntwo" id="print-btn">Back</a></button>
-    </form>
-</div>
+            <button class="print-btn"><a href='/Main/index' class="btntwo" id="print-btn">Back</a></button>
+            </form>
+        </div>
 
-<?= $this->view('Shared/footer'); ?>
+        <?= $this->view('Shared/footer'); ?>

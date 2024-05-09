@@ -32,9 +32,10 @@ $this->addRoute('Settings/index', 'Settings,index');
 $this->addRoute('User/register', 'User,register');
 $this->addRoute('User/login', 'User,login');
 $this->addRoute('User/logout', 'User,logout');
-$this->addRoute('User/update', 'User,update');
+$this->addRoute('User/update', 'User,updateUser');
 $this->addRoute('User/delete', 'User,delete');
-$this->addRoute('User/securePlace', 'Profile,index');
+$this->addRoute('User/updateSettings', 'User,updateSettings');
+$this->addRoute('User/resetSettings', 'User,resetSettings');
 //2FA
 $this->addRoute('User/setup2fa', 'User,setup2fa');
 

@@ -111,11 +111,15 @@ CREATE TABLE `sale` (
 -- Table structure for table `user`
 --
 DROP TABLE IF EXISTS `user`;
+
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `username` text NOT NULL,
-  `email` text NOT NULL DEFAULT 'test@gmail.com',
-  `password_hash` varchar(60) NOT NULL
+  `user_id` INT(11) NOT NULL,
+  `username` TEXT NOT NULL,
+  `email` TEXT NOT NULL DEFAULT 'test@gmail.com',
+  `password_hash` VARCHAR(60) NOT NULL,
+  `current_currency` TEXT NOT NULL DEFAULT 'CAD',
+  `theme` TEXT NOT NULL DEFAULT 'Dark',
+  `font_size` INT(2) NOT NULL DEFAULT 16
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

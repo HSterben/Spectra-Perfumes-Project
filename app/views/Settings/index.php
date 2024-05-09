@@ -1,47 +1,54 @@
 <?= $this->view('Shared/header'); ?>
+
 <div class='header'>
     Settings
 </div>
 
 <body>
-    <table>
-        <tr>
+    <form method='post' action="/User/updateSettings">
+        <table>
+            <tr>
+                <th>
+                    <a href="/ActivityLog/index"><button class=button2>Activity Log</button></a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label>Current currency: &nbsp;</label>
+                    <select id="currencySelect" name='current_currency'>
+                        <option value="CAD" <?= ($user->current_currency === 'CAD') ? 'selected' : '' ?>>CAD</option>
+                        <option value="AED" <?= ($user->current_currency === 'AED') ? 'selected' : '' ?>>AED</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label>Theme: &nbsp;</label>
+                    <select id="themeSelect" name='theme'>
+                        <option value="Dark" <?= ($user->theme === 'Dark') ? 'selected' : '' ?>>Dark</option>
+                        <option value="Light" <?= ($user->theme === 'Light') ? 'selected' : '' ?>>Light</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label>Font size: &nbsp;</label>
+                    <select id="fontSelect" name='font_size'>
+                        <option value="10" <?= ($user->font_size === 10) ? 'selected' : '' ?>>10</option>
+                        <option value="12" <?= ($user->font_size === 12) ? 'selected' : '' ?>>12</option>
+                        <option value="14" <?= ($user->font_size === 14) ? 'selected' : '' ?>>14</option>
+                        <option value="16" <?= ($user->font_size === 16) ? 'selected' : '' ?>>16</option>
+                        <option value="18" <?= ($user->font_size === 18) ? 'selected' : '' ?>>18</option>
+                    </select>
+                </th>
+            </tr>
             <th>
-                <a href="/ActivityLog/index"><button class=button2>Activity Log</button></a>
+                <a href="/User/resetSettings"><input type='button' id='reset'
+                        value='Reset to Default Settings'></input></a>
             </th>
-        </tr>
-        <tr>
-            <th><label>Current currency: &nbsp;</label><input type='button' id='money' value='CAD'
-                    onclick=convert()></input>
+            <th>
+                <input type='submit' id='action' value='Save changes'>
             </th>
-        </tr>
-        <tr>
-            <th><label>Theme: &nbsp;</label> <!--Not sure how we want to make the theme work-->
-        </tr>
-        <tr>
-            <th><label>Font size: &nbsp;</label> <!--Maybe make it a form?-->
-        </tr>
-        <th><input type='button' id='reset' value='Reset to Default Settings' onclick=reset()></input>
-        </th>
-    </table>
+        </table>
+    </form>
 </body>
-<script>
-
-    function convert() {
-        var button = document.getElementById('money');
-        if (button.value === 'CAD') {
-            //Change the boolean for the currency in the user table to false which will then change the currency of the app -> AED
-            button.value = 'AED';
-        } else {
-            //Change the boolean for the currency in the user table to true -> bringing back the currency to CAD
-            button.value = 'CAD';
-        }
-    }
-
-    function reset() {
-        //Set the user settings to the first record (which will be the default ones)
-    }
-
-</script>
-
-<?= $this->view('Shared/footer'); ?>

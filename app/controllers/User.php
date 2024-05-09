@@ -64,7 +64,7 @@ class User extends \app\core\Controller
 	}
 
 	//update our own user record (only if I am logged in)
-	function update()
+	function updateUser()
 	{
 		if (!isset($_SESSION['user_id'])) {
 			header('location:/User/login');
@@ -82,24 +82,48 @@ class User extends \app\core\Controller
 			if (!empty($password)) {//should be false if ''
 				$user->password_hash = password_hash($password, PASSWORD_DEFAULT);
 			}//otherwise remains as it was
-			$user->update();
+			$user->updateUser();
 			header('location:/User/update');
 		} else {
 			$this->view('User/update', $user);
 		}
 	}
 
-	function delete()
+	function updateSettings()
 	{
-		if (!isset($_SESSION['user_id'])) {//is not logged in
+		if (!isset($_SESSION['user_id'])) {
 			header('location:/User/login');
 			return;
 		}
 
 		$user = new \app\models\User();
 		$user = $user->getById($_SESSION['user_id']);
-		$user->delete();
-		header('location:/User/logout');
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$user->current_currency = $_POST['current_currency'];
+			$user->theme = $_POST['theme'];
+			$user->font_size = $_POST['font_size'];
+			$user->updateSettings();
+			header('location:/Settings/index');
+		} else {
+			$this->view('Settings/index'); //Not sure if this is what should be done
+		}
 	}
 
+	public function resetSettings()
+	{
+		if (!isset($_SESSION['user_id'])) {
+			header('location:/User/login');
+			return;
+		}
+
+		$user = new \app\models\User();
+		$user = $user->getById($_SESSION['user_id']);
+
+		$user->current_currency = 'CAD';
+		$user->theme = 'Dark';
+		$user->font_size = 12;
+		$user->updateSettings();
+		header('location:/Settings/index');
+	}
 }

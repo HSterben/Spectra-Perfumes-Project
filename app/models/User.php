@@ -8,6 +8,9 @@ class User extends \app\core\Model{
 	public $username;
 	public $email;
 	public $password_hash;
+	public $current_currency;
+	public $theme;
+	public $font_size;
 
 	//implement CRUD
 	
@@ -41,20 +44,21 @@ class User extends \app\core\Model{
 	}
 
 	//update
-	public function update(){
-		//change anything but the PK
+	public function updateUser(){
+		//change anything but the PK 
 		$SQL = 'UPDATE user SET username = :username, password_hash = :password_hash WHERE user_id = :user_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute((array)$this);
 	}
 
-
-	//delete - this is a special delete to deactivate accounts
-	function delete(){
-		//change anything but the PK
-		$SQL = 'UPDATE user SET active = :active WHERE user_id = :user_id';
+	public function updateSettings() {
+		$SQL = 'UPDATE user SET current_currency = :current_currency, theme = :theme, font_size = :font_size WHERE user_id = :user_id';
 		$STMT = self::$_conn->prepare($SQL);
-		$data = ['user_id'=>$this->user_id, 'active'=>0];
-		$STMT->execute($data);
+		$STMT->execute([
+			'user_id' => $this->user_id,
+			'current_currency' => $this->current_currency,
+			'theme' => $this->theme,
+			'font_size' => $this->font_size
+		]);
 	}
 }
