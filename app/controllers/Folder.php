@@ -77,6 +77,14 @@ class Folder extends \app\core\Controller
 				//Then update it in the database
 				$subfolder->updateParentFolderAttribute();
 			}
+			//Update affected invoices
+			$invoices = $old_folder->getInvoices();
+			foreach ($invoices as $invoice) {
+				//First update the invoice object's folder_name
+				$invoice->folder_name = $folder->folder_name;
+				//Then update it in the database
+				$invoice->updateFolderAttribute();
+			}
 			//Update the folder record
 			$folder->rename($old_folder_name);
 

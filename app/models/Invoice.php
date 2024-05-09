@@ -102,6 +102,20 @@ class Invoice extends \app\core\Model
 		);
 	}
 
+	//update folder_name when renaming folder
+	public function updateFolderAttribute()
+	{
+		$SQL = 'UPDATE invoice SET folder_name = :folder_name WHERE invoice_id = :invoice_id';
+
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			[
+				'folder_name' => $this->folder_name,
+				'invoice_id' => $this->invoice_id
+			]
+		);
+	}
+
 	//delete
 	public function delete()
 	{
