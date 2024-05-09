@@ -27,7 +27,6 @@ class User extends \app\core\Model{
 	}
 
 	public function add2FA(){
-		//change anything but the PK
 		$SQL = 'UPDATE user SET secret = :secret WHERE user_id = :user_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(['user_id'=>$this->user_id,

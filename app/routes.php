@@ -38,6 +38,7 @@ $this->addRoute('User/updateSettings', 'User,updateSettings');
 $this->addRoute('User/resetSettings', 'User,resetSettings');
 //2FA
 $this->addRoute('User/setup2fa', 'User,setup2fa');
+$this->addRoute('User/check2fa', 'User,check2fa');
 
 //for ActivityLog
 $this->addRoute('ActivityLog/index', 'ActivityLog,index');

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+#[\app\filters\Login]
 class Folder extends \app\core\Controller
 {
 	public function index()
