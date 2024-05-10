@@ -77,13 +77,17 @@ class Folder extends \app\core\Controller
 				//Then update it in the database
 				$subfolder->updateParentFolderAttribute();
 			}
+			//TODO: fix this part
 			//Update affected invoices
+			//Make temporary object, as to not break FK constraint
 			$invoices = $old_folder->getInvoices();
 			foreach ($invoices as $invoice) {
-				//First update the invoice object's folder_name
-				$invoice->folder_name = $folder->folder_name;
-				//Then update it in the database
-				$invoice->updateFolderAttribute();
+				//Create temporary object copy with new invoice_id and folder_name
+				$invoiceCopy = $invoice->copyTemp($invoice->invoice_id + 1, $folder->folder_name);
+				//Update the copy in the database
+				$invoiceCopy->updateFolderAttribute();
+				//Delete the original
+				$invoice->delete();
 			}
 			//Update the folder record
 			$folder->rename($old_folder_name);
