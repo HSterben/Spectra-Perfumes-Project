@@ -13,6 +13,7 @@
 		<div class="form-group">
 			<input type="submit" name="action" value="Login" />
 		</div>
+		<a href='register'>Register</a>
 	</form>
 </div>
 

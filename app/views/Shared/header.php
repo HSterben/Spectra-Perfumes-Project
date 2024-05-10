@@ -24,22 +24,23 @@
       <li class="nav-item">
         <a class="nav-link" href="/Main/sales">Sales Analytics</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/User/Logout">Logout</a>
-      </li>
-      <li class="nav-item">
+      
+      <!-- <li class="nav-item">
         <a class="nav-link" href="/Invoice/index">Invoice</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="/Folder/index">Folders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/Settings/index">Settings</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/User/logout">Logout</a>
+      </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>
