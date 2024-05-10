@@ -52,6 +52,24 @@ class Invoice extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 
+	public function getAllInvoiceId()
+	{
+		$SQL = 'SELECT * FROM invoice ORDER BY invoice_id';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice');//set the type of data returned by fetches
+		return $STMT->fetchAll();
+	}
+
+	public function getAllInvoiceProjectNumber()
+	{
+		$SQL = 'SELECT * FROM invoice ORDER BY invoice_project_num';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice');//set the type of data returned by fetches
+		return $STMT->fetchAll();
+	}
+
 	//We don't know search functions yet
 
 	// public function getForUser($user_id)
