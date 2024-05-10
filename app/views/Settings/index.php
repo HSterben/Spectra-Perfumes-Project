@@ -58,15 +58,27 @@
     <script>
         document.getElementById('save').addEventListener('click', function (event) {
             var font_size = document.getElementById('fontSelect').value;
+            var theme = document.getElementById('themeSelect').value;
+            var color = '#1a1a2e';
+            if (theme === 'Light') {
+                color = '#ffffff';
+            }
+
             document.documentElement.style.setProperty('--font-size', font_size + 'pt');
+            document.documentElement.style.setProperty('--background-color', color);
+
             localStorage.setItem('font_size', font_size);
+            localStorage, setItem('theme', color);
+
             document.forms[0].submit();
         });
 
         document.getElementById('reset').addEventListener('click', function (event) {
-            var font_size = document.getElementById('fontSelect').value;
             document.documentElement.style.setProperty('--font-size', 12 + 'pt');
+            document.documentElement.style.setProperty('--background-color', '#1a1a2e');
+
             localStorage.setItem('font_size', 12);
+            localStorage.setItem('theme', '#1a1a2e');
             document.forms[0].submit();
         });
     </script>
