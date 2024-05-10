@@ -120,7 +120,8 @@ CREATE TABLE `user` (
   `secret` VARCHAR(32) DEFAULT NULL,
   `current_currency` TEXT NOT NULL DEFAULT 'CAD',
   `theme` TEXT NOT NULL DEFAULT 'Dark',
-  `font_size` INT(2) NOT NULL DEFAULT 16
+  `font_size` INT(2) NOT NULL DEFAULT 16,
+  `date_format` TEXT NOT NULL DEFAULT 'd/m/Y'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

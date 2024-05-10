@@ -1,10 +1,7 @@
 <?= $this->view('Shared/header'); ?>
-<link rel="stylesheet" type="text/css" href="/app/printInvoice.css" media="print">
-<?php 
-$user = new \app\models\User();
-$user = $user->getById($_SESSION['user_id']);
-?>
 
+<link rel="stylesheet" type="text/css" href="/app/printInvoice.css" media="print">
+<?php $user = getUser();?>
 <div class='container'><br>
     <h1>Invoice Details</h1>
     <button onclick="window.print();" class="btn" id="print-btn">Print</button>
@@ -20,7 +17,7 @@ $user = $user->getById($_SESSION['user_id']);
         <dd><?= $invoice->invoice_title ?></dd><br>
 
         <dt>Invoice Date:</dt>
-        <dd><?= $invoice->invoice_date ?></dd><br>
+        <dd><?= date($user->date_format, strtotime($invoice->invoice_date)) ?></dd><br>
 
         <dt>Business Name:</dt>
         <dd><?= $invoice->store_name ?></dd><br>

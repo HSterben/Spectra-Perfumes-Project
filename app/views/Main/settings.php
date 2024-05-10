@@ -42,6 +42,17 @@
                     </select>
                 </th>
             </tr>
+            <tr>
+                <th>
+                    <label>Date format: &nbsp;</label>
+                    <select id="dateSelect" name='date_format'>
+                        <option value="M d, Y" <?= ($user->date_format === 'M d, Y') ? 'selected' : '' ?>>Sep 29, 2022</option>
+                        <option value="Y-m-d" <?= ($user->date_format === 'Y-m-d') ? 'selected' : '' ?>>2022-09-29</option>
+                        <option value="m/d/Y" <?= ($user->date_format === 'm/d/Y') ? 'selected' : '' ?>>09/29/2022</option>
+                        <option value="d/m/Y" <?= ($user->date_format === 'd/m/Y') ? 'selected' : '' ?>>29/09/2022</option>
+                    </select>
+                </th>
+            </tr>
             <th>
                 <a href="/User/resetSettings"><input type='button' id='reset'
                         value='Reset to Default Settings'></input></a>
@@ -51,15 +62,13 @@
             </th>
             <th>
                 <p>This a font test <?= $user->user_id ?> | <?= $user->font_size ?></p>
-                <p>Test: PHP says: <?= $user->theme ?> </p>
-                <div id="display">background-color: </div>
+                <p>Theme: <?= $user->theme ?> </p>
             </th>
         </table>
     </form>
 
     <script>
         var rootStyle = getComputedStyle(document.documentElement);
-        document.getElementById("display").textContent += rootStyle.getPropertyValue("--background-color");
 
         document.addEventListener('DOMContentLoaded', function () {
             updateSettings();
@@ -68,11 +77,10 @@
         function updateSettings() {
             var font_size = document.getElementById('fontSelect').value;
             var theme = document.getElementById('themeSelect').value;
-
-            var color = (theme === 'Light' ? '#ffffff' : '#1a1a2e');
+            theme = (theme === 'Light' ? '#ffffff' : '#1a1a2e');
 
             document.documentElement.style.setProperty('--font-size', font_size + 'pt');
-            document.documentElement.style.setProperty('--background-color', color);
+            document.documentElement.style.setProperty('--background-color', theme);
         }
         
         document.getElementById('save').addEventListener('click', function (event) {

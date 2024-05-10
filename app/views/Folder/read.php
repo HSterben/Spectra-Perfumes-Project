@@ -28,7 +28,7 @@
                 <div class="invoice-container">
                     <span class="invoice-id"><?= $invoice->invoice_id ?></span>
                     <span class="invoice-title">
-                        <a href='/Invoice/read/<?= $invoice->invoice_id ?>' class="invoice-title"><?= $invoice->invoice_title ?></a>
+                        <a href='/Invoice/index/<?= $invoice->invoice_id ?>' class="invoice-title"><?= $invoice->invoice_title ?></a>
                     </span>
                 </div>
             <?php

@@ -154,10 +154,11 @@ class User extends \app\core\Controller
 			$user->current_currency = $_POST['current_currency'];
 			$user->theme = $_POST['theme'];
 			$user->font_size = $_POST['font_size'];
+			$user->date_format = $_POST['date_format'];
 			$user->updateSettings();
 			header('location:/Main/settings');
 		} else {
-			$this->view('Main/settings'); //Not sure if this is what should be done
+			$this->view('Main/settings');
 		}
 	}
 
@@ -174,6 +175,7 @@ class User extends \app\core\Controller
 		$user->current_currency = 'CAD';
 		$user->theme = 'Dark';
 		$user->font_size = 12;
+		$user->date_format = 'd/m/Y';
 		$user->updateSettings();
 		header('location:/Main/settings');
 	}

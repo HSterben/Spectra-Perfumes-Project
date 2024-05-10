@@ -261,7 +261,7 @@ class Invoice extends \app\core\Controller
         $perfumeOrders = new \app\models\PerfumeOrder();
         $perfumeOrders = $perfumeOrders->getById($invoice_id);
 
-        $this->view('Invoice/read', ['invoice' => $invoice, 'address' => $address, 'perfumeOrder' => $perfumeOrders]);
+        $this->view('Invoice/index', ['invoice' => $invoice, 'address' => $address, 'perfumeOrder' => $perfumeOrders]);
     }
 
     public function copy($invoice_id)

@@ -35,7 +35,7 @@
     <div class="invoice-container">
         <input type="checkbox" name="selected_invoices[]" value="<?= $invoice->invoice_id ?>">
         <span class="invoice-id"><?= $invoice->invoice_id ?></span>
-        <span class="invoice-title"><a href='/Invoice/read/<?= $invoice->invoice_id ?>'
+        <span class="invoice-title"><a href='/Invoice/index/<?= $invoice->invoice_id ?>'
                 class="invoice-title"><?= $invoice->invoice_title ?></a></span>
         <div class='invoice-actions'>
             <a href='/Invoice/update/<?= $invoice->invoice_id ?>' class='btn'>Edit</a>

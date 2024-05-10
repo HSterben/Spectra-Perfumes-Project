@@ -35,7 +35,7 @@ $name = ''; // This seems unnecessary if you're not using it elsewhere in the vi
                 <tbody>
                     <?php foreach ($data as $invoice): ?>
                         <tr>
-                            <td><a href='/Invoice/read/<?= $invoice->invoice_id ?>'>
+                            <td><a href='/Invoice/index/<?= $invoice->invoice_id ?>'>
                                     <?= $invoice->invoice_title ?>
                                 </a></td>
                         </tr>
