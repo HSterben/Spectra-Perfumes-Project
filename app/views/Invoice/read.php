@@ -8,6 +8,7 @@ $user = $user->getById($_SESSION['user_id']);
 <div class='container'><br>
     <h1>Invoice Details</h1>
     <button onclick="window.print();" class="btn" id="print-btn">Print</button>
+
     <dl>
         <dt>Invoice ID:</dt>
         <dd><?= $invoice->invoice_id ?></dd><br>

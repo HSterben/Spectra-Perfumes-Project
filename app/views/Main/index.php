@@ -23,8 +23,6 @@
     </select>
 </form>
 
-
-<a href="/User/logout">Logout</a>
 <br><br>
 <form method='post' action=''>
 
