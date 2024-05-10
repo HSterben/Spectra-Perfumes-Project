@@ -249,7 +249,7 @@ ALTER TABLE `user`
 -- Constraints for table `invoice`
 --
 ALTER TABLE `invoice`
-  ADD CONSTRAINT `invoice_id_ibfk_1` FOREIGN KEY (`folder_name`) REFERENCES `folder` (`folder_name`);
+  ADD CONSTRAINT `invoice_id_ibfk_1` FOREIGN KEY (`folder_name`) REFERENCES `folder` (`folder_name`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `perfume_order`
