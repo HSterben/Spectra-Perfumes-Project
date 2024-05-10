@@ -1,5 +1,9 @@
 <?= $this->view('Shared/header'); ?>
 <link rel="stylesheet" type="text/css" href="/app/printInvoice.css" media="print">
+<?php 
+$user = new \app\models\User();
+$user = $user->getById($_SESSION['user_id']);
+?>
 
 <div class='container'><br>
     <h1>Invoice Details</h1>
@@ -39,7 +43,7 @@
         <dd><?= $invoice->return_quantity ?></dd><br>
 
         <dt>Perfume Price:</dt>
-        <dd>$<?= number_format((double) $invoice->perfume_price, 2, '.', '') ?></dd><br>
+        <dd><?= number_format((double) $invoice->perfume_price, 2, '.', '') . " " . $user->current_currency ?> $</dd><br>
 
         <div class="form-group">
             <div class="form-group">

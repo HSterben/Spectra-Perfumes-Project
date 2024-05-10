@@ -51,34 +51,39 @@
             </th>
             <th>
                 <p>This a font test <?= $user->user_id ?> | <?= $user->font_size ?></p>
+                <p>Test: PHP says: <?= $user->theme ?> </p>
+                <div id="display">background-color: </div>
             </th>
         </table>
     </form>
 
     <script>
-        document.getElementById('save').addEventListener('click', function (event) {
+        var rootStyle = getComputedStyle(document.documentElement);
+        document.getElementById("display").textContent += rootStyle.getPropertyValue("--background-color");
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateSettings();
+        });
+
+        function updateSettings() {
             var font_size = document.getElementById('fontSelect').value;
             var theme = document.getElementById('themeSelect').value;
-            var color = '#1a1a2e';
-            if (theme === 'Light') {
-                color = '#ffffff';
-            }
+
+            var color = (theme === 'Light' ? '#ffffff' : '#1a1a2e');
 
             document.documentElement.style.setProperty('--font-size', font_size + 'pt');
             document.documentElement.style.setProperty('--background-color', color);
-
-            localStorage.setItem('font_size', font_size);
-            localStorage, setItem('theme', color);
-
+        }
+        
+        document.getElementById('save').addEventListener('click', function (event) {
+            updateSettings();
             document.forms[0].submit();
         });
 
         document.getElementById('reset').addEventListener('click', function (event) {
-            document.documentElement.style.setProperty('--font-size', 12 + 'pt');
-            document.documentElement.style.setProperty('--background-color', '#1a1a2e');
-
-            localStorage.setItem('font_size', 12);
-            localStorage.setItem('theme', '#1a1a2e');
+            document.getElementById('fontSelect').value = '12';
+            document.getElementById('themeSelect').value = 'Dark';
+            updateSettings();
             document.forms[0].submit();
         });
     </script>

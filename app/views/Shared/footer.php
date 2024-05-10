@@ -1,3 +1,8 @@
+<?php
+$user = new \app\models\User();
+$user = $user->getById($_SESSION['user_id']);
+?>
+
 <script>
     function handleShortcut(event) {
         if (event.shiftKey && event.altKey && event.key === 'C') {
@@ -7,19 +12,14 @@
     }
     // Event listener to listen for keydown events
     document.addEventListener('keydown', handleShortcut);
-
-    //font size loading
-    document.addEventListener('DOMContentLoaded', function () {
-        var fontSize = localStorage.getItem('font_size');
-        var theme = localStorage.getItem('theme');
-        if (fontSize) {
-            document.documentElement.style.setProperty('--font-size', fontSize + 'pt');
-        }
-        if (theme) {
-            document.documentElement.style.setProperty('--background-color', theme);
-        }
-    });
 </script>
+
+<style>
+    :root {
+        --font-size: <?= $user->font_size ?> + 'pt';
+        --background-color: <?= $user->theme === 'Light' ? '#ffffff' : '#1a1a2e' ?>;
+    }
+</style>
 </body>
 
 </html>
