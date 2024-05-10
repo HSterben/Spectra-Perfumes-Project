@@ -52,7 +52,7 @@ class Note extends \app\core\Controller
 
             //Activity log
             $activity = new \app\Controllers\ActivityLog();
-            $activity->create(__("deleted invoice note for ") $invoice->invoice_title);
+            $activity->create(__("deleted invoice note for ") . $invoice->invoice_title);
 
             header('location:/Main/index');
         }
