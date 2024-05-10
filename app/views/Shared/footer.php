@@ -1,8 +1,4 @@
-<?php
-$user = new \app\models\User();
-$user = $user->getById($_SESSION['user_id']);
-?>
-
+<?php $user = getUser(); ?>
 <script>
     function handleShortcut(event) {
         if (event.shiftKey && event.altKey && event.key === 'C') {
