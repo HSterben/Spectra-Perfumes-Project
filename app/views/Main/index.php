@@ -14,6 +14,16 @@
         <table>
 
 </form>
+<form method="post" action="/Main/index" id="sortForm">
+    <select name="sort" id="sort">
+        <option value="">Sort by...</option>
+        <option value="invoice_date">Invoice Date</option>
+        <option value="invoice_id">Invoice Id</option>
+        <option value="invoice_project_number">Invoice Project Number</option>
+    </select>
+</form>
+
+
 <a href="/User/logout">Logout</a>
 <br><br>
 <form method='post' action=''>
@@ -43,4 +53,9 @@
 </table>
 </div>
 
+<script>
+    document.getElementById('sort').addEventListener('change', function () {
+        document.getElementById('sortForm').submit();
+    });
+</script>
 <?= $this->view('Shared/footer'); ?>
