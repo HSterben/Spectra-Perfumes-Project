@@ -155,9 +155,9 @@ class User extends \app\core\Controller
 			$user->theme = $_POST['theme'];
 			$user->font_size = $_POST['font_size'];
 			$user->updateSettings();
-			header('location:/Settings/index');
+			header('location:/Main/settings');
 		} else {
-			$this->view('Settings/index'); //Not sure if this is what should be done
+			$this->view('Main/settings'); //Not sure if this is what should be done
 		}
 	}
 
@@ -175,6 +175,6 @@ class User extends \app\core\Controller
 		$user->theme = 'Dark';
 		$user->font_size = 12;
 		$user->updateSettings();
-		header('location:/Settings/index');
+		header('location:/Main/settings');
 	}
 }

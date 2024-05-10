@@ -56,4 +56,17 @@ class Main extends \app\core\Controller
 		$data = $sale;
 		$this->view('Main/sales', $data);
 	}
+
+	
+    public function settings()
+    {
+        if (!isset($_SESSION['user_id'])) {
+			header('location:/User/login');
+			return;
+		}
+        $user = new \app\models\User();
+		$user = $user->getById($_SESSION['user_id']);
+
+        $this->view('Main/settings', ['user' => $user]);
+    }
 }

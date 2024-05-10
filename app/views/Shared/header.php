@@ -32,7 +32,7 @@
         <a class="nav-link" href="/Folder/index">Folders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Settings/index">Settings</a>
+        <a class="nav-link" href="/Main/settings">Settings</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/User/logout">Logout</a>

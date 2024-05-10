@@ -1,10 +1,13 @@
 <?php
 //define a few routes "url"=>"controller,method"
 
-//For invoice
+//For main
 $this->addRoute('', 'Main,index');
 $this->addRoute('Main/index', 'Main,index');
 $this->addRoute('Main/sales', 'Main,sales');
+$this->addRoute('Main/settings', 'Main,settings');
+
+//For invoice
 $this->addRoute('Invoice/create', 'Invoice,create');
 $this->addRoute('Invoice/update/{invoice_id}', 'Invoice,update');
 $this->addRoute('Invoice/list', 'Invoice,index');
@@ -24,9 +27,6 @@ $this->addRoute('Folder/read/{folder_name}', 'Folder,read');
 $this->addRoute('Folder/rename/{old_folder_name}', 'Folder,rename');
 $this->addRoute('Folder/update/{folder_name}', 'Folder,update');
 $this->addRoute('Folder/delete/{folder_name}', 'Folder,delete');
-
-//For settings
-$this->addRoute('Settings/index', 'Settings,index');
 
 //For user
 $this->addRoute('User/register', 'User,register');

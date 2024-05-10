@@ -16,5 +16,3 @@
 		<a href='register'>Register</a>
 	</form>
 </div>
-
-<?= $this->view('Shared/footer'); ?>
