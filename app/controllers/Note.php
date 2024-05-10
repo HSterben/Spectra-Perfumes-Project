@@ -33,7 +33,7 @@ class Note extends \app\core\Controller
 
                 //Activity log
                 $activity = new \app\Controllers\ActivityLog();
-                $activity->create(__("created invoice note for ") $invoice->invoice_title);
+                $activity->create(__("created invoice note for ") . $invoice->invoice_title);
 
                 header('location:/Main/index');
             }
