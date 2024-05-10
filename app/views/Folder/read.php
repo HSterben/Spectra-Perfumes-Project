@@ -3,8 +3,8 @@
 <div class='container'>
     <form method='post' action=''><br>
 
-        <h1>Folder: <?= $folder->folder_name ?></h1>
-        <h2><a href='/Folder/update/{$folder->folder_name}' class="btn">Update Folder</a></h2>
+        <h1><?= __('Folder: ')?> <?= $folder->folder_name ?></h1>
+        <h2><a href='/Folder/update/{$folder->folder_name}' class="btn"><?= __('Update Folder') ?></a></h2>
         <h3><a href='/Folder/create/<?= $folder->folder_name ?>' class="btn">Add new folder here</a></h3>
         <div class="form-group">
             <?php

@@ -67,7 +67,7 @@ class Invoice extends \app\core\Controller
 
                 //Activity log
                 $activity = new \app\Controllers\ActivityLog();
-                $activity->create("created invoice: {$invoice->invoice_title}");
+                $activity->create(__("created invoice: ") . $invoice->invoice_title);
 
             }
 
@@ -150,7 +150,7 @@ class Invoice extends \app\core\Controller
 
             //Activity log
             $activity = new \app\Controllers\ActivityLog();
-            $activity->create("updated invoice: {$invoice->invoice_title}");
+            $activity->create(__("updated invoice: ") . $invoice->invoice_title);
 
             // Redirect after successful creation
             header('location:/Main/index');
@@ -236,7 +236,7 @@ class Invoice extends \app\core\Controller
 
             //Activity log
             $activity = new \app\Controllers\ActivityLog();
-            $activity->create("deleted invoice: {$invoice->invoice_title}");
+            $activity->create(__("deleted invoice: ") . $invoice->invoice_title);
 
             header('location:/Main/index');
         } else {
@@ -296,7 +296,7 @@ class Invoice extends \app\core\Controller
 
             //Activity log
             $activity = new \app\Controllers\ActivityLog();
-            $activity->create("copied invoice: {$newInvoice->getById($invoice_id)->invoice_title}");
+            $activity->create(__("copied invoice: ") . $newInvoice->getById($invoice_id)->invoice_title);
 
             // Redirect after successful creation
             header('location:/Main/index');

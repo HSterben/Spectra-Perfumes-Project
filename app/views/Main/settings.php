@@ -9,7 +9,7 @@
         <table>
             <tr>
                 <th>
-                    <a href="/ActivityLog/index"><button class=button2>Activity Log</button></a>
+                    <a href="/ActivityLog/index" style='color: yellow'>Activity Log</a>
                 </th>
             </tr>
             <tr>

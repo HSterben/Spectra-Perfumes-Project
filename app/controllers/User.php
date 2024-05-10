@@ -38,15 +38,6 @@ class User extends \app\core\Controller
 		header('location:/User/login');
 	}
 
-	function securePlace()
-	{
-		if (!isset($_SESSION['user_id'])) {
-			header('location:/User/login');
-			return;
-		}
-		echo 'You are safe. You are in a secure location.';
-	}
-
 	function register()
 	{
 		//display the form and process the registration
@@ -80,13 +71,13 @@ class User extends \app\core\Controller
 			$totp = $_POST['totp'];
 			if($authenticator->verify($totp)){
 				//record to the user record
-				echo 'yay!';
+				echo __('yay!');
 				$user = new \app\models\User();
 				$user = $user->getById($_SESSION['user_id']);
 				$user->secret=$_SESSION['secret_setup'];
 				$user->add2FA();
 			}else{
-				echo 'Nope!';
+				echo __('Nope!');
 			}
 		}else{
 			$_SESSION['secret_setup'] = $authenticator->createSecret();
@@ -172,8 +163,8 @@ class User extends \app\core\Controller
 		$user = new \app\models\User();
 		$user = $user->getById($_SESSION['user_id']);
 
-		$user->current_currency = 'CAD';
-		$user->theme = 'Dark';
+		$user->current_currency = __('CAD');
+		$user->theme = __('Dark');
 		$user->font_size = 12;
 		$user->date_format = 'd/m/Y';
 		$user->updateSettings();

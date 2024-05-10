@@ -23,7 +23,7 @@ class ActivityLog extends \app\core\Controller
         $activity = new \app\models\ActivityLog();
         $activity->user_id = $user->user_id;
 
-        $activity->message = ": {$user->username} {$action} at ";
+        $activity->message = ":" . $user->username . $action . __('at');
         $activity->insert();
     }
 }
