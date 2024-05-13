@@ -3,10 +3,10 @@
 <div class='container'>
     <form method='post' action=''><br>
 
-        <h1>Rename Folder</h1>
+        <h1><?= __('Rename Folder') ?></h1>
         <div class="form-group">
-            <label>Current folder name: <?= $folder->folder_name ?></label><br>
-            <label>New folder name:<input type="text" class="form-control" name="folder_name" id="folder_name"required/></label>
+            <label><?= __('Current folder name:') ?><?= $folder->folder_name ?></label><br>
+            <label><?= __('New folder name:') ?><input type="text" class="form-control" name="folder_name" id="folder_name"required/></label>
         </div><br>
 
         <div class="form-group">

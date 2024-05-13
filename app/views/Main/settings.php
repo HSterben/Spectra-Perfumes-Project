@@ -1,7 +1,7 @@
 <?= $this->view('Shared/header'); ?>
 
 <div class='header'>
-    Settings
+<?= __('Settings')?>
 </div>
 
 <body>
@@ -9,7 +9,7 @@
         <table>
             <tr>
                 <th>
-                    <a href="/ActivityLog/index" style='color: yellow'>Activity Log</a>
+                    <a href="/ActivityLog/index" style='color: yellow'><?= __('Activity Log')?></a>
                 </th>
             </tr>
             <tr>
@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <th>
-                    <label>Theme: &nbsp;</label>
+                    <label><?= __('Theme: ')?>&nbsp;</label>
                     <select id="themeSelect" name='theme'>
                         <option value="Dark" <?= ($user->theme === 'Dark') ? 'selected' : '' ?>>Dark</option>
                         <option value="Light" <?= ($user->theme === 'Light') ? 'selected' : '' ?>>Light</option>
@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <th>
-                    <label>Font size: &nbsp;</label>
+                    <label><?= __('Font size: ')?>&nbsp;</label>
                     <select id="fontSelect" name='font_size'>
                         <option value="10" <?= ($user->font_size === 10) ? 'selected' : '' ?>>10</option>
                         <option value="12" <?= ($user->font_size === 12) ? 'selected' : '' ?>>12</option>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <th>
-                    <label>Date format: &nbsp;</label>
+                    <label><?= __('Date format: ')?>&nbsp;</label>
                     <select id="dateSelect" name='date_format'>
                         <option value="M d, Y" <?= ($user->date_format === 'M d, Y') ? 'selected' : '' ?>>Sep 29, 2022</option>
                         <option value="Y-m-d" <?= ($user->date_format === 'Y-m-d') ? 'selected' : '' ?>>2022-09-29</option>
@@ -62,7 +62,7 @@
             </th>
             <th>
                 <p>This a font test <?= $user->user_id ?> | <?= $user->font_size ?></p>
-                <p>Theme: <?= $user->theme ?> </p>
+                <p><?= __('Theme: ')?><?= $user->theme ?> </p>
             </th>
         </table>
     </form>

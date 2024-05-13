@@ -4,7 +4,7 @@
 <div class='container'>
     <form method='post' action=''><br>
 
-        <h1>Copy Invoice</h1>
+        <h1><?= __('Copy Invoice')?></h1>
 
         <!-- <PRE> <?= var_dump($invoice)?> </PRE> -->
 
@@ -14,14 +14,14 @@
         </div><br>
 
         <div class="form-group">
-            <label>Would you like to rename the Invoice Title? :<input type="text" class="form-control" name="invoice_title" id="title"
+            <label><?= __('Would you like to rename the Invoice Title? :')?><input type="text" class="form-control" name="invoice_title" id="title"
             value='Copy of <?= $invoice->invoice_title ?>' required /></label>
         </div><br>
 
         <div class="form-group">
             <input type="submit" name="action" class='btn' value="Copy Invoice" required />
         </div> <br>
-        <a href='/Main/index' class="btntwo">Cancel</a>
+        <a href='/Main/index' class="btntwo"><?= __('Cancel')?></a>
     </form>
 </div>
 

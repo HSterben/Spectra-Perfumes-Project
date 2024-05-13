@@ -21,15 +21,15 @@ $name = ''; // This seems unnecessary if you're not using it elsewhere in the vi
 
     <div class='container'>
 
-        <h1 class="mt-3">Search Results</h1>
+        <h1 class="mt-3"><?= __('Search Results')?></h1>
 
         <?php if (empty ($data)): ?>
-            <p>No invoices found matching your search criteria.</p>
+            <p><?= __('No invoices found matching your search criteria.')?></p>
         <?php else: ?>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Title</th>
+                        <th><?= __('Title')?></th>
                     </tr>
                 </thead>
                 <tbody>

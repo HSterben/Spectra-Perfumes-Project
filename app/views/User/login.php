@@ -3,16 +3,16 @@
 <div class='container'>
 	<form method='post' action=''>
 		<div class="form-group">
-			<label>Username:<input type="text" class="form-control" name="username" placeholder="Jon" /></label>
+			<label><?= __('Username:')?><input type="text" class="form-control" name="username" placeholder="Jon" /></label>
 		</div>
 		<div class="form-group">
-			<label>Password:<input type="password" class="form-control" name="password"
+			<label><?= __('Password:')?><input type="password" class="form-control" name="password"
 					placeholder="password" /></label>
 		</div>
 
 		<div class="form-group">
 			<input type="submit" name="action" value="Login" />
 		</div>
-		<a href='register'>Register</a>
+		<a href='register'><?= __('Register')?></a>
 	</form>
 </div>

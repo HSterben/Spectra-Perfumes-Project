@@ -15,7 +15,7 @@ class Note extends \app\core\Controller
 
             //Activity log
             $activity = new \app\Controllers\ActivityLog();
-            $activity->create(__("updated invoice note for ") . $invoice->invoice_title);
+            $activity->create("updated invoice note for " . $invoice->invoice_title);
 
             header('location:/Main/index');
         }
@@ -33,7 +33,7 @@ class Note extends \app\core\Controller
 
                 //Activity log
                 $activity = new \app\Controllers\ActivityLog();
-                $activity->create(__("created invoice note for ") . $invoice->invoice_title);
+                $activity->create("created invoice note for " . $invoice->invoice_title);
 
                 header('location:/Main/index');
             }
@@ -52,7 +52,7 @@ class Note extends \app\core\Controller
 
             //Activity log
             $activity = new \app\Controllers\ActivityLog();
-            $activity->create(__("deleted invoice note for ") . $invoice->invoice_title);
+            $activity->create("deleted invoice note for " . $invoice->invoice_title);
 
             header('location:/Main/index');
         }

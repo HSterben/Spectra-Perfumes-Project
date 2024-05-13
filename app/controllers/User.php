@@ -163,8 +163,8 @@ class User extends \app\core\Controller
 		$user = new \app\models\User();
 		$user = $user->getById($_SESSION['user_id']);
 
-		$user->current_currency = __('CAD');
-		$user->theme = __('Dark');
+		$user->current_currency = 'CAD';
+		$user->theme = 'Dark';
 		$user->font_size = 12;
 		$user->date_format = 'd/m/Y';
 		$user->updateSettings();

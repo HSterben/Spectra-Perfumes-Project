@@ -40,7 +40,7 @@ class Folder extends \app\core\Controller
 			$folder->create($parent_folder_name);
 
 			$activity = new \app\Controllers\ActivityLog();
-			$activity->create(__("created folder ") . $folder->folder_name); //TODO: i18n
+			$activity->create("created folder " . $folder->folder_name); 
 
 			//Redirect after successful creation
 			if($parent_folder_name == 0) {
@@ -83,7 +83,7 @@ class Folder extends \app\core\Controller
 
 			//Activity log
 			$activity = new \app\Controllers\ActivityLog();
-			$activity->create(__("renamed ") . $old_folder_name . __("folder to") . $folder->folder_name);
+			$activity->create("renamed " . $old_folder_name . "folder to" . $folder->folder_name);
 
 			//Redirect after successful update
 			header('location:/Folder/index');
@@ -108,7 +108,7 @@ class Folder extends \app\core\Controller
 
 			//Activity log
 			$activity = new \app\Controllers\ActivityLog();
-			$activity->create(__("updated folder ") . $folder_name);
+			$activity->create("updated folder " . $folder_name);
 
 			//Redirect after successful update
 			header('location:/Folder/index');
@@ -133,7 +133,7 @@ class Folder extends \app\core\Controller
 
 			//Activity log
 			$activity = new \app\Controllers\ActivityLog();
-			$activity->create(__("deleted folder ") . $folder_name);
+			$activity->create("deleted folder " . $folder_name);
 
 			//Redirect after successful update
 			header('location:/Folder/index');
