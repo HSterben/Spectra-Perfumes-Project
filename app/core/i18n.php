@@ -5,10 +5,10 @@ use Symfony\Component\Translation\Loader\MoFileLoader;
 //list the localisations that have been built
 $supportedLocales = ['fr', 'en'];
 //get the requested locale to use here we default to 'fr'
-$locale = $_GET['lang'] ?? $_COOKIE['lang'] ?? 'fr';
+$locale = $_GET['lang'] ?? $_COOKIE['lang'] ?? 'en';
 //ensure the locale is supported
 if(!in_array($locale, $supportedLocales))
-	$locale = 'fr';
+	$locale = 'en';
 //save the setting to a cookie
 setcookie('lang',$locale,0,'/');
 //initialise a translator object for the locale
