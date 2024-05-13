@@ -12,6 +12,7 @@ class User extends \app\core\Model{
 	public $theme;
 	public $font_size;
 	public $date_format;
+	public $lang;
 
 	//implement CRUD
 	
@@ -60,14 +61,15 @@ class User extends \app\core\Model{
 	}
 
 	public function updateSettings() {
-		$SQL = 'UPDATE user SET current_currency = :current_currency, theme = :theme, font_size = :font_size, date_format = :date_format WHERE user_id = :user_id';
+		$SQL = 'UPDATE user SET current_currency = :current_currency, theme = :theme, font_size = :font_size, date_format = :date_format, lang = :lang WHERE user_id = :user_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute([
 			'user_id' => $this->user_id,
 			'current_currency' => $this->current_currency,
 			'theme' => $this->theme,
 			'font_size' => $this->font_size,
-			'date_format' => $this->date_format
+			'date_format' => $this->date_format,
+			'lang' => $this->lang
 		]);
 	}
 }

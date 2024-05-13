@@ -57,50 +57,52 @@ class User extends \app\core\Controller
 		}
 	}
 
-	function setup2fa(){
+	function setup2fa()
+	{
 		$options = new AuthenticatorOptions();
 		$authenticator = new Authenticator($options);
 
-		if($_SERVER['REQUEST_METHOD'] === 'POST'){
-			if(isset($_SESSION['secret_setup'])){
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (isset($_SESSION['secret_setup'])) {
 				$authenticator->setSecret($_SESSION['secret_setup']);
-			}else{
+			} else {
 				header('location:/User/setup2fa');
 			}
 			//was submitted, check the TOTP
 			$totp = $_POST['totp'];
-			if($authenticator->verify($totp)){
+			if ($authenticator->verify($totp)) {
 				//record to the user record
 				echo __('yay!');
 				$user = new \app\models\User();
 				$user = $user->getById($_SESSION['user_id']);
-				$user->secret=$_SESSION['secret_setup'];
+				$user->secret = $_SESSION['secret_setup'];
 				$user->add2FA();
-			}else{
+			} else {
 				echo __('Nope!');
 			}
-		}else{
+		} else {
 			$_SESSION['secret_setup'] = $authenticator->createSecret();
 			//generate the URI with the secret for the user
 			$uri = $authenticator->getUri('Superb application', 'localhost');
 			$QRCode = (new QRCode)->render($uri);
-			$this->view('User/setup2fa',['QRCode'=>$QRCode]);
+			$this->view('User/setup2fa', ['QRCode' => $QRCode]);
 		}
 	}
 
-	function check2fa(){
-		if($_SERVER['REQUEST_METHOD']==='POST'){
+	function check2fa()
+	{
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$options = new AuthenticatorOptions();
 			$authenticator = new Authenticator($options);
 			$authenticator->setSecret($_SESSION['secret']);
-			if($authenticator->verify($_POST['totp'])){
+			if ($authenticator->verify($_POST['totp'])) {
 				unset($_SESSION['secret']);
 				header('location:/Main/index');//the good place
-			}else{
+			} else {
 				session_destroy();
 				header('location:/User/login');
 			}
-		}else{
+		} else {
 			$this->view('User/check2fa');
 		}
 	}
@@ -146,6 +148,7 @@ class User extends \app\core\Controller
 			$user->theme = $_POST['theme'];
 			$user->font_size = $_POST['font_size'];
 			$user->date_format = $_POST['date_format'];
+			$user->lang = $_POST['lang'];
 			$user->updateSettings();
 			header('location:/Main/settings');
 		} else {
@@ -167,6 +170,7 @@ class User extends \app\core\Controller
 		$user->theme = 'Dark';
 		$user->font_size = 12;
 		$user->date_format = 'd/m/Y';
+		$user->lang = 'en';
 		$user->updateSettings();
 		header('location:/Main/settings');
 	}

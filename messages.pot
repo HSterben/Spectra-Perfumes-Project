@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app/views/Folder/delete.php:7
+msgid "Are you sure you want to delete this folder?"
+msgstr ""
+
+#: app/views/Folder/read.php:6
+msgid "Folder: "
+msgstr ""
+
+#: app/views/Folder/rename.php:6
+msgid "Rename Folder"
+msgstr ""
+
+#: app/views/Folder/rename.php:8 app/views/Folder/update.php:8
+msgid "Current folder name:"
+msgstr ""
+
+#: app/views/Folder/rename.php:9 app/views/Folder/update.php:9
+msgid "New folder name:"
+msgstr ""
+
+#: app/views/Invoice/bulkDeletion.php:4
+msgid "Bulk Invoice Deletion"
+msgstr ""
+
+#: app/views/Invoice/bulkDeletion.php:5
+msgid "Do you want to proceed with the deletion of the following invoices?"
+msgstr ""
+
+#: app/views/Invoice/bulkDeletion.php:16 app/views/Invoice/copy.php:24
+#: app/views/Invoice/create.php:82 app/views/Invoice/update.php:82
+#: app/views/Note/create.php:16 app/views/Note/delete.php:16
+#: app/views/Note/update.php:16 app/views/User/update.php:19
+msgid "Cancel"
+msgstr ""
+
+#: app/views/Invoice/copy.php:7 app/views/Main/index.php:43
+msgid "Copy Invoice"
+msgstr ""
+
+#: app/views/Invoice/copy.php:17
+msgid "Would you like to rename the Invoice Title? :"
+msgstr ""
+
+#: app/views/Invoice/create.php:7
+msgid "Create Invoice"
+msgstr ""
+
+#: app/views/Invoice/create.php:10 app/views/Invoice/delete.php:6
+#: app/views/Invoice/index.php:10 app/views/Invoice/update.php:9
+msgid "Invoice ID:"
+msgstr ""
+
+#: app/views/Invoice/create.php:15 app/views/Invoice/delete.php:9
+#: app/views/Invoice/index.php:13 app/views/Invoice/update.php:14
+msgid "Project Number:"
+msgstr ""
+
+#: app/views/Invoice/create.php:20 app/views/Invoice/delete.php:12
+#: app/views/Invoice/index.php:16 app/views/Invoice/update.php:20
+msgid "Invoice Title:"
+msgstr ""
+
+#: app/views/Invoice/create.php:24 app/views/Invoice/index.php:19
+#: app/views/Invoice/update.php:24
+msgid "Invoice Date:"
+msgstr ""
+
+#: app/views/Invoice/create.php:28 app/views/Invoice/delete.php:15
+#: app/views/Invoice/index.php:22 app/views/Invoice/update.php:28
+msgid "Business Name:"
+msgstr ""
+
+#: app/views/Invoice/create.php:33 app/views/Invoice/delete.php:18
+#: app/views/Invoice/index.php:25 app/views/Invoice/update.php:33
+msgid "Street:"
+msgstr ""
+
+#: app/views/Invoice/create.php:38 app/views/Invoice/delete.php:21
+#: app/views/Invoice/index.php:28 app/views/Invoice/update.php:38
+msgid "City:"
+msgstr ""
+
+#: app/views/Invoice/create.php:43 app/views/Invoice/delete.php:24
+#: app/views/Invoice/index.php:31 app/views/Invoice/update.php:43
+msgid "Postal Code:"
+msgstr ""
+
+#: app/views/Invoice/create.php:48 app/views/Invoice/delete.php:27
+#: app/views/Invoice/index.php:34 app/views/Invoice/update.php:48
+msgid "Country:"
+msgstr ""
+
+#: app/views/Invoice/create.php:53 app/views/Invoice/delete.php:30
+#: app/views/Invoice/index.php:37 app/views/Invoice/update.php:53
+msgid "Phone Number:"
+msgstr ""
+
+#: app/views/Invoice/create.php:58 app/views/Invoice/delete.php:33
+#: app/views/Invoice/index.php:40 app/views/Invoice/update.php:58
+msgid "Return Quantity:"
+msgstr ""
+
+#: app/views/Invoice/create.php:63 app/views/Invoice/index.php:43
+#: app/views/Invoice/update.php:63
+msgid "Perfume Price:"
+msgstr ""
+
+#: app/views/Invoice/create.php:69
+msgid "Perfume Code:"
+msgstr ""
+
+#: app/views/Invoice/create.php:71
+msgid "Quantity:"
+msgstr ""
+
+#: app/views/Invoice/delete.php:4 app/views/Invoice/index.php:6
+msgid "Invoice Details"
+msgstr ""
+
+#: app/views/Invoice/queryInvoice.php:24
+msgid "Search Results"
+msgstr ""
+
+#: app/views/Invoice/queryInvoice.php:27
+msgid "No invoices found matching your search criteria."
+msgstr ""
+
+#: app/views/Invoice/queryInvoice.php:32
+msgid "Title"
+msgstr ""
+
+#: app/views/Invoice/update.php:6
+msgid "Update Invoice"
+msgstr ""
+
+#: app/views/Main/index.php:3 app/views/Main/sales.php:3
+msgid "Add a new invoice"
+msgstr ""
+
+#: app/views/Main/index.php:4 app/views/Main/sales.php:7
+msgid "Sales Analytics"
+msgstr ""
+
+#: app/views/Main/index.php:8
+msgid "Bulk Delete"
+msgstr ""
+
+#: app/views/Main/index.php:13 app/views/Main/sales.php:4
+msgid "Home"
+msgstr ""
+
+#: app/views/Main/index.php:19
+msgid "Sort by..."
+msgstr ""
+
+#: app/views/Main/index.php:20
+msgid "Invoice Date"
+msgstr ""
+
+#: app/views/Main/index.php:21
+msgid "Invoice Id"
+msgstr ""
+
+#: app/views/Main/index.php:22
+msgid "Invoice Project Number"
+msgstr ""
+
+#: app/views/Main/index.php:41
+msgid "Edit"
+msgstr ""
+
+#: app/views/Main/index.php:42
+msgid "Delete"
+msgstr ""
+
+#: app/views/Main/index.php:44 app/views/Note/create.php:7
+msgid "Create Note"
+msgstr ""
+
+#: app/views/Main/index.php:45 app/views/Note/update.php:7
+msgid "Update Note"
+msgstr ""
+
+#: app/views/Main/index.php:46 app/views/Note/delete.php:7
+msgid "Delete Note"
+msgstr ""
+
+#: app/views/Main/sales.php:15
+msgid "Invoice id: "
+msgstr ""
+
+#: app/views/Main/sales.php:16
+msgid "Return value: "
+msgstr ""
+
+#: app/views/Main/sales.php:17
+msgid "Purchase value: "
+msgstr ""
+
+#: app/views/Main/sales.php:18
+msgid "Total value: "
+msgstr ""
+
+#: app/views/Main/settings.php:4
+msgid "Settings"
+msgstr ""
+
+#: app/views/Main/settings.php:12
+msgid "Activity Log"
+msgstr ""
+
+#: app/views/Main/settings.php:26 app/views/Main/settings.php:65
+msgid "Theme: "
+msgstr ""
+
+#: app/views/Main/settings.php:35
+msgid "Font size: "
+msgstr ""
+
+#: app/views/Main/settings.php:47
+msgid "Date format: "
+msgstr ""
+
+#: app/views/Note/create.php:10 app/views/Note/delete.php:10
+#: app/views/Note/update.php:10
+msgid "Invoice Note:"
+msgstr ""
+
+#: app/views/User/login.php:6 app/views/User/registration.php:7
+#: app/views/User/update.php:11
+msgid "Username:"
+msgstr ""
+
+#: app/views/User/login.php:9 app/views/User/registration.php:10
+#: app/views/User/update.php:14
+msgid "Password:"
+msgstr ""
+
+#: app/views/User/login.php:16
+msgid "Register"
+msgstr ""
+
+#: app/views/User/registration.php:15
+msgid "I have an account, bring me to the login page"
+msgstr ""
+
+#: app/views/User/setup2fa.php:4
+msgid ""
+"Scan the above QR-code with your mobile Authenticator app, such as Google "
+"Authenticator. The authenticator app will generate codes that are valid for "
+"30 seconds only. Enter such a code and submit it while it is \r\n"
+"still valid to apply the 2-factor authentication protection to your account."
+msgstr ""
+
+#: app/views/User/setup2fa.php:7
+msgid "Current code:"
+msgstr ""
