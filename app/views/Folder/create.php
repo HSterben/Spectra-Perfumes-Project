@@ -2,16 +2,15 @@
 
 <div class='container'>
     <form method='post' action=''><br>
-
-        <h1><?= 'Create Folder' ?></h1>
+    <h1>Create Folder</h1>
 
         <div class="form-group">
-            <label><?= 'Folder name: ' ?><input type="text" class="form-control" name="folder_name" id="folder_name"
-                    placeholder=<?= 'Personal' ?> required/></label>
+            <label>Folder name: <input type="text" class="form-control" name="folder_name" id="folder_name"
+                    placeholder='Personal' required/></label>
         </div><br>
 
         <div class="form-group">
-            <input type="submit" name="action" class='btn btn-primary' value=<?= 'Create Folder' ?>/>
+            <input type="submit" name="action" class='btn btn-primary' value='Create Folder'/>
         </div> <br>
         <?php
             if($parent_folder_name == 0) {

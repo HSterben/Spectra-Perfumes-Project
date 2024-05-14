@@ -40,7 +40,7 @@ class Folder extends \app\core\Controller
 			$folder->create($parent_folder_name);
 
 			$activity = new \app\Controllers\ActivityLog();
-			$activity->create("created folder " . $folder->folder_name); 
+			$activity->create("created folder " . $folder->folder_name);
 
 			//Redirect after successful creation
 			if($parent_folder_name == 0) {
@@ -95,26 +95,54 @@ class Folder extends \app\core\Controller
 		}
 	}
 
+	//Method is called update, but it's really more "updateInvoicesInFolder"
 	public function update($folder_name)
 	{
 		//Instantiate folder and invoice objects
 		$folder = new \app\models\Folder();
+		$invoice = new \app\models\Invoice();
 		//Set the folder being updated
 		$folder = $folder->getByFolderName($folder_name);
+		//Get all invoices for later use
+		$invoices = $invoice->getAll();
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			//Delete the folder record
-			$folder->delete($folder_name);
+			//Access the array if it exists
+			if(isset($_POST["selected_invoices_ids"])){
+				//For each selected invoice id, add the corresponding invoice to the folder
+				foreach ($_POST['selected_invoices_ids'] as $selected_invoice_id) {
+					//Get the corresponding invoice from the database
+					$invoice->getById($selected_invoice_id);
+					//Add it to the folder
+					$invoice->folder_name = $folder_name;
+					$invoice->updateFolderAttribute($selected_invoice_id);
+				}
+				//Get rid of unchecked folders
+				//First get all the invoices currently in the folder
+				$invoices_affected = $invoice->getAllInFolder($folder_name);
+				foreach ($invoices_affected as $invoice_affected) {
+					//We compare them to the selected invoice ids
+					//To do so, we search for needle in a haystack
+					if(!in_array($invoice_affected->invoice_id, $_POST['selected_invoices_ids'])){
+						//If the invoice isn't selected, set folder_name to NULL
+						$invoice_affected->folder_name = NULL;
+						//Apply in the database
+						$invoice_affected->updateFolderAttribute($invoice_affected->invoice_id);
+					}
+				
+				}
+			} else {
+				//Remove all invoices from the folder
+				$invoice->removeAllFromFolder($folder_name);
+			}
 
 			//Activity log
 			$activity = new \app\Controllers\ActivityLog();
-			$activity->create("updated folder " . $folder_name);
+			$activity->create("added invoices to folder " . $folder_name);
 
 			//Redirect after successful update
 			header('location:/Folder/index');
 		} else {
-			//Get the invoices in the folder
-			$invoices = $folder->getInvoices();
 			//Redirect to the folder update view
 			$this->view('Folder/update',['folder'=>$folder, 'invoices'=>$invoices]);
 		}

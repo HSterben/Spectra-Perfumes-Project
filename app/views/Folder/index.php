@@ -1,7 +1,7 @@
 <?= $this->view('Shared/header', ['title'=>'Folder List']); ?>
 	
 <div class='container'>
-	<a href='/Folder/create/0' class="btn"><?= 'Add new folder here' ?></a>
+	<a href='/Folder/create/0' class="btn">Add new folder here</a>
 </div>
 
 <div class='container'>
@@ -16,7 +16,7 @@
 	}
 	?>
 	</table>
-	<a href='/Main/index' class='btn'><?= 'Back to home page' ?></a>
+	<a href='/Main/index' class='btn'>Back to home page</a>
 </div>
 
 <?= $this->view('Shared/footer'); ?>

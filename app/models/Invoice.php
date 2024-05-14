@@ -52,6 +52,16 @@ class Invoice extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 
+	//Get all invoices in a given folder
+	public function getAllInFolder($folder_name)
+	{
+		$SQL = 'SELECT * FROM invoice WHERE folder_name=:folder_name';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['folder_name' => $folder_name]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice'); // Set the type of data returned by fetches
+		return $STMT->fetchAll(); // Return the record
+	}
+
 	public function getAllInvoiceId()
 	{
 		$SQL = 'SELECT * FROM invoice ORDER BY invoice_id';
@@ -120,16 +130,16 @@ class Invoice extends \app\core\Model
 		);
 	}
 
-	//update folder_name when renaming folder
-	public function updateFolderAttribute()
+	//Update folder_name only
+	public function updateFolderAttribute($invoice_id)
 	{
-		$SQL = 'UPDATE invoice SET folder_name = :folder_name WHERE invoice_id = :invoice_id';
+		$SQL = 'UPDATE invoice SET folder_name=:folder_name WHERE invoice_id = :invoice_id';
 
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
-				'folder_name' => $this->folder_name,
-				'invoice_id' => $this->invoice_id
+				'invoice_id' => $invoice_id,
+				'folder_name' => $this->folder_name
 			]
 		);
 	}
@@ -141,6 +151,19 @@ class Invoice extends \app\core\Model
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['invoice_id' => $this->invoice_id]
+		);
+	}
+
+	//Remove all from given folder
+	public function removeAllFromFolder($folder_name)
+	{
+		$SQL = 'UPDATE invoice SET folder_name=:folder_name_value WHERE folder_name = :folder_name';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(
+			[
+				'folder_name' => $folder_name,
+				'folder_name_value' => NULL
+			]
 		);
 	}
 
@@ -181,28 +204,6 @@ class Invoice extends \app\core\Model
 			[
 				'invoice_id' => $this->invoice_id,
 				'folder_name' => $this->folder_name,
-				'invoice_title' => $this->invoice_title,
-				'invoice_project_num' => $this->invoice_project_num,
-				'store_name' => $this->store_name,
-				'phone_number' => $this->phone_number,
-				'return_quantity' => $this->return_quantity,
-				'perfume_price' => $this->perfume_price
-			]
-		);
-	}
-
-	//TODO: remove i believe
-	public function copyTemp($invoice_id, $folder_name)
-	{
-		$SQL = 'INSERT INTO invoice(invoice_id, folder_name, invoice_title,
-			 invoice_project_num, store_name, phone_number, return_quantity, perfume_price) 
-		VALUES (:invoice_id, :folder_name, :invoice_title,
-		:invoice_project_num, :store_name, :phone_number, :return_quantity, :perfume_price)';
-		$STMT = self::$_conn->prepare($SQL);
-		$STMT->execute(
-			[
-				'invoice_id' => $invoice_id,
-				'folder_name' => $folder_name,
 				'invoice_title' => $this->invoice_title,
 				'invoice_project_num' => $this->invoice_project_num,
 				'store_name' => $this->store_name,
