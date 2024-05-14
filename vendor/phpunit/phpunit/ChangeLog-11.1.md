@@ -2,6 +2,20 @@
 
 All notable changes of the PHPUnit 11.1 release series are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+## [11.1.3] - 2024-04-24
+
+### Fixed
+
+* [#5771](https://github.com/sebastianbergmann/phpunit/issues/5771): JUnit XML logger may crash when test that is run in separate process exits unexpectedly
+* [#5819](https://github.com/sebastianbergmann/phpunit/issues/5819): Duplicate keys from different data providers are not handled properly
+
+## [11.1.2] - 2024-04-14
+
+### Fixed
+
+* [#5795](https://github.com/sebastianbergmann/phpunit/issues/5795): Using `@testWith` annotation may generate `PHP Warning:  Uninitialized string offset 0`
+* [#5807](https://github.com/sebastianbergmann/phpunit/issues/5807): The `#[CoversMethod]` attribute is not considered for risky test check
+
 ## [11.1.1] - 2024-04-06
 
 ### Fixed
@@ -32,5 +46,7 @@ All notable changes of the PHPUnit 11.1 release series are documented in this fi
 * [#5689](https://github.com/sebastianbergmann/phpunit/issues/5689): The `restrictDeprecations` attribute on the `<source>` element of the XML configuration file is now deprecated in favor of the `ignoreSelfDeprecations`, `ignoreDirectDeprecations`, and `ignoreIndirectDeprecations` attributes
 * [#5709](https://github.com/sebastianbergmann/phpunit/issues/5709): Deprecate support for using comma-separated values with the `--group`, `--exclude-group`, `--covers`, `--uses`, and `--test-suffix` CLI options
 
+[11.1.3]: https://github.com/sebastianbergmann/phpunit/compare/11.1.2...11.1.3
+[11.1.2]: https://github.com/sebastianbergmann/phpunit/compare/11.1.1...11.1.2
 [11.1.1]: https://github.com/sebastianbergmann/phpunit/compare/11.1.0...11.1.1
 [11.1.0]: https://github.com/sebastianbergmann/phpunit/compare/11.0.10...11.1.0
