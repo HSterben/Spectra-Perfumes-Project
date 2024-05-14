@@ -3,17 +3,19 @@
 <a href='/Invoice/create'><button class=button2><?= __('Add a new invoice')?></button></a>
 <a href='/Main/sales'><button class=button2><?= __('Sales Analytics')?></button></a>
 
+<form method="post" action="/Main/bookmark" style="display: inline;">
+<button type="submit">Bookmark</button>
+</form>
 
 <form method="post" action="/Invoice/confirmBulkDelete" style="display: inline;">
     <button type="submit"><?= __('Bulk Delete')?></button>
-
-
 
     <div class='container'>
         <div class=header><?= __('Home')?></div>
         <table>
 
 </form>
+
 <form method="post" action="/Main/index" id="sortForm">
     <select name="sort" id="sort">
         <option value=""><?= __('Sort by...')?></option>

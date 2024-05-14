@@ -19,6 +19,21 @@ class Main extends \app\core\Controller
 	// 	$this->view('Main/index', $data);
 	// }
 
+    public function bookmark()
+	{
+		$invoice = new \app\models\Invoice();
+		
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selected_invoices'])) {
+			$selectedInvoices = $_POST['selected_invoices'];
+			foreach ($selectedInvoices as $invoiceId) {
+				$invoice->bookmarkInvoice($invoiceId);
+			}
+		}
+		
+		$bookmarkedInvoices = $invoice->getAllBookmarks();
+		$this->view('Main/bookmarks', ['data' => $bookmarkedInvoices]);
+	}
+
 	public function index()
 	{
 		$invoice = new \app\models\Invoice();
