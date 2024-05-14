@@ -19,7 +19,7 @@
         </div><br>
 
         <div class="form-group">
-            <input type="submit" name="action" class='btn' value="Copy Invoice" required />
+            <input type="submit" name="action" class='btn' value=<?= __('Copy Invoice')?> required />
         </div> <br>
         <a href='/Main/index' class="btntwo"><?= __('Cancel')?></a>
     </form>

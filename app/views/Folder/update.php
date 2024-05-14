@@ -2,8 +2,8 @@
 
 <div class='container'>
     <form method='post' action=''><br>
-        <h1>Add invoices to Folder: <?= $folder->folder_name ?></h1>
-        <h3>Please select which invoices to add to the folder</h3><br>
+        <h1><?= __('Add invoices to Folder: ')?><?= $folder->folder_name ?></h1>
+        <h3><?= __('Please select which invoices to add to the folder')?></h3><br>
 
         <div class="form-group">
         <?php
@@ -27,15 +27,15 @@
             ?>
         </div>
         <div class="form-group">
-            <input type="submit" name="action" class='btn btn-primary' value='Update Folder'/>
+            <input type="submit" name="action" class='btn btn-primary' value=<?= __('Update Folder')?>/>
         </div> <br>
         <?php
             if($folder->folder_name == 0) {
                 //if the folder is at the root bring user to root listing
-                echo "<a href='/Folder/index' class='btn'>Cancel</a>";
+                echo "<a href='/Folder/index' class='btn'><?= __('Cancel')?></a>";
             } else {
                 //cancel should lead to the parent folder view
-                echo "<a href='/Folder/read/$folder->folder_name' class='btn'>Cancel</a>";
+                echo "<a href='/Folder/read/$folder->folder_name' class='btn'><?= __('Cancel')?></a>";
             }
         ?>
 

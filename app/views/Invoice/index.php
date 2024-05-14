@@ -56,11 +56,11 @@
                 ?>
             </div><br>
 
-            <dt id="note">Note:</dt>
+            <dt id="note"><?= __('Note:')?></dt>
             <dd id="note"><?= $invoice->note_text ?></dd><br>
 
 
-            <button class="print-btn"><a href='/Main/index' class="btntwo" id="print-btn">Back</a></button>
+            <button class="print-btn"><a href='/Main/index' class="btntwo" id="print-btn"><?= __('Back')?></a></button>
             </form>
         </div>
 

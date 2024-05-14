@@ -8,10 +8,10 @@
 
         <div class="form-group">
             <label><?= __('Invoice Note:')?><input type="textarea" class="form-control" name="note_text" id="note_text"
-                    placeholder="This is a note!" /></label>
+                    placeholder=<?= __('This is a note!')?> /></label>
         </div><br>
         <div class="form-group">
-            <input type="submit" name="action" class='btn' value="Create Note" />
+            <input type="submit" name="action" class='btn' value=<?= __('Create Note')?> />
         </div> <br>
         <a href='/Main/index' class="btntwo"><?= __('Cancel')?></a>
 

@@ -6,7 +6,7 @@ still valid to apply the 2-factor authentication protection to your account.')?>
 <form method="post" action="">
 <label><?= __('Current code:')?><input type="text" name="totp" 
 /></label>
-<input type="submit" name="action" value="Verify code" />
+<input type="submit" name="action" value=<?= __('Verify code')?> />
 </form>
 
 <?= $this->view('Shared/footer'); ?>

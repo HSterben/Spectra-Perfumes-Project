@@ -26,7 +26,7 @@
 <br><br>
 <form method='post' action=''>
 
-    <input type="text" name="query" placeholder="Search invoices...">
+    <input type="text" name="query" placeholder=<?= __('Search invoices...')?>>
     <!-- <button type="submit" name="action">Search</button> -->
 
 

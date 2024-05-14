@@ -49,8 +49,8 @@
 
     <form method="post" action=''>
         <input type="hidden" name="invoice_id" value="<?= $invoice->invoice_id ?>">
-        <input type="submit" name="action" class="btn" value="Delete"><br><br>
-        <a href='/Main/index' class="btntwo">Cancel</a>
+        <input type="submit" name="action" class="btn" value=<?= __('Delete')?>><br><br>
+        <a href='/Main/index' class="btntwo"><?= __('Cancel')?></a>
     </form>
 </div>
 

@@ -77,7 +77,7 @@
         <button type="button" onclick="removePerfumeField()">-</button>
 
         <div class="form-group">
-            <input type="submit" name="action" class='btn' value="Update Invoice" required />
+            <input type="submit" name="action" class='btn' value=<?= __('Update Invoice')?> required />
         </div> <br>
         <a href='/Main/index' class="btntwo"><?= __('Cancel')?></a>
     </form>

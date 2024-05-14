@@ -15,7 +15,7 @@
 			</div>
 
 			<div class="form-group">
-				<input type="submit" name="action" value="Update" /> 
+				<input type="submit" name="action" value=<?= __('Update')?> /> 
 				<a href='/User/login'><?= __('Cancel')?></a>
 			</div>
 		</form>

@@ -11,7 +11,7 @@
                     placeholder="This is a note!" value='<?= $data['invoice']->note_text ?>'></label>
         </div><br>
         <div class="form-group">
-            <input type="submit" name="action" class='btn' value="Update Note"/>
+            <input type="submit" name="action" class='btn' value=<?= __('Update Note')?>/>
         </div> <br>
         <a href='/Main/index' class="btntwo"><?= __('Cancel')?></a>
 
