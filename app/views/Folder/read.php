@@ -1,4 +1,4 @@
-<?= $this->view('Shared/header', ['title'=>'Folder Read']); ?>
+<?= $this->view('Shared/header', ['title' => 'Folder Read']); ?>
 
 <div class='container'>
     <form method='post' action=''><br>
@@ -7,42 +7,52 @@
         <h3><a href='/Folder/create/<?= $folder->folder_name ?>' class="btn">Add new folder here</a></h3>
         <div class="form-group">
             <?php
-            if($subfolders) {
+            if ($subfolders) {
                 echo '<table>';
-                    foreach($subfolders as $subfolder){
-                        echo "<tr>
+                foreach ($subfolders as $subfolder) {
+                    echo "<tr>
                             <td><a href='/Folder/read/{$subfolder->folder_name}'>$subfolder->folder_name</td>
                             <td><a href='/Folder/rename/{$subfolder->folder_name}'>Rename</a></td>
                             <td><a href='/Folder/delete/{$subfolder->folder_name}'>Delete</a></td>
                         </tr>";
-                    }
+                }
                 echo '</table>';
             }
             ?>
         </div><br>
-            <?php
-            if($invoices) {
-                    foreach($invoices as $invoice){
-            ?>
+        <?php
+        if ($invoices) {
+            foreach ($invoices as $invoice) {
+                ?>
                 <div class="invoice-container">
                     <span class="invoice-id"><?= $invoice->invoice_id ?></span>
                     <span class="invoice-title">
-                        <a href='/Invoice/index/<?= $invoice->invoice_id ?>' class="invoice-title"><?= $invoice->invoice_title ?></a>
+                        <a href='/Invoice/index/<?= $invoice->invoice_id ?>'
+                            class="invoice-title"><?= $invoice->invoice_title ?></a>
                     </span>
+                    <div class='invoice-actions'>
+                        <a href='/Invoice/update/<?= $invoice->invoice_id ?>' class='btn'><?= __('Edit') ?></a>
+                        <a href='/Invoice/delete/<?= $invoice->invoice_id ?>' class='btn'><?= __('Delete') ?></a>
+                        <a href='/Invoice/copy/<?= $invoice->invoice_id ?>' class='btn'><?= __('Copy Invoice') ?></a>
+                        <a href='/Note/create/<?= $invoice->invoice_id ?>' class='btn'><?= __('Create Note') ?></a>
+                        <a href='/Note/update/<?= $invoice->invoice_id ?>' class='btn'><?= __('Update Note') ?></a>
+                        <a href='/Note/delete/<?= $invoice->invoice_id ?>' class='btn'><?= __('Delete Note') ?></a>
+                    </div>
                 </div>
-            <?php
-                    }
+
+                <?php
             }
-            ?>
+        }
+        ?>
 
         <?php
-            if($parent_folder_name == 0) {
-                //if the folder is at the root bring user to root listing
-                echo "<a href='/Folder/index' class='btn'>Back</a>";
-            } else {
-                //cancel should lead to the parent folder view
-                echo "<a href='/Folder/read/$parent_folder_name' class='btn'>Back</a>";
-            }
+        if ($parent_folder_name == 0) {
+            //if the folder is at the root bring user to root listing
+            echo "<a href='/Folder/index' class='btn'>Back</a>";
+        } else {
+            //cancel should lead to the parent folder view
+            echo "<a href='/Folder/read/$parent_folder_name' class='btn'>Back</a>";
+        }
         ?>
 
     </form>
