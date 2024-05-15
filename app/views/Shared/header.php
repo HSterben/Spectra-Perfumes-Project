@@ -34,7 +34,7 @@
           <a class="nav-link" href="/Folder/index"><?= __('Folders') ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/Main/bookmarks">Bookmarks</a>
+          <a class="nav-link" href="/Main/bookmarked">Bookmarks</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/Main/settings"><?= __('Settings') ?></a>

@@ -19,21 +19,6 @@ class Main extends \app\core\Controller
 	// 	$this->view('Main/index', $data);
 	// }
 
-    public function bookmark()
-	{
-		$invoice = new \app\models\Invoice();
-		
-		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selected_invoices'])) {
-			$selectedInvoices = $_POST['selected_invoices'];
-			foreach ($selectedInvoices as $invoiceId) {
-				$invoice->bookmarkInvoice($invoiceId);
-			}
-		}
-		
-		$bookmarkedInvoices = $invoice->getAllBookmarks();
-		$this->view('Main/bookmarks', ['data' => $bookmarkedInvoices]);
-	}
-
 	public function index()
 	{
 		$invoice = new \app\models\Invoice();
@@ -48,7 +33,7 @@ class Main extends \app\core\Controller
 				$invoices = $invoice->getAllInvoiceId();
 			} else if ($sortOption === 'invoice_project_number') {
 				$invoices = $invoice->getAllInvoiceProjectNumber();
-			} else if ($sortOption === 'invoice_date'){
+			} else if ($sortOption === 'invoice_date') {
 				$invoices = $invoice->getAll();
 			}
 		}
@@ -56,6 +41,17 @@ class Main extends \app\core\Controller
 		$this->view('Main/index', ['data' => $invoices]);
 	}
 
+	public function getAllBookmarks()
+	{
+		$invoice = new \app\models\Invoice();
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query']) && !empty($_POST['query'])) {
+			$invoices = $invoice->getAllBookmarks();
+		}
+
+		$this->view('Main/bookmarks', ['data' => $invoices]);
+		//$this->view('Main/bookmarks');
+	}
 
 	public function sales()
 	{
@@ -72,16 +68,16 @@ class Main extends \app\core\Controller
 		$this->view('Main/sales', $data);
 	}
 
-	
-    public function settings()
-    {
-        if (!isset($_SESSION['user_id'])) {
+
+	public function settings()
+	{
+		if (!isset($_SESSION['user_id'])) {
 			header('location:/User/login');
 			return;
 		}
-        $user = new \app\models\User();
+		$user = new \app\models\User();
 		$user = $user->getById($_SESSION['user_id']);
 
-        $this->view('Main/settings', ['user' => $user]);
-    }
+		$this->view('Main/settings', ['user' => $user]);
+	}
 }
