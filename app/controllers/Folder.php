@@ -9,7 +9,23 @@ class Folder extends \app\core\Controller
 	{
 		//Create and populate our object
 		$folder = new \app\models\Folder();
-		$folders = $folder->getAllRoot();
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query']) && !empty($_POST['query'])) {
+			//if user searched, display queried folders
+			$searchQuery = $_POST['query'];
+			$folders = $folder->searchFolders($searchQuery);
+		} elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query']) && empty($_POST['query'])) {
+			//if user conducts a blank search, show all folders
+			$folders = $folder->getAll();
+		} elseif (isset($_POST['sort']) && $_POST['sort'] === 'folder_name_asc'){
+			$folders = $folder->getAllByNameAscending();
+		} elseif (isset($_POST['sort']) && $_POST['sort'] === 'folder_name_desc'){
+			$folders = $folder->getAllByNameDescending();
+		} else {
+			//if no search was conducted, only display root folders
+			$folders = $folder->getAllRoot();
+		}
+
 		//Send the data to the view
 		$this->view('Folder/index', ['folders'=>$folders]);
 	}

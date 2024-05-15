@@ -52,6 +52,22 @@ class Folder extends \app\core\Model{
 		return $STMT->fetchAll();
     }
 
+    public function getAllByNameAscending() {
+		$SQL = 'SELECT * FROM folder ORDER BY folder_name ASC';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Folder');//set the type of data returned by fetches
+		return $STMT->fetchAll();
+    }
+
+    public function getAllByNameDescending() {
+		$SQL = 'SELECT * FROM folder ORDER BY folder_name DESC';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Folder');//set the type of data returned by fetches
+		return $STMT->fetchAll();
+    }
+
     public function getByFolderName($folder_name){
     	$SQL = 'SELECT * FROM folder WHERE folder_name = :folder_name';
 		$STMT = self::$_conn->prepare($SQL);
@@ -91,7 +107,14 @@ class Folder extends \app\core\Model{
 		return $STMT->fetchAll();
     }
 
-    //TODO: search
+    public function searchFolders($query)
+	{
+		$SQL = 'SELECT * FROM folder WHERE folder_name LIKE :query';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute(['query' => "%$query%"]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Folder');
+		return $STMT->fetchAll();
+	}
 
     //update 1.0
     public function rename($old_folder_name) {
@@ -113,16 +136,6 @@ class Folder extends \app\core\Model{
 				'new_parent_folder_name' => $this->parent_folder_name,
 				'subfolder_name' => $this->folder_name
 			]
-		);
-    }
-
-    //update 2.0 TODO
-    public function update() {
-    	$SQL = 'UPDATE folder SET folder_name=:folder_name WHERE folder_name = :folder_name';
-
-		$STMT = self::$_conn->prepare($SQL);
-		$STMT->execute(
-			['folder_name' => $this->folder_name]
 		);
     }
 

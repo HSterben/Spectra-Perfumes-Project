@@ -5,6 +5,18 @@
 </div>
 
 <div class='container'>
+	<form method="post" action="/Folder/index" id="sortForm">
+	    <select name="sort" id="sort">
+	        <option value=""><?= __('Sort by...') ?></option>
+	        <option value="folder_name_asc"><?= __('Folder Name Ascending') ?></option>
+	        <option value="folder_name_desc"><?= __('Folder Name Descending') ?></option>
+	    </select>
+	</form>
+
+	<form method='post' action=''>
+    	<input type="text" name="query" placeholder=<?= __('Search invoices...') ?>>
+	</form>
+
 	<table>
 	<?php
 	foreach($folders as $folder){
@@ -18,5 +30,11 @@
 	</table>
 	<a href='/Main/index' class='btn'><?= __('Back to home page')?></a>
 </div>
+
+<script>
+    document.getElementById('sort').addEventListener('change', function () {
+        document.getElementById('sortForm').submit();
+    });
+</script>
 
 <?= $this->view('Shared/footer'); ?>
