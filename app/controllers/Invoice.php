@@ -187,23 +187,32 @@ class Invoice extends \app\core\Controller
 
     }
 
-    public function bookmark()
+    public function bookmark($invoice_id)
     {
+        $invoice = new \app\models\Invoice();
+        $invoice->bookmarkInvoice($invoice_id);
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['selected_invoices'])) {
-            $selectedInvoices = $_POST['selected_invoices'];
-            foreach ($selectedInvoices as $invoiceId) {
-                $invoice = new \app\models\Invoice();
-                $invoice = $invoice->getById($invoiceId);
-                $invoice->bookmarkInvoice();
-            }
+        // Log the activity
+        $activity = new \app\Controllers\ActivityLog();
+        $activity->create("bookmarked invoice: " . $invoice_id);
 
-            $this->view('Main/bookmarks');
-        } else {
-            header('location:/Main/index');
-
-        }
+        // Redirect after successful bookmarking
+        header('location:/Main/index');
     }
+
+    public function removeBookmark($invoice_id)
+    {
+        $invoice = new \app\models\Invoice();
+        $invoice->removeBookmark($invoice_id);
+
+        // Log the activity
+        $activity = new \app\Controllers\ActivityLog();
+        $activity->create("Removed bookmark for invoice: " . $invoice_id);
+
+        // Redirect after successful bookmarking
+        header('location:/Main/index');
+    }
+
 
     public function performBulkDelete()
     {

@@ -43,15 +43,11 @@ class Main extends \app\core\Controller
 
 	public function getAllBookmarks()
 	{
-		$invoice = new \app\models\Invoice();
+        $invoice = new \app\models\Invoice();
+        $bookmarkedInvoices = $invoice->getAllBookmarks();
+        $this->view('Main/bookmarks', ['bookmarkedInvoices' => $bookmarkedInvoices]);
+    }
 
-		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query']) && !empty($_POST['query'])) {
-			$invoices = $invoice->getAllBookmarks();
-		}
-
-		$this->view('Main/bookmarks', ['data' => $invoices]);
-		//$this->view('Main/bookmarks');
-	}
 
 	public function sales()
 	{

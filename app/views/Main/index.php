@@ -39,7 +39,12 @@
         <span class="invoice-title"><a href='/Invoice/index/<?= $invoice->invoice_id ?>'
                 class="invoice-title"><?= $invoice->invoice_title ?></a></span>
         <div class='invoice-actions'>
-            <a href='/Invoice/update/<?= $invoice->invoice_id ?>' class='btn'><?= __('Edit') ?></a>
+            <form action='/Invoice/bookmark/<?= $invoice->invoice_id ?>' method='post' style='display:inline;'>
+                <button type='submit' class='btn'>Bookmark</button>
+            </form> 
+            <form action='/Invoice/removeBookmark/<?= $invoice->invoice_id ?>' method='post' style='display:inline;'>
+                <button type='submit' class='btn'>Remove Bookmark</button>
+            </form><a href='/Invoice/update/<?= $invoice->invoice_id ?>' class='btn'><?= __('Edit') ?></a>
             <a href='/Invoice/delete/<?= $invoice->invoice_id ?>' class='btn'><?= __('Delete') ?></a>
             <a href='/Invoice/copy/<?= $invoice->invoice_id ?>' class='btn'><?= __('Copy Invoice') ?></a>
             <a href='/Note/create/<?= $invoice->invoice_id ?>' class='btn'><?= __('Create Note') ?></a>

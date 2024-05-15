@@ -79,24 +79,29 @@ class Invoice extends \app\core\Model
 		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice');//set the type of data returned by fetches
 		return $STMT->fetchAll();
 	}
-	public function bookmarkInvoice()
+	public function bookmarkInvoice($invoice_id)
 	{
 		$SQL = 'UPDATE invoice SET bookmark = 1 WHERE invoice_id = :invoice_id';
 		$STMT = self::$_conn->prepare($SQL);
-		$STMT->execute(
-			[
-				'invoice_id' => $this->invoice_id
-			]
-		);
+		$STMT->execute(['invoice_id' => $invoice_id]);
 	}
-	public function getAllBookmarks()
+
+	public function removeBookmark($invoice_id)
 	{
-		$SQL = 'SELECT * FROM invoice WHERE bookmark = 1 ORDER BY invoice_date';
+		$SQL = 'UPDATE invoice SET bookmark = 0 WHERE invoice_id = :invoice_id';
 		$STMT = self::$_conn->prepare($SQL);
-		$STMT->execute();
-		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice'); //set the type of data returned by fetches
-		return $STMT->fetchAll();
+		$STMT->execute(['invoice_id' => $invoice_id]);
 	}
+
+	public function getAllBookmarks()
+    {
+        $SQL = 'SELECT * FROM invoice WHERE bookmark = 1 ORDER BY invoice_date';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute();
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Invoice'); //set the type of data returned by fetches
+        return $STMT->fetchAll();
+    }
+
 
 	//We don't know search functions yet
 
