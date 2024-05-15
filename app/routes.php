@@ -6,6 +6,7 @@ $this->addRoute('', 'Main,index');
 $this->addRoute('Main/index', 'Main,index');
 $this->addRoute('Main/sales', 'Main,sales');
 $this->addRoute('Main/settings', 'Main,settings');
+$this->addRoute('Main/bookmarks', 'Main,getAllBookmarks');
 
 //For invoice
 $this->addRoute('Invoice/create', 'Invoice,create');
@@ -16,6 +17,8 @@ $this->addRoute('Invoice/confirmBulkDelete', 'Invoice,confirmBulkDelete');
 $this->addRoute('Invoice/performBulkDelete', 'Invoice,performBulkDelete');
 $this->addRoute('Invoice/index/{invoice_id}', 'Invoice,read');
 $this->addRoute('Invoice/copy/{invoice_id}', 'Invoice,copy');
+$this->addRoute('Invoice/bookmark/{invoice_id}', 'Invoice,bookmark');
+$this->addRoute('Invoice/removeBookmark/{invoice_id}', 'Invoice,removeBookmark');
 
 //For note
 $this->addRoute('Note/create/{invoice_id}', 'Note,create');
