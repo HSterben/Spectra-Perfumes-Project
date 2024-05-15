@@ -32,10 +32,10 @@
         <?php
             if($folder->folder_name == 0) {
                 //if the folder is at the root bring user to root listing
-                echo "<a href='/Folder/index' class='btn'><?= __('Cancel')?></a>";
+                echo "<a href='/Folder/index' class='btn'>Cancel</a>";
             } else {
                 //cancel should lead to the parent folder view
-                echo "<a href='/Folder/read/$folder->folder_name' class='btn'><?= __('Cancel')?></a>";
+                echo "<a href='/Folder/read/$folder->folder_name' class='btn'>Cancel</a>";
             }
         ?>
 

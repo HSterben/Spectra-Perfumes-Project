@@ -12,8 +12,8 @@
                 foreach ($subfolders as $subfolder) {
                     echo "<tr>
                             <td><a href='/Folder/read/{$subfolder->folder_name}'>$subfolder->folder_name</td>
-                            <td><a href='/Folder/rename/{$subfolder->folder_name}'><?= __('Rename') ?></a></td>
-                            <td><a href='/Folder/delete/{$subfolder->folder_name}'><?= __('Delete')?></a></td>
+                            <td><a href='/Folder/rename/{$subfolder->folder_name}'>Rename</a></td>
+                            <td><a href='/Folder/delete/{$subfolder->folder_name}'>Delete</a></td>
                         </tr>";
                 }
                 echo '</table>';
@@ -48,10 +48,10 @@
         <?php
         if ($parent_folder_name == 0) {
             //if the folder is at the root bring user to root listing
-            echo "<a href='/Folder/index' class='btn'><?= __('Back')?></a>";
+            echo "<a href='/Folder/index' class='btn'>Back</a>";
         } else {
             //cancel should lead to the parent folder view
-            echo "<a href='/Folder/read/$parent_folder_name' class='btn'><?= __('Back')?></a>";
+            echo "<a href='/Folder/read/$parent_folder_name' class='btn'>Back</a>";
         }
         ?>
 

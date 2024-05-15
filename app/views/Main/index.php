@@ -31,9 +31,6 @@
 
 
 </form><br><br>
-<form method="post" action="/Main/bookmarks" style="display: inline;">
-    <button type="submit">Bookmark</button>
-    </form>
 
 <?php foreach ($data as $invoice): ?>
     <div class="invoice-container">
@@ -51,7 +48,6 @@
         </div>
     </div>
 <?php endforeach; ?>
-<p>This a second test for the font size</p>
 </table>
 </div>
 

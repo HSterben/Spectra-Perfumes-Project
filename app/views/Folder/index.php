@@ -10,8 +10,8 @@
 	foreach($folders as $folder){
 		echo "<tr>
 			<td><a href='/Folder/read/{$folder->folder_name}'>$folder->folder_name</td>
-			<td><a href='/Folder/rename/{$folder->folder_name}'><?= __('Rename')?></a></td>
-			<td><a href='/Folder/delete/{$folder->folder_name}'><?= __('Delete')?></a></td>
+			<td><a href='/Folder/rename/{$folder->folder_name}'>Rename</a></td>
+			<td><a href='/Folder/delete/{$folder->folder_name}'>Delete</a></td>
 		</tr>";
 	}
 	?>

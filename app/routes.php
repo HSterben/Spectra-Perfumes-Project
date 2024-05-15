@@ -6,8 +6,6 @@ $this->addRoute('', 'Main,index');
 $this->addRoute('Main/index', 'Main,index');
 $this->addRoute('Main/sales', 'Main,sales');
 $this->addRoute('Main/settings', 'Main,settings');
-$this->addRoute('Main/bookmarks', 'Invoice,bookmark');
-$this->addRoute('Main/bookmarked', 'Main,getAllBookmarks');
 
 //For invoice
 $this->addRoute('Invoice/create', 'Invoice,create');
