@@ -18,9 +18,6 @@ class Main extends \app\core\Controller
 	// 	$data = $invoice;
 	// 	$this->view('Main/index', $data);
 	// }
-
-<<<<<<< Updated upstream
-=======
 	public function bookmark()
 	{
 		$invoice = new \app\models\Invoice();
@@ -36,7 +33,6 @@ class Main extends \app\core\Controller
 		$this->view('Main/bookmarks', ['data' => $bookmarkedInvoices]);
 	}
 
->>>>>>> Stashed changes
 	public function index()
 	{
 		$invoice = new \app\models\Invoice();
