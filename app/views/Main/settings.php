@@ -57,8 +57,8 @@
             <th>
                 <label><?= __('Language: ') ?>&nbsp;</label>
                 <select id="langSelect" name='lang'>
-                    <option value="English" <?= ($user->lang === 'en') ? 'selected' : '' ?>>English</option>
-                    <option value="Français" <?= ($user->lang === 'fr') ? 'selected' : '' ?>>Français</option>
+                    <option value="en" <?= ($user->lang === 'en') ? 'selected' : '' ?>>English</option>
+                    <option value="fr" <?= ($user->lang === 'fr') ? 'selected' : '' ?>>Français</option>
                 </select>
             </th>
             </tr>

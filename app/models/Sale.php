@@ -22,7 +22,7 @@ class Sale extends \app\core\Model
 		$STMT->execute(
 			[
 				'invoice_id' => $this->invoice_id,
-                'sale_date' => $this->sale_date,
+				'sale_date' => $this->sale_date,
 				'return_value' => $this->return_value,
 				'purchase_value' => $this->purchase_value,
 				'total_value' => $this->total_value
@@ -31,7 +31,7 @@ class Sale extends \app\core\Model
 	}
 
 	//Read
-    public function getAll()
+	public function getAll()
 	{
 		$SQL = 'SELECT * FROM sale ORDER BY sale_date';
 		$STMT = self::$_conn->prepare($SQL);
@@ -49,6 +49,18 @@ class Sale extends \app\core\Model
 		return $STMT->fetch(); // Return the record
 	}
 
+	public function getByQuery($date1, $date2)
+	{
+		$SQL = 'SELECT * FROM sale WHERE sale_date >= :date1 AND sale_date <= :date2';
+		$STMT = self::$_conn->prepare($SQL);
+		$STMT->execute([
+			'date1' => $date1,
+			'date2' => $date2
+		]);
+		$STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Sale'); // Set the type of data returned by fetches
+		return $STMT->fetchAll(); // Return the record
+	}
+
 	public function update()
 	{
 		$SQL = 'UPDATE sale SET invoice_id=:invoice_id, sale_date=:sale_date, return_value=:return_value, purchase_value=:purchase_value, total_value=:total_value WHERE sale_id = :sale_id';
@@ -57,7 +69,7 @@ class Sale extends \app\core\Model
 			[
 				'sale_id' => $this->sale_id,
 				'invoice_id' => $this->invoice_id,
-                'sale_date' => $this->sale_date,
+				'sale_date' => $this->sale_date,
 				'return_value' => $this->return_value,
 				'purchase_value' => $this->purchase_value,
 				'total_value' => $this->total_value

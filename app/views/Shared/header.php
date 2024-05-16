@@ -1,3 +1,7 @@
+<?php
+$lang = getUser()->lang;
+?>
+
 <html>
 
 <head>
@@ -15,7 +19,7 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/Main/index"><?= __('Spectra Perfumes')?></a>
+    <a class="navbar-brand" href="/Main/index?lang=<?= $lang ?>"><?= __('Spectra Perfumes')?></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,20 +28,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/Main/sales"><?= __('Sales Analytics') ?></a>
+          <a class="nav-link" href="/Main/sales?lang=<?= $lang ?>"><?= __('Sales Analytics') ?></a>
         </li>
 
         <!-- <li class="nav-item">
         <a class="nav-link" href="/Invoice/index">Invoice</a>
       </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="/Folder/index"><?= __('Folders') ?></a>
+          <a class="nav-link" href="/Folder/index?lang=<?= $lang ?>"><?= __('Folders') ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/Main/bookmarks">Bookmarks</a>
+          <a class="nav-link" href="/Main/bookmarks?lang=<?= $lang ?>">Bookmarks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/Main/settings"><?= __('Settings') ?></a>
+          <a class="nav-link" href="/Main/settings?lang=<?= $lang ?>"><?= __('Settings') ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/User/logout"><?= __('Logout') ?></a>

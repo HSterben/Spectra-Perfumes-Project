@@ -55,8 +55,9 @@ class Main extends \app\core\Controller
 
 		// Check if a search query is provided
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$searchQuery = $_POST['query'];
-			// $invoice = $invoice->searchInvoices($searchQuery);
+			$afterDate = $_POST['afterDate'];
+			$beforeDate = $_POST['beforeDate'];
+			$sale = $sale->getByQuery($afterDate, $beforeDate);
 		} else {
 			$sale = $sale->getAll();
 		}

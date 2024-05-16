@@ -1,7 +1,6 @@
 <?= $this->view('Shared/header'); ?>
 <link rel="stylesheet" href="/app/styles.css">
 <a href='/Invoice/create'><button class=button2><?= __('Add a new invoice') ?></button></a>
-<a href='/Main/sales'><button class=button2><?= __('Sales Analytics') ?></button></a>
 
 
 <form method="post" action="/Invoice/confirmBulkDelete" style="display: inline;">
