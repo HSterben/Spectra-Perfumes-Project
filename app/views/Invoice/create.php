@@ -4,82 +4,82 @@
 <div class='container'>
     <form method='post' action=''><br>
 
-        <h1><?= __('Create Invoice')?></h1>
+        <h1><?= __('Create Invoice') ?></h1>
 
         <div class="form-group">
-            <label><?= __('Invoice ID:')?><input type="text" class="form-control" name="invoice_id" id="invoice_id"
-                    placeholder="0001" required /></label>
+            <label for="invoice_id"><?= __('Invoice ID:') ?><input type="text" class="form-control" name="invoice_id"
+                    id="invoice_id" placeholder="0001" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label><?= __('Project Number:')?><input type="text" class="form-control" name="invoice_project_num"
+            <label><?= __('Project Number:') ?><input type="text" class="form-control" name="invoice_project_num"
                     id="invoice_project_num" placeholder="0001" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label><?= __('Invoice Title:')?><input type="text" class="form-control" name="invoice_title" id="title"
+            <label><?= __('Invoice Title:') ?><input type="text" class="form-control" name="invoice_title" id="title"
                     placeholder="Spectra Invoice" required /></label>
         </div><br>
         <div class="form-group">
-            <label><?= __('Invoice Date:')?><input type="date" class="form-control" name="invoice_date" id="date"
+            <label><?= __('Invoice Date:') ?><input type="date" class="form-control" name="invoice_date" id="date"
                     required /></label>
         </div><br>
         <div class="form-group">
-            <label><?= __('Business Name:')?><input type="text" class="form-control" name="store_name" id="busname"
+            <label><?= __('Business Name:') ?><input type="text" class="form-control" name="store_name" id="busname"
                     placeholder="Spectra" required /></label>
             <!-- id is for the browser and name is for the server -->
         </div><br>
         <div class="form-group">
-            <label><?= __('Street:')?><input type="text" class="form-control" name="street_name" id="street_name"
+            <label><?= __('Street:') ?><input type="text" class="form-control" name="street_name" id="street_name"
                     placeholder="12345 Example Road" required /></label>
 
         </div><br>
         <div class="form-group">
-            <label><?= __('City:')?><input type="text" class="form-control" name="city" id="city" placeholder="New York"
-                    required /></label>
+            <label><?= __('City:') ?><input type="text" class="form-control" name="city" id="city"
+                    placeholder="New York" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label><?= __('Postal Code:')?><input type="text" class="form-control" name="postal_code" id="postal_code"
+            <label><?= __('Postal Code:') ?><input type="text" class="form-control" name="postal_code" id="postal_code"
                     placeholder="A1E 5T8" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label><?= __('Country:')?><input type="text" class="form-control" name="country" id="country" placeholder="Canada"
-                    required /></label>
+            <label><?= __('Country:') ?><input type="text" class="form-control" name="country" id="country"
+                    placeholder="Canada" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label><?= __('Phone Number:')?><input type="text" class="form-control" name="phone_number" placeholder="5141234567"
-                    id="pnum" required /></label>
+            <label><?= __('Phone Number:') ?><input type="text" class="form-control" name="phone_number"
+                    placeholder="5141234567" id="pnum" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label><?= __('Return Quantity:')?><input type="number" class="form-control" name="return_quantity" placeholder="10"
-                    id="return" required /></label>
+            <label><?= __('Return Quantity:') ?><input type="number" class="form-control" name="return_quantity"
+                    placeholder="10" id="return" required /></label>
         </div><br>
 
         <div class="form-group">
-            <label><?= __('Perfume Price:')?><input type="text" class="form-control" name="perfume_price" placeholder="12345"
-                    id="price" required /></label>
+            <label><?= __('Perfume Price:') ?><input type="text" class="form-control" name="perfume_price"
+                    placeholder="12345" id="price" required /></label>
         </div><br>
 
         <div id="dynamic">
             <div class="form-group">
-                <label><?= __('Perfume Code:')?><input type="number" class="form-control" name="perfume_number[]" placeholder="999"
-                        required /></label>
-                <label><?= __('Quantity:')?><input type="number" class="form-control" name="quantity[]" placeholder="999"
-                        required /></label>
+                <label><?= __('Perfume Code:') ?><input type="number" class="form-control" name="perfume_number[]"
+                        id="perfume_number" placeholder="999" required /></label>
+                <label><?= __('Quantity:') ?><input type="number" class="form-control" name="quantity[]"
+                        id="perfume_quantity" placeholder="999" required /></label>
             </div>
         </div>
 
-        <button type="button" onclick="addPerfumeField()">+</button>
+        <button type="button" id='add_perfume' onclick="addPerfumeField()">+</button>
         <button type="button" onclick="removePerfumeField()">-</button>
 
         <div class="form-group">
-            <input type="submit" name="action" class='btn' value="Create Invoice" required />
+            <input type="submit" name="action" id='action' class='btn' value="Create Invoice" required />
         </div> <br>
-        <a href='/Main/index' class="btntwo"><?= __('Cancel')?></a>
+        <a href='/Main/index' class="btntwo"><?= __('Cancel') ?></a>
 
     </form>
     <script>

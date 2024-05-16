@@ -1,7 +1,7 @@
 <?php
 namespace app\controllers;
 
-#[\app\filters\Login]
+#[\app\filters\Login] //If removed, tests passed
 class Invoice extends \app\core\Controller
 {
 

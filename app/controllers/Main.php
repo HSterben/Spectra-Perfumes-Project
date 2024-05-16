@@ -1,7 +1,7 @@
 <?php
 namespace app\controllers;
 
-#[\app\filters\Login]
+#[\app\filters\Login] //If removed, tests pass
 class Main extends \app\core\Controller
 {
 	// public function index()
@@ -19,6 +19,24 @@ class Main extends \app\core\Controller
 	// 	$this->view('Main/index', $data);
 	// }
 
+<<<<<<< Updated upstream
+=======
+	public function bookmark()
+	{
+		$invoice = new \app\models\Invoice();
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selected_invoices'])) {
+			$selectedInvoices = $_POST['selected_invoices'];
+			foreach ($selectedInvoices as $invoiceId) {
+				$invoice->bookmarkInvoice($invoiceId);
+			}
+		}
+
+		$bookmarkedInvoices = $invoice->getAllBookmarks();
+		$this->view('Main/bookmarks', ['data' => $bookmarkedInvoices]);
+	}
+
+>>>>>>> Stashed changes
 	public function index()
 	{
 		$invoice = new \app\models\Invoice();
